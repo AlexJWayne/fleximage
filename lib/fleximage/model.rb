@@ -16,6 +16,7 @@ module Fleximage
           include Fleximage::Model::InstanceMethods
           
           dsl_accessor :image_directory, :default => "#{options[:image_directory]}"
+          dsl_accessor :use_created_at_
           
           before_destroy :delete_image_file
           after_save :save_image_file
@@ -27,9 +28,30 @@ module Fleximage
       
       # Returns the path to the master image file for this record.
       #   
-      #   @some_image.file_path #=> /var/www/myapp/uploaded_images
+      #   @some_image.destination_directory #=> /var/www/myapp/uploaded_images
+      #
+      # If this model has a created_at field, it will use a directory 
+      # structure based on the creation date, to prevent hitting the OS imposed
+      # limit on the number files in a directory.
+      #
+      #   @some_image.destination_directory #=> /var/www/myapp/uploaded_images/2008/3/30
+      def directory_path
+        # base directory
+        directory = "#{RAILS_ROOT}/#{self.class.image_directory}"
+        
+        # specific creation date based directory suffix.
+        if creation = self[:created_at] || self[:created_on]
+          "#{directory}/#{creation.year}/#{creation.month}/#{creation.day}"
+        else
+          directory
+        end
+      end
+      
+      # Returns the path to the master image file for this record.
+      #   
+      #   @some_image.file_path #=> /var/www/myapp/uploaded_images/123.png
       def file_path
-        "#{RAILS_ROOT}/#{self.class.image_directory}/#{id}.png"
+        "#{directory_path}/#{id}.png"
       end
       
       # Sets the image file for this record to an uploaded file.  This can 
@@ -39,17 +61,17 @@ module Fleximage
       # Rails will automatically call this method for you, in most of the 
       # situations you would expect it to.
       #
-      #   # Direct Assignment, usually not needed
-      #   photo = Photo.new
-      #   photo.image_file = params[:photo][:image_file]
-      #   
+      #   # via mass assignment, the most common form you'll probably use
+      #   Photo.new(params[:photo])
+      #   Photo.create(params[:photo])
+      #
       #   # via explicit assignment hash
       #   Photo.new(:image_file => params[:photo][:image_file])
       #   Photo.create(:image_file => params[:photo][:image_file])
       #   
-      #   # via mass assignment from, the most common form you'll probably use
-      #   Photo.new(params[:photo])
-      #   Photo.create(params[:photo])
+      #   # Direct Assignment, usually not needed
+      #   photo = Photo.new
+      #   photo.image_file = params[:photo][:image_file]
       #   
       #   # via an association proxy
       #   p = Product.find(1)
@@ -88,6 +110,7 @@ module Fleximage
         # Write this image to disk
         def save_image_file
           if @uploaded_image
+            FileUtils.mkdir_p(directory_path)
             @uploaded_image.write(file_path)
             GC.start
           end
