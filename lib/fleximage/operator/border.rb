@@ -5,6 +5,8 @@ module Fleximage
     #
     #   image.border(option = {})
     # 
+    # Use the following keys in the +options+ hash:
+    #
     # * +size+: Width of the border on each side.  You can use a 2 dimensional value ('5x10') if you want
     #   different widths for the sides and top borders, but a single integer will apply the same border on 
     #   all sides.
@@ -14,17 +16,19 @@ module Fleximage
     #   
     # Example:
     #   
-    #   # Defaults
-    #   image.border(
-    #     :size  => 10,
-    #     :color => 'white'    # or color(255, 255, 255)
-    #   )
-    #
-    #   # Big, pink and wide
-    #   image.border(
-    #     :size  => '200x100',
-    #     :color => color(255, 128, 0)
-    #   )
+    #   @photo.operate do |image|
+    #     # Defaults
+    #     image.border(
+    #       :size  => 10,
+    #       :color => 'white'    # or color(255, 255, 255)
+    #     )
+    #     
+    #     # Big, pink and wide
+    #     image.border(
+    #       :size  => '200x100',
+    #       :color => color(255, 128, 0)
+    #     )
+    #   end
     class Border < Operator::Base
       def operate(options = {})
         options = options.symbolize_keys if options.respond_to?(:symbolize_keys)

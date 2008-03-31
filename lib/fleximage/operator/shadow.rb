@@ -2,7 +2,11 @@ module Fleximage
   module Operator
         
     # Add a drop shadow to the image.
+    #
+    #   image.shadow(options = {})
     # 
+    # Use the following keys in the +options+ hash:
+    #
     # * +offset+: distance of the dropsahdow form the image, in FlexImage *size* format.  Positive
     #   number move it down and right, negative numbers move it up and left.
     #   
@@ -20,24 +24,26 @@ module Fleximage
     #   transparent.
     # 
     # Example:
-    #   
-    #   # Default settings
-    #   image.shadow(
-    #     :color      => 'black',    # or color(0, 0, 0)
-    #     :background => 'white',    # or color(255, 255, 255)
-    #     :blur       => 8,
-    #     :offset     => '2x2',
-    #     :opacity    => 0.75 
-    #   )
-    #   
-    #   # Huge, red shadow
-    #   image.shadow(
-    #     :color      => color(255, 0, 0),
-    #     :background => 'black',    # or color(255, 255, 255)
-    #     :blur       => 30,
-    #     :offset     => '20x10',
-    #     :opacity    => 1
-    #   )
+    # 
+    #   @photo.operate do |image|
+    #     # Default settings
+    #     image.shadow(
+    #       :color      => 'black',    # or color(0, 0, 0)
+    #       :background => 'white',    # or color(255, 255, 255)
+    #       :blur       => 8,
+    #       :offset     => '2x2',
+    #       :opacity    => 0.75 
+    #     )
+    #     
+    #     # Huge, red shadow
+    #     image.shadow(
+    #       :color      => color(255, 0, 0),
+    #       :background => 'black',    # or color(255, 255, 255)
+    #       :blur       => 30,
+    #       :offset     => '20x10',
+    #       :opacity    => 1
+    #     )
+    #   end
     class Shadow < Operator::Base
       def operate(options = {})
         options = options.symbolize_keys if options.respond_to?(:symbolize_keys)
