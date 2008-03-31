@@ -106,7 +106,10 @@ module Fleximage
         @output_image ||= Magick::Image.read(file_path).first
       rescue Magick::ImageMagickError => e
         if e.to_s =~ /unable to open file/
-          raise MasterImageNotFound, "Master image was not found for this record, so no image can be rendered.\nExpected image to be at:\n  #{file_path}"
+          raise MasterImageNotFound, 
+            "Master image was not found for this record, so no image can be rendered.\n"+
+            "Expected image to be at:\n"+
+            "  #{file_path}"
         else
           raise e
         end
