@@ -132,6 +132,8 @@ module Fleximage
         GC.start
       end
       
+      # If in a view, a call to an unknown method will look for an Operator by that method's name.
+      # If it find one, it will execute that operator, otherwise, it will 
       def method_missing(method_name, *args)
         if @operating
           operator_class = "Fleximage::Operator::#{method_name.to_s.camelcase}".constantize

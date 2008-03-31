@@ -14,6 +14,12 @@ rescue MissingSourceFile => e
   raise e
 end
 
+# Load Operators
+require 'fleximage/operator/base'
+Dir.entries("#{File.dirname(__FILE__)}/lib/fleximage/operator").each do |filename|
+  require "fleximage/operator/#{filename.gsub('.rb', '')}" if filename =~ /\.rb$/
+end
+
 # Setup Model
 require 'fleximage/model'
 ActiveRecord::Base.class_eval { include Fleximage::Model }
@@ -22,9 +28,4 @@ ActiveRecord::Base.class_eval { include Fleximage::Model }
 require 'fleximage/view'
 ActionController::Base.exempt_from_layout :flexi
 ActionView::Base.register_template_handler :flexi, Fleximage::View
-
-# Load Operators
-require 'fleximage/operator/base'
-Dir.entries("#{File.dirname(__FILE__)}/lib/fleximage/operator").each do |filename|
-  require "fleximage/operator/#{filename.gsub('.rb', '')}" if filename =~ /\.rb$/
-end
+Mime::Type.register "image/jpeg", :jpg

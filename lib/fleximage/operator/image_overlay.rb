@@ -47,6 +47,7 @@ module Fleximage
     #       :alignment => :top_right,
     #       :blending => :screen
     #     )
+    #   end
     class ImageOverlay < Operator::Base
       def operate(image_overlay_path, options = {})
         options = options.symbolize_keys
