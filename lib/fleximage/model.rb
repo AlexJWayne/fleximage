@@ -23,6 +23,8 @@ module Fleximage
     # * +invalid_image_message+
     module ClassMethods
       
+      # TODO: Add image preprocessing
+      
       # Use this method to include Fleximage functionality in your model.  It takes an 
       # options hash with a single required key, :+image_directory+.  This key should 
       # point to the directory you want your images stored on your server.
