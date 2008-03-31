@@ -1,6 +1,9 @@
 module Fleximage
   module Model
     
+    class MasterImageNotFound < RuntimeError #:nodoc:
+    end
+    
     # Include acts_as_fleximage class method
     def self.included(base)
       base.extend(ClassMethods)
@@ -101,6 +104,12 @@ module Fleximage
       # processed output rmagick image.
       def load_image #:nodoc:
         @output_image ||= Magick::Image.read(file_path).first
+      rescue Magick::ImageMagickError => e
+        if e.to_s =~ /unable to open file/
+          raise MasterImageNotFound, "Master image was not found for this record, so no image can be rendered.\nExpected image to be at:\n  #{file_path}"
+        else
+          raise e
+        end
       end
       
       # Convert the current output image to a jpg, and return it in 
