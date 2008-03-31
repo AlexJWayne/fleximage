@@ -100,6 +100,14 @@ module Fleximage
         end
       end
       
+      def operate(&block)
+        returning self do
+          @operating = true
+          block.call(self)
+          @operating = false
+        end
+      end
+      
       # Load the image from disk, or return the cached and potentially 
       # processed output rmagick image.
       def load_image #:nodoc:
@@ -117,9 +125,26 @@ module Fleximage
       
       # Convert the current output image to a jpg, and return it in 
       # binary form.
-      def output_image #:nodoc:
+      def output_image
         @output_image.format = 'JPG'
         @output_image.to_blob
+      ensure
+        GC.start
+      end
+      
+      def method_missing(method_name, *args)
+        if @operating
+          operator_class = "Fleximage::Operator::#{method_name.to_s.camelcase}".constantize
+          @output_image = operator_class.new(self).execute(*args)
+        else
+          super
+        end
+      rescue NameError => e
+        if e.to_s =~ /uninitialized constant Fleximage::Operator::/
+          super
+        else
+          raise e
+        end
       end
       
       private
@@ -128,8 +153,9 @@ module Fleximage
           if @uploaded_image
             FileUtils.mkdir_p(directory_path)
             @uploaded_image.write(file_path)
-            GC.start
           end
+        ensure
+          GC.start
         end
         
         # Delete the image file after this record gets destroyed

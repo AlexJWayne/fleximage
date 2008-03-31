@@ -11,6 +11,15 @@ module Fleximage
       # process the view
       result = @view.instance_eval do
         
+        # Shorthand color creation
+        def color(*args)
+          if args.size == 1 && args.first.is_a?(String)
+            args.first
+          else
+            Magick::Pixel.new(*args)
+          end
+        end
+        
         # inject assigns into instance variables
         assigns.each do |key, value|
           instance_variable_set "@#{key}", value
@@ -27,8 +36,8 @@ module Fleximage
       end
       
       # Raise an error if object returned from template is not an image record
-      unless result.class.include?(Fleximage::Model)
-        raise TemplateDidNotReturnImage, ".flexi template was expected to return a model instance that includes Fleximage::Model, but got an instance of <#{result.class}> instead."
+      unless result.class.include?(Fleximage::Model::InstanceMethods)
+        raise TemplateDidNotReturnImage, ".flexi template was expected to return a model instance that acts_as_fleximage, but got an instance of <#{result.class}> instead."
       end
       
       # get rendered result
@@ -38,7 +47,7 @@ module Fleximage
       @view.controller.headers["Content-Type"] = 'image/jpeg'
       
       # Return image data
-      rendered_image
+      return rendered_image
     ensure
     
       # ensure garbage collection happens after every flex image render

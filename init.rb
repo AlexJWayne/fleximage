@@ -1,5 +1,3 @@
-# $:.unshift "#{File.dirname(__FILE__)}/lib"
-
 # Load RMagick
 begin
   require 'RMagick'
@@ -24,3 +22,9 @@ ActiveRecord::Base.class_eval { include Fleximage::Model }
 require 'fleximage/view'
 ActionController::Base.exempt_from_layout :flexi
 ActionView::Base.register_template_handler :flexi, Fleximage::View
+
+# Load Operators
+require 'fleximage/operator/base'
+Dir.entries("#{File.dirname(__FILE__)}/lib/fleximage/operator").each do |filename|
+  require "fleximage/operator/#{filename.gsub('.rb', '')}" if filename =~ /\.rb$/
+end
