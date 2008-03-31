@@ -42,7 +42,7 @@ module Fleximage
     # Example:
     # 
     #   @photo.operate do |image|
-    #     image.image_overlay('images/my_logo_with_alpha/png',
+    #     image.image_overlay('images/my_logo_with_alpha.png',
     #       :size => '25x25',
     #       :alignment => :top_right,
     #       :blending => :screen

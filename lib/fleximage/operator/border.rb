@@ -26,7 +26,7 @@ module Fleximage
     #     # Big, pink and wide
     #     image.border(
     #       :size  => '200x100',
-    #       :color => color(255, 128, 0)
+    #       :color => color(255, 128, 128)
     #     )
     #   end
     class Border < Operator::Base

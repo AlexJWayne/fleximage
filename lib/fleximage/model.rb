@@ -1,15 +1,23 @@
 module Fleximage
+  
+  # Container for Fleximage model method inclusion modules
   module Model
     
     class MasterImageNotFound < RuntimeError #:nodoc:
     end
     
     # Include acts_as_fleximage class method
-    def self.included(base)
+    def self.included(base) #:nodoc:
       base.extend(ClassMethods)
     end
     
+    # Provides class methods for Fleximage for use in model classes.  The only class method is
+    # acts_as_fleximage which integrates Fleximage functionality into a model class.
     module ClassMethods
+      
+      # Use this method to include Fleximage functionality in your model.  It takes an 
+      # options hash with a single required key, :+image_directory+.  This key should 
+      # point to the directory you want your images stored on your server.
       def acts_as_fleximage(options = {})
         unless options[:image_directory]
           raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option (relative to RAILS_ROOT)"
@@ -30,17 +38,18 @@ module Fleximage
       end
     end
     
+    # Provides methods that every model instance that acts_as_fleximage needs.
     module InstanceMethods
       
       # Returns the path to the master image file for this record.
       #   
-      #   @some_image.destination_directory #=> /var/www/myapp/uploaded_images
+      #   @some_image.directory_path #=> /var/www/myapp/uploaded_images
       #
       # If this model has a created_at field, it will use a directory 
       # structure based on the creation date, to prevent hitting the OS imposed
       # limit on the number files in a directory.
       #
-      #   @some_image.destination_directory #=> /var/www/myapp/uploaded_images/2008/3/30
+      #   @some_image.directory_path #=> /var/www/myapp/uploaded_images/2008/3/30
       def directory_path
         # base directory
         directory = "#{RAILS_ROOT}/#{self.class.image_directory}"
@@ -100,6 +109,13 @@ module Fleximage
         end
       end
       
+      # Call from a .flexi view template.  This enables the rendering of operators 
+      # so that you can transform your image.
+      #
+      #   # app/views/photos/thumb.jpg.flexi
+      #   @photo.operate do |image|
+      #     image.resize '320x240'
+      #   end
       def operate(&block)
         returning self do
           @operating = true
@@ -125,7 +141,7 @@ module Fleximage
       
       # Convert the current output image to a jpg, and return it in 
       # binary form.
-      def output_image
+      def output_image #:nodoc:
         @output_image.format = 'JPG'
         @output_image.to_blob
       ensure
@@ -133,7 +149,8 @@ module Fleximage
       end
       
       # If in a view, a call to an unknown method will look for an Operator by that method's name.
-      # If it find one, it will execute that operator, otherwise, it will 
+      # If it find one, it will execute that operator, otherwise it will simply call super for the
+      # default method missing behavior.
       def method_missing(method_name, *args)
         if @operating
           operator_class = "Fleximage::Operator::#{method_name.to_s.camelcase}".constantize

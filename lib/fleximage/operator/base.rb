@@ -7,70 +7,97 @@ module Fleximage
     # return a new RMagick image object that represents the new image, and
     # the model will be updated automatically.
     #
-    # You have access to a few instance variable in the operate method:
+    # You have access to a few instance variables in the operate method:
     #
-    #  * @image : The current image from the model.  Use this is a starting 
-    #    point for all transformations.
-    #  * @model_object : The model object that this image belongs to.  Use
-    #    its values to determine 
+    # * @image : The current image from the model.  Use this is a starting 
+    #   point for all transformations.
+    # * @model_object : The model object that this image belongs to.  Use
+    #   its methods if you need to do something specific based on model 
+    #   data.
     class Base
       # Create a operator, capturing the model object to operate on
-      def initialize(model_object)
+      def initialize(model_object) #:nodoc:
         @model_object = model_object
       end
       
       # Start the operation
-      def execute(*args)
+      def execute(*args) #:nodoc:
         @image = @model_object.load_image
         operate(*args)
       end
       
-      private
-        # Perform the operation
-        def operate(*args)
-          raise "Override this method in your own subclass."
-        end
+      # Perform the operation.  Override this method in your Operator::Base subclasses
+      # in order to write your own image operators.
+      def operate(*args)
+        raise "Override this method in your own subclass."
+      end
       
+      # ---
+      # - SUPPORT METHODS
+      # ---
       
-        # ---
-        # - Support methods
-        # ---
-        
-        def size_to_xy(size)
-          if size.is_a?(Array) && size.size == 2
-            size
-          elsif size.to_s.include?('x')
-            size.split('x').collect(&:to_i)
-          else
-            [size.to_i, size.to_i]
-          end
+      # Converts a size object to an [x,y] array.  Acceptible formats are:
+      # 
+      # * 10
+      # * "10"
+      # * "10x20"
+      # * [10, 20]
+      #
+      # Usage:
+      #
+      #   x, y = size_to_xy("10x20")
+      def size_to_xy(size)
+        if size.is_a?(Array) && size.size == 2
+          size
+        elsif size.to_s.include?('x')
+          size.split('x').collect(&:to_i)
+        else
+          [size.to_i, size.to_i]
         end
-        
-        def scale(size, img = nil)
-          (img || @image).change_geometry!(size_to_xy(size).join('x')) do |cols, rows, img|
-            cols = 1 if cols < 1
-            rows = 1 if rows < 1
-            img.resize!(cols, rows)
-          end
+      end
+      
+      # Scale the image, respecting aspect ratio.  
+      # Operation will happen in the main <tt>@image</tt> unless you supply the +img+ argument
+      # to operate on instead.
+      def scale(size, img = nil)
+        (img || @image).change_geometry!(size_to_xy(size).join('x')) do |cols, rows, img|
+          cols = 1 if cols < 1
+          rows = 1 if rows < 1
+          img.resize!(cols, rows)
         end
-
-        def scale_and_crop(size, img = nil)
-          (img || @image).crop_resized!(*size_to_xy(size))
-        end
-
-        def stretch(size, img = nil)
-          (img || @image).resize!(*size_to_xy(size))
-        end
-
-        def symbol_to_blending_mode(mode)
-          "Magick::#{mode.to_s.camelize}CompositeOp".constantize
-        rescue NameError
-          raise ArgumentError, ":#{mode} is not a valid blending mode."
-        end
+      end
+      
+      # Scale to the desired size and crop edges off to get the exact dimensions needed.
+      # Operation will happen in the main <tt>@image</tt> unless you supply the +img+ argument
+      # to operate on instead.
+      def scale_and_crop(size, img = nil)
+        (img || @image).crop_resized!(*size_to_xy(size))
+      end
+      
+      # Resize the image, with no respect to aspect ratio.  
+      # Operation will happen in the main <tt>@image</tt> unless you supply the +img+ argument
+      # to operate on instead.
+      def stretch(size, img = nil)
+        (img || @image).resize!(*size_to_xy(size))
+      end
+      
+      # Convert a symbol to an RMagick blending mode.
+      # 
+      # The blending mode governs how the overlay gets composited onto the image.  You can 
+      # get some funky effects with modes like :+copy_cyan+ or :+screen+.  For a full list of blending
+      # modes checkout the RMagick documentation (http://www.simplesystems.org/RMagick/doc/constants.html#CompositeOperator).
+      # To use a blend mode remove the +CompositeOp+ form the name and "unserscorize" the rest.  For instance,
+      # +MultiplyCompositeOp+ becomes :+multiply+, and +CopyBlackCompositeOp+ becomes :+copy_black+.
+      def symbol_to_blending_mode(mode)
+        "Magick::#{mode.to_s.camelize}CompositeOp".constantize
+      rescue NameError
+        raise ArgumentError, ":#{mode} is not a valid blending mode."
+      end
         
         
     end # Base
     
+    # Conversion table for mapping alignment symbols to their equivalent RMagick gravity constants.
     GRAVITIES = {
       :center       => Magick::CenterGravity,
       :top          => Magick::NorthGravity,

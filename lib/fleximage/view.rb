@@ -1,5 +1,7 @@
 module Fleximage
-  class View
+  
+  # Renders a .flexi template
+  class View #:nodoc:
     class TemplateDidNotReturnImage < RuntimeError #:nodoc:
     end
     
