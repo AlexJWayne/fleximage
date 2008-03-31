@@ -1,3 +1,5 @@
+require 'open-uri'
+
 # Load RMagick
 begin
   require 'RMagick'

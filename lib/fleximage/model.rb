@@ -92,9 +92,16 @@ module Fleximage
       #   # via an association proxy
       #   p = Product.find(1)
       #   p.images.create(params[:photo])
+      #
+      # You can also assign a URL to an image, which will make the plugin go
+      # and fetch the image at the provided URL.  The image will be stored
+      # locally as a master image for that record form then on.
+      #
+      #   @photo.image_file = 'http://foo.com/bar.jpg'
       def image_file=(file)
+        file = open(file) if file =~ %r{^https?://}
+        
         if file.respond_to?(:read) && file.size > 0
-          
           # Create RMagick Image object from uploaded file
           if file.path
             @uploaded_image = Magick::Image.read(file.path).first
@@ -106,6 +113,18 @@ module Fleximage
           @uploaded_image.format = 'PNG'
         else
           raise "No file!"
+        end
+      end
+      
+      def image_file
+        if new_record?
+          nil
+        else
+          if File.exists?(file_path)
+            File.open(file_path, 'r+')
+          else
+            nil
+          end
         end
       end
       
