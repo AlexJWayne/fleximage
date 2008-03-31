@@ -9,17 +9,20 @@ module Fleximage
     module ClassMethods
       def acts_as_fleximage(options = {})
         unless options[:image_directory]
-          raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' relative to RAILS_ROOT"
+          raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option (relative to RAILS_ROOT)"
         end
         
         class_eval <<-CLASS_CODE
           include Fleximage::Model::InstanceMethods
           
+          # Where images get stored
           dsl_accessor :image_directory, :default => "#{options[:image_directory]}"
-          dsl_accessor :use_created_at_
           
-          before_destroy :delete_image_file
-          after_save :save_image_file
+          # Put uploads from different days into different subdirectories
+          dsl_accessor :use_creation_date_based_directories, :default => true
+          
+          after_destroy :delete_image_file
+          after_save    :save_image_file
         CLASS_CODE
       end
     end
@@ -40,7 +43,8 @@ module Fleximage
         directory = "#{RAILS_ROOT}/#{self.class.image_directory}"
         
         # specific creation date based directory suffix.
-        if creation = self[:created_at] || self[:created_on]
+        creation = self[:created_at] || self[:created_on]
+        if self.class.use_creation_date_based_directories && creation 
           "#{directory}/#{creation.year}/#{creation.month}/#{creation.day}"
         else
           directory
