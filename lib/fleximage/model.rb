@@ -109,15 +109,7 @@ module Fleximage
       #   # via an association proxy
       #   p = Product.find(1)
       #   p.images.create(params[:photo])
-      #
-      # You can also assign a URL to an image, which will make the plugin go
-      # and fetch the image at the provided URL.  The image will be stored
-      # locally as a master image for that record from then on.
-      #
-      #   @photo.image_file = 'http://foo.com/bar.jpg'
       def image_file=(file)
-        file = open(file) if file =~ %r{^https?://}
-        
         if file.respond_to?(:read) && file.size > 0
           # Create RMagick Image object from uploaded file
           if file.path
@@ -128,6 +120,10 @@ module Fleximage
           
           # Convert to a lossless format for saving the master image
           @uploaded_image.format = 'PNG'
+          
+          # Success, make sure everything is valid
+          @missing_image = false
+          @invalid_image = false
         else
           if self.class.require_image
             @missing_image = true
@@ -141,15 +137,28 @@ module Fleximage
         end
       end
       
-      # Returns an empty string if the image exists, or nil if it doesn't.  This method is
-      # not meant to allow you access to the master image file, it merely exists to satisfy
-      # the form builder.
-      def image_file #:nodoc:
-        if !new_record? && has_image?
-          ''
+      # Assign the image via a URL, which will make the plugin go
+      # and fetch the image at the provided URL.  The image will be stored
+      # locally as a master image for that record from then on.  This is 
+      # intended to be used along side the image upload to allow people the
+      # choice to upload from their local machine, or pull from the internet.
+      #
+      #   @photo.image_file_url = 'http://foo.com/bar.jpg'
+      def image_file_url=(file_url)
+        @image_file_url = file_url
+        if file_url =~ %r{^https?://}
+          self.image_file = open(file_url)
+        elsif file_url.empty?
+          @missing_image = true
         else
-          nil
+          @invalid_image = true
         end
+      end
+      
+      # Return the @image_file_url that was previously assigned.  This is not saved
+      # in the database, and only exists to make forms happy.
+      def image_file_url
+        @image_file_url
       end
       
       # Return true if this record has an image.
@@ -222,10 +231,12 @@ module Fleximage
       
       # Execute image presence and validity validations.
       def validate #:nodoc:
+        field_name = (@image_file_url && @image_file_url.any?) ? :image_file_url : :image_file
+        
         if self.class.require_image && @missing_image && !has_image?
-          errors.add :image_file, self.class.missing_image_message
+          errors.add field_name, self.class.missing_image_message
         elsif @invalid_image
-          errors.add :image_file, self.class.invalid_image_message
+          errors.add field_name, self.class.invalid_image_message
         end
       end
       
