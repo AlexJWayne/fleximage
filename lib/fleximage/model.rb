@@ -13,6 +13,14 @@ module Fleximage
     
     # Provides class methods for Fleximage for use in model classes.  The only class method is
     # acts_as_fleximage which integrates Fleximage functionality into a model class.
+    #
+    # The following class level accessors also get inserted:
+    #
+    # * +image_directory+
+    # * +use_creation_date_based_directories+
+    # * +require_image+
+    # * +missing_image_message+
+    # * +invalid_image_message+
     module ClassMethods
       
       # Use this method to include Fleximage functionality in your model.  It takes an 
@@ -31,6 +39,15 @@ module Fleximage
           
           # Put uploads from different days into different subdirectories
           dsl_accessor :use_creation_date_based_directories, :default => true
+          
+          # Require a valid image.  Defaults to true.  Set to false if its ok to have no image for
+          dsl_accessor :require_image, :default => true
+          
+          # Missing image message
+          dsl_accessor :missing_image_message, :default => 'is required'
+          
+          # Invalid image message
+          dsl_accessor :invalid_image_message, :default => 'was not a readable image'
           
           after_destroy :delete_image_file
           after_save    :save_image_file
@@ -95,7 +112,7 @@ module Fleximage
       #
       # You can also assign a URL to an image, which will make the plugin go
       # and fetch the image at the provided URL.  The image will be stored
-      # locally as a master image for that record form then on.
+      # locally as a master image for that record from then on.
       #
       #   @photo.image_file = 'http://foo.com/bar.jpg'
       def image_file=(file)
@@ -112,20 +129,32 @@ module Fleximage
           # Convert to a lossless format for saving the master image
           @uploaded_image.format = 'PNG'
         else
-          raise "No file!"
+          if self.class.require_image
+            @missing_image = true
+          end
+        end
+      rescue Magick::ImageMagickError => e
+        if e.to_s =~ /no decode delegate for this image format/
+          @invalid_image = true
+        else
+          raise e
         end
       end
       
-      def image_file
-        if new_record?
-          nil
+      # Returns an empty string if the image exists, or nil if it doesn't.  This method is
+      # not meant to allow you access to the master image file, it merely exists to satisfy
+      # the form builder.
+      def image_file #:nodoc:
+        if !new_record? && has_image?
+          ''
         else
-          if File.exists?(file_path)
-            File.open(file_path, 'r+')
-          else
-            nil
-          end
+          nil
         end
+      end
+      
+      # Return true if this record has an image.
+      def has_image?
+        File.exists?(file_path)
       end
       
       # Call from a .flexi view template.  This enables the rendering of operators 
@@ -185,6 +214,21 @@ module Fleximage
         end
       end
       
+      # Delete the image file for this record. This is automatically ran after this record gets 
+      # destroyed, but you can call it manually if you want to remove the image from the record.
+      def delete_image_file
+        File.delete(file_path)
+      end
+      
+      # Execute image presence and validity validations.
+      def validate #:nodoc:
+        if self.class.require_image && @missing_image && !has_image?
+          errors.add :image_file, self.class.missing_image_message
+        elsif @invalid_image
+          errors.add :image_file, self.class.invalid_image_message
+        end
+      end
+      
       private
         # Write this image to disk
         def save_image_file
@@ -194,11 +238,6 @@ module Fleximage
           end
         ensure
           GC.start
-        end
-        
-        # Delete the image file after this record gets destroyed
-        def delete_image_file
-          File.delete(file_path)
         end
     end
     
