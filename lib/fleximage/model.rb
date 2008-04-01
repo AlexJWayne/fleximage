@@ -23,8 +23,6 @@ module Fleximage
     # * +invalid_image_message+
     module ClassMethods
       
-      # TODO: Add image preprocessing
-      
       # Use this method to include Fleximage functionality in your model.  It takes an 
       # options hash with a single required key, :+image_directory+.  This key should 
       # point to the directory you want your images stored on your server.
@@ -33,11 +31,11 @@ module Fleximage
           raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option (relative to RAILS_ROOT)"
         end
         
-        class_eval <<-CLASS_CODE
+        class_eval do
           include Fleximage::Model::InstanceMethods
           
           # Where images get stored
-          dsl_accessor :image_directory, :default => "#{options[:image_directory]}"
+          dsl_accessor :image_directory
           
           # Put uploads from different days into different subdirectories
           dsl_accessor :use_creation_date_based_directories, :default => true
@@ -51,9 +49,20 @@ module Fleximage
           # Invalid image message
           dsl_accessor :invalid_image_message, :default => 'was not a readable image'
           
+          # A block that processes an image before it gets saved as the master image of a record.
+          # Can be helpful to resize potentially huge images to something more manageable. Set via
+          # the "preprocess_image { |image| ... }" class method.
+          dsl_accessor :preprocess_image_operation
+          
           after_destroy :delete_image_file
           after_save    :save_image_file
-        CLASS_CODE
+          
+          def self.preprocess_image(&block)
+            preprocess_image_operation(block)
+          end
+        end
+        
+        image_directory options[:image_directory]
       end
     end
     
@@ -169,7 +178,9 @@ module Fleximage
       end
       
       # Call from a .flexi view template.  This enables the rendering of operators 
-      # so that you can transform your image.
+      # so that you can transform your image.  This is the method that is the foundation
+      # of .flexi views.  Every view should consist of image manipulation code inside a
+      # block passed to this method. 
       #
       #   # app/views/photos/thumb.jpg.flexi
       #   @photo.operate do |image|
@@ -186,7 +197,8 @@ module Fleximage
       # Load the image from disk, or return the cached and potentially 
       # processed output rmagick image.
       def load_image #:nodoc:
-        @output_image ||= Magick::Image.read(file_path).first
+        @output_image ||= @uploaded_image || Magick::Image.read(file_path).first
+        
       rescue Magick::ImageMagickError => e
         if e.to_s =~ /unable to open file/
           raise MasterImageNotFound, 
@@ -245,12 +257,21 @@ module Fleximage
       private
         # Write this image to disk
         def save_image_file
+          perform_preprocess_operation
           if @uploaded_image
             FileUtils.mkdir_p(directory_path)
             @uploaded_image.write(file_path)
           end
         ensure
           GC.start
+        end
+        
+        # Preprocess this image before saving
+        def perform_preprocess_operation
+          if self.class.preprocess_image_operation
+            operate(&self.class.preprocess_image_operation)
+            @uploaded_image = @output_image
+          end
         end
     end
     

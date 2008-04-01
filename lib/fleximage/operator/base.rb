@@ -23,7 +23,7 @@ module Fleximage
       # Start the operation
       def execute(*args) #:nodoc:
         @image = @model_object.load_image
-        operate(*args)
+        @model_object.instance_variable_set "@output_image", operate(*args)
       end
       
       # Perform the operation.  Override this method in your Operator::Base subclasses
