@@ -79,6 +79,26 @@ use in model classes. The only class method is <a
 href="ClassMethods.html#M000001">acts_as_fleximage</a> which integrates <a
 href="../../Fleximage.html">Fleximage</a> functionality into a model class.
 </p>
+<p>
+The following class level accessors also get inserted:
+</p>
+<ul>
+<li><tt>image_directory</tt>
+
+</li>
+<li><tt>use_creation_date_based_directories</tt>
+
+</li>
+<li><tt>require_image</tt>
+
+</li>
+<li><tt>missing_image_message</tt>
+
+</li>
+<li><tt>invalid_image_message</tt>
+
+</li>
+</ul>
 
     </div>
 
@@ -90,6 +110,7 @@ href="../../Fleximage.html">Fleximage</a> functionality into a model class.
 
       <div class="name-list">
       <a href="#M000001">acts_as_fleximage</a>&nbsp;&nbsp;
+      <a href="#M000002">preprocess_image</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -97,6 +118,13 @@ href="../../Fleximage.html">Fleximage</a> functionality into a model class.
 
 
     <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="InstanceMethods.html">Fleximage::Model::InstanceMethods</a></span>
+      </div>
+    </div>
 
     <div id="section">
 
@@ -109,6 +137,31 @@ href="../../Fleximage.html">Fleximage</a> functionality into a model class.
 
     <!-- if method_list -->
     <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
+          <span class="method-name">preprocess_image</span><span class="method-args">(&amp;block)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 60</span>
+60:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">preprocess_image</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+61:             <span class="ruby-identifier">preprocess_image_operation</span>(<span class="ruby-identifier">block</span>)
+62:           <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
       <h3 class="section-bar">Public Instance methods</h3>
 
       <div id="method-M000001" class="method-detail">
@@ -131,14 +184,45 @@ directory you want your images stored on your server.
             onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000001-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 21</span>
-21:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">acts_as_fleximage</span>(<span class="ruby-identifier">options</span> = {})
-22:         <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:image_directory</span>]
-23:           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;No place to put images!  Declare this via the :image_directory =&gt; 'path/to/directory' option (relative to RAILS_ROOT)&quot;</span>
-24:         <span class="ruby-keyword kw">end</span>
-25:         
-26:         <span class="ruby-identifier">class_eval</span> <span class="ruby-value str">&quot;include Fleximage::Model::InstanceMethods\n\n# Where images get stored\ndsl_accessor :image_directory, :default =&gt; \&quot;\#{options[:image_directory]}\&quot;\n\n# Put uploads from different days into different subdirectories\ndsl_accessor :use_creation_date_based_directories, :default =&gt; true\n\nafter_destroy :delete_image_file\nafter_save    :save_image_file\n&quot;</span>
-27:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 29</span>
+29:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">acts_as_fleximage</span>(<span class="ruby-identifier">options</span> = {})
+30:         <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:image_directory</span>]
+31:           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;No place to put images!  Declare this via the :image_directory =&gt; 'path/to/directory' option (relative to RAILS_ROOT)&quot;</span>
+32:         <span class="ruby-keyword kw">end</span>
+33:         
+34:         <span class="ruby-identifier">class_eval</span> <span class="ruby-keyword kw">do</span>
+35:           <span class="ruby-identifier">include</span> <span class="ruby-constant">Fleximage</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span><span class="ruby-operator">::</span><span class="ruby-constant">InstanceMethods</span>
+36:           
+37:           <span class="ruby-comment cmt"># Where images get stored</span>
+38:           <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:image_directory</span>
+39:           
+40:           <span class="ruby-comment cmt"># Put uploads from different days into different subdirectories</span>
+41:           <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:use_creation_date_based_directories</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>
+42:           
+43:           <span class="ruby-comment cmt"># Require a valid image.  Defaults to true.  Set to false if its ok to have no image for</span>
+44:           <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:require_image</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>
+45:           
+46:           <span class="ruby-comment cmt"># Missing image message</span>
+47:           <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:missing_image_message</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'is required'</span>
+48:           
+49:           <span class="ruby-comment cmt"># Invalid image message</span>
+50:           <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:invalid_image_message</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'was not a readable image'</span>
+51:           
+52:           <span class="ruby-comment cmt"># A block that processes an image before it gets saved as the master image of a record.</span>
+53:           <span class="ruby-comment cmt"># Can be helpful to resize potentially huge images to something more manageable. Set via</span>
+54:           <span class="ruby-comment cmt"># the &quot;preprocess_image { |image| ... }&quot; class method.</span>
+55:           <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:preprocess_image_operation</span>
+56:           
+57:           <span class="ruby-identifier">after_destroy</span> <span class="ruby-identifier">:delete_image_file</span>
+58:           <span class="ruby-identifier">after_save</span>    <span class="ruby-identifier">:save_image_file</span>
+59:           
+60:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">preprocess_image</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+61:             <span class="ruby-identifier">preprocess_image_operation</span>(<span class="ruby-identifier">block</span>)
+62:           <span class="ruby-keyword kw">end</span>
+63:         <span class="ruby-keyword kw">end</span>
+64:         
+65:         <span class="ruby-identifier">image_directory</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:image_directory</span>]
+66:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
