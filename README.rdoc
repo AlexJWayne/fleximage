@@ -186,7 +186,7 @@ This template will:
 * Sharpen the image
 * Add a black drop shadow on a white background
 
-For more information on image operators, check out the full for details about each one:
+For more information on image operators, open up <tt>vendor/plugins/fleximage/rdoc/index.html</tt> in your installed plugin and check out the full for details about each operator:
 
 * Fleximage::Operator::Border
 * Fleximage::Operator::Crop
