@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Wed Apr 02 12:19:53 -0700 2008</td>
+      <td>Wed Apr 02 12:56:49 -0700 2008</td>
     </tr>
     </table>
   </div>
@@ -170,8 +170,9 @@ Unzip, and place the root <tt>fleximage</tt> folder in your
 </p>
 <h3>2. Activating your model</h3>
 <p>
-You need to let your model know it should be fleximage friendly. Lets say
-you have a model for photos.
+You need to let your model know it should be <a
+href="../classes/Fleximage.html">Fleximage</a> friendly. Lets say you have
+a model for photos.
 </p>
 <pre>
   # app/models/photo.rb
@@ -276,7 +277,7 @@ controller:
 Rails 2 has amazing support for format driven responses. Given a photo
 object, by default it would have an HTML view that describes information
 about that photo. With <a href="../classes/Fleximage.html">Fleximage</a>,
-the JPG view can be the image data itself.
+the JPG or (GIF or PNG) view can be the image data itself.
 </p>
 <p>
 A photo HTML view may look like this:
@@ -422,6 +423,28 @@ href="../classes/Fleximage/Operator/UnsharpMask.html">Fleximage::Operator::Unsha
 
 </li>
 </ul>
+<h2>Other Useful Information</h2>
+<h3>Image output format</h3>
+<p>
+You don&#8216;t want to render JPGs? That&#8216;s fine. Just link to the
+format you want (:<tt>jpg</tt>, :<tt>gif</tt> or :<tt>png</tt>) and declare
+the your template name to match and the image will be rendered properly.
+For instance, this will render a <tt>gif</tt>.
+</p>
+<pre>
+  # app/views/photos/show.html.erb
+  &lt;%= image_tag photo_path(@photo, :gif) %&gt;
+
+  # app/views/photos/show.gif.flexi
+  @photo.operate do |image|
+    @photo.resize '150x150', :crop =&gt; true
+  end
+</pre>
+<p>
+The <a href="../classes/Fleximage.html">Fleximage</a> template engine will
+automatically detect the format that is being asked for, and render the
+right type of image.
+</p>
 
     </div>
 

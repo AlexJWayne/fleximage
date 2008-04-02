@@ -27,40 +27,42 @@ module Fleximage
       # options hash with a single required key, :+image_directory+.  This key should 
       # point to the directory you want your images stored on your server.
       def acts_as_fleximage(options = {})
+        # Require the declaration of a master image storage directory
         unless options[:image_directory]
           raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option (relative to RAILS_ROOT)"
         end
         
+        # Insert methods
         class_eval do
           include Fleximage::Model::InstanceMethods
-          
-          # Where images get stored
-          dsl_accessor :image_directory
-          
-          # Put uploads from different days into different subdirectories
-          dsl_accessor :use_creation_date_based_directories, :default => true
-          
-          # Require a valid image.  Defaults to true.  Set to false if its ok to have no image for
-          dsl_accessor :require_image, :default => true
-          
-          # Missing image message
-          dsl_accessor :missing_image_message, :default => 'is required'
-          
-          # Invalid image message
-          dsl_accessor :invalid_image_message, :default => 'was not a readable image'
-          
-          # A block that processes an image before it gets saved as the master image of a record.
-          # Can be helpful to resize potentially huge images to something more manageable. Set via
-          # the "preprocess_image { |image| ... }" class method.
-          dsl_accessor :preprocess_image_operation
-          
-          after_destroy :delete_image_file
-          after_save    :save_image_file
           
           def self.preprocess_image(&block)
             preprocess_image_operation(block)
           end
         end
+        
+        # Where images get stored
+        dsl_accessor :image_directory
+        
+        # Put uploads from different days into different subdirectories
+        dsl_accessor :use_creation_date_based_directories, :default => true
+        
+        # Require a valid image.  Defaults to true.  Set to false if its ok to have no image for
+        dsl_accessor :require_image, :default => true
+        
+        # Missing image message
+        dsl_accessor :missing_image_message, :default => 'is required'
+        
+        # Invalid image message
+        dsl_accessor :invalid_image_message, :default => 'was not a readable image'
+        
+        # A block that processes an image before it gets saved as the master image of a record.
+        # Can be helpful to resize potentially huge images to something more manageable. Set via
+        # the "preprocess_image { |image| ... }" class method.
+        dsl_accessor :preprocess_image_operation
+        
+        after_destroy :delete_image_file
+        after_save    :save_image_file
         
         image_directory options[:image_directory]
       end
@@ -210,10 +212,11 @@ module Fleximage
         end
       end
       
-      # Convert the current output image to a jpg, and return it in 
-      # binary form.
-      def output_image #:nodoc:
-        @output_image.format = 'JPG'
+      # Convert the current output image to a jpg, and return it in binary form.  options support a
+      # :format key that can be :jpg, :gif or :png
+      def output_image(options = {}) #:nodoc:
+        @output_image.format = (options[:format] || :jpg).to_s.upcase
+        @output_image.strip!
         @output_image.to_blob
       ensure
         GC.start

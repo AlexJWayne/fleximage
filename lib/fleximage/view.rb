@@ -42,8 +42,15 @@ module Fleximage
         raise TemplateDidNotReturnImage, ".flexi template was expected to return a model instance that acts_as_fleximage, but got an instance of <#{result.class}> instead."
       end
       
+      # Figure out the proper format
+      requested_format = @view.params[:format].to_sym
+      raise 'Image must be requested with an image type format.  jpg, gif and png only are supported.' unless [:jpg, :gif, :png].include?(requested_format)
+      
+      # Set proper content type
+      @view.controller.headers["Content-Type"] = Mime::Type.lookup_by_extension(requested_format.to_s).to_s
+      
       # get rendered result
-      rendered_image = result.output_image
+      rendered_image = result.output_image(:format => requested_format)
       
       # Return image data
       return rendered_image

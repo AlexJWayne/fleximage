@@ -30,4 +30,8 @@ ActiveRecord::Base.class_eval { include Fleximage::Model }
 require 'fleximage/view'
 ActionController::Base.exempt_from_layout :flexi
 ActionView::Base.register_template_handler :flexi, Fleximage::View
+
+# Register mime types
 Mime::Type.register "image/jpeg", :jpg
+Mime::Type.register "image/gif", :gif
+Mime::Type.register "image/png", :png

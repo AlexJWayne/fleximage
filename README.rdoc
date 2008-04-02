@@ -47,7 +47,7 @@ Unzip, and place the root +fleximage+ folder in your <tt>railsapproot/vendor/plu
 
 === 2. Activating your model
 
-You need to let your model know it should be fleximage friendly.  Lets say you have a model for photos.
+You need to let your model know it should be Fleximage friendly.  Lets say you have a model for photos.
   
   # app/models/photo.rb
   class Photo < ActiveRecord::Base
@@ -119,7 +119,7 @@ When the user submits the form, all you have to do is assign the form contents t
 
 === 4. Linking to the generated images
 
-Rails 2 has amazing support for format driven responses.  Given a photo object, by default it would have an HTML view that describes information about that photo.  With Fleximage, the JPG view can be the image data itself.
+Rails 2 has amazing support for format driven responses.  Given a photo object, by default it would have an HTML view that describes information about that photo.  With Fleximage, the JPG or (GIF or PNG) view can be the image data itself.
 
 A photo HTML view may look like this:
   
@@ -197,6 +197,22 @@ For more information on image operators, open up <tt>vendor/plugins/fleximage/rd
 * Fleximage::Operator::Trim
 * Fleximage::Operator::UnsharpMask
 
+
+== Other Useful Information
+
+=== Image output format
+
+You don't want to render JPGs?  That's fine.  Just link to the format you want (:+jpg+, :+gif+ or :+png+) and declare the your template name to match and the image will be rendered properly.  For instance, this will render a +gif+.
+
+  # app/views/photos/show.html.erb
+  <%= image_tag photo_path(@photo, :gif) %>
+  
+  # app/views/photos/show.gif.flexi
+  @photo.operate do |image|
+    @photo.resize '150x150', :crop => true
+  end
+
+The Fleximage template engine will automatically detect the format that is being asked for, and render the right type of image.
 
 ------
 Copyright (c) 2008 Alex Wayne beautifulpixel.com, released under the MIT license.
