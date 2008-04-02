@@ -25,13 +25,33 @@ module Fleximage
     #   full.
     # * +require_image+: (Boolean, default +true+) The model will raise a validation error if no image is uploaded
     #   with the record.  Setting to false allows record to be saved with no images.
-    # * +missing_image_message+: (String, default "") Validation message to display when no image was uploaded for 
+    # * +missing_image_message+: (String, default "is required") Validation message to display when no image was uploaded for 
     #   a record.
-    # * +invalid_image_message+: (String default "") Validation message when an image is uploaded, but is not an 
+    # * +invalid_image_message+: (String default "was not a readable image") Validation message when an image is uploaded, but is not an 
     #   image format that can be read by RMagick.
     # * +output_image_jpg_quality+: (Integer, default +85+) When rendering JPGs, this represents the amount of
     #   compression.  Valid values are 0-100, where 0 is very small and very ugly, and 100 is near lossless but
     #   very large in filesize.
+    # * +preprocess_image+: (Block, no default) Call this class method just like you would call +operate+ in a view.
+    #   The image transoformation in the provided block will be run on every uploaded image before its saved as the 
+    #   master image.
+    #
+    # Example:
+    #
+    #   class Photo < ActiveRecord::Base
+    #     acts_as_fleximage :image_directory => 'public/images/uploaded'
+    #     use_creation_date_based_directories true
+    #     require_image true
+    #     missing_image_message 'is required'
+    #     invalid_image_message 'was not a readable image'
+    #     output_image_jpg_quality 85
+    #   
+    #     preprocess_image do |image|
+    #       image.resize '1024x768'
+    #     end
+    #   
+    #     # normal model methods...
+    #   end
     module ClassMethods
       
       # Use this method to include Fleximage functionality in your model.  It takes an 
