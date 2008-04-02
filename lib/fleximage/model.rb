@@ -291,7 +291,7 @@ module Fleximage
       # Delete the image file for this record. This is automatically ran after this record gets 
       # destroyed, but you can call it manually if you want to remove the image from the record.
       def delete_image_file
-        File.delete(file_path)
+        File.delete(file_path) if File.exists?(file_path)
       end
       
       # Execute image presence and validity validations.
