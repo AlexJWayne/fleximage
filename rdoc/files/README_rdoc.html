@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Tue Apr 01 16:04:01 -0700 2008</td>
+      <td>Wed Apr 02 12:19:53 -0700 2008</td>
     </tr>
     </table>
   </div>
@@ -352,8 +352,8 @@ Here is a .<tt>flexi</tt> template that will do much more:
   @photo.operate do |image|
     image.resize '640x480', :crop =&gt; true
     image.image_overlay 'public/images/logo.png',
-      :alignment =&gt; :lower_right,
-      :offset =&gt; '20x20',
+      :alignment =&gt; :bottom_right,
+      :offset =&gt; '20x20'
     image.border :size =&gt; 10, :color =&gt; 'green'
     image.text 'I like Cheese'
     image.unsharp_mask
@@ -384,8 +384,9 @@ This template will:
 </li>
 </ul>
 <p>
-For more information on image operators, check out the full for details
-about each one:
+For more information on image operators, open up
+<tt>vendor/plugins/fleximage/rdoc/index.html</tt> in your installed plugin
+and check out the full for details about each operator:
 </p>
 <ul>
 <li><a

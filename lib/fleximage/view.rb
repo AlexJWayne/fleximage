@@ -45,9 +45,6 @@ module Fleximage
       # get rendered result
       rendered_image = result.output_image
       
-      # Set proper content type
-      @view.controller.headers["Content-Type"] = 'image/jpeg'
-      
       # Return image data
       return rendered_image
     ensure

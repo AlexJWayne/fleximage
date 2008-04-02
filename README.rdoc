@@ -169,8 +169,8 @@ Here is a .+flexi+ template that will do much more:
   @photo.operate do |image|
     image.resize '640x480', :crop => true
     image.image_overlay 'public/images/logo.png',
-      :alignment => :lower_right,
-      :offset => '20x20',
+      :alignment => :bottom_right,
+      :offset => '20x20'
     image.border :size => 10, :color => 'green'
     image.text 'I like Cheese'
     image.unsharp_mask  
