@@ -308,13 +308,14 @@ module Fleximage
       private
         # Write this image to disk
         def save_image_file
-          perform_preprocess_operation
           if @uploaded_image
+            perform_preprocess_operation
             FileUtils.mkdir_p(directory_path)
             @uploaded_image.write(file_path)
+            
+            # Start GC to close up memory leaks
+            GC.start
           end
-        ensure
-          GC.start
         end
         
         # Preprocess this image before saving
