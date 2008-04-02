@@ -14,13 +14,24 @@ module Fleximage
     # Provides class methods for Fleximage for use in model classes.  The only class method is
     # acts_as_fleximage which integrates Fleximage functionality into a model class.
     #
-    # The following class level accessors also get inserted:
+    # The following class level accessors also get inserted.
     #
-    # * +image_directory+
-    # * +use_creation_date_based_directories+
-    # * +require_image+
-    # * +missing_image_message+
-    # * +invalid_image_message+
+    # * +image_directory+: (String, no default) Where the master images are stored, directory path relative to your 
+    #   app root.
+    # * +use_creation_date_based_directories+: (Boolean, default +true+) If true, master images will be stored in
+    #   directories based on creation date.  For example: <tt>"#{image_directory}/2007/11/24/123.png"</tt> for an
+    #   image with an id of +123+ and a creation date of November 24, 2007.  Turing this off would cause the path
+    #   to be "#{image_directory}/123.png" instead.  This helps keep the OS from having directories that are too 
+    #   full.
+    # * +require_image+: (Boolean, default +true+) The model will raise a validation error if no image is uploaded
+    #   with the record.  Setting to false allows record to be saved with no images.
+    # * +missing_image_message+: (String, default "") Validation message to display when no image was uploaded for 
+    #   a record.
+    # * +invalid_image_message+: (String default "") Validation message when an image is uploaded, but is not an 
+    #   image format that can be read by RMagick.
+    # * +output_image_jpg_quality+: (Integer, default +85+) When rendering JPGs, this represents the amount of
+    #   compression.  Valid values are 0-100, where 0 is very small and very ugly, and 100 is near lossless but
+    #   very large in filesize.
     module ClassMethods
       
       # Use this method to include Fleximage functionality in your model.  It takes an 
@@ -56,11 +67,15 @@ module Fleximage
         # Invalid image message
         dsl_accessor :invalid_image_message, :default => 'was not a readable image'
         
+        # Sets the quality of rendered JPGs
+        dsl_accessor :output_image_jpg_quality, :default => 85
+        
         # A block that processes an image before it gets saved as the master image of a record.
         # Can be helpful to resize potentially huge images to something more manageable. Set via
         # the "preprocess_image { |image| ... }" class method.
         dsl_accessor :preprocess_image_operation
         
+        # Image related save and destroy callbacks
         after_destroy :delete_image_file
         after_save    :save_image_file
         
@@ -215,9 +230,15 @@ module Fleximage
       # Convert the current output image to a jpg, and return it in binary form.  options support a
       # :format key that can be :jpg, :gif or :png
       def output_image(options = {}) #:nodoc:
-        @output_image.format = (options[:format] || :jpg).to_s.upcase
+        format = (options[:format] || :jpg).to_s.upcase
+        @output_image.format = format
         @output_image.strip!
-        @output_image.to_blob
+        if format = 'JPG'
+          quality = self.class.output_image_jpg_quality
+          @output_image.to_blob { self.quality = quality }
+        else
+          @output_image.to_blob
+        end
       ensure
         GC.start
       end
