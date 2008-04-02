@@ -20,7 +20,7 @@ module Fleximage
     #   app root.
     # * +use_creation_date_based_directories+: (Boolean, default +true+) If true, master images will be stored in
     #   directories based on creation date.  For example: <tt>"#{image_directory}/2007/11/24/123.png"</tt> for an
-    #   image with an id of +123+ and a creation date of November 24, 2007.  Turing this off would cause the path
+    #   image with an id of 123 and a creation date of November 24, 2007.  Turing this off would cause the path
     #   to be "#{image_directory}/123.png" instead.  This helps keep the OS from having directories that are too 
     #   full.
     # * +require_image+: (Boolean, default +true+) The model will raise a validation error if no image is uploaded
@@ -29,7 +29,7 @@ module Fleximage
     #   a record.
     # * +invalid_image_message+: (String default "was not a readable image") Validation message when an image is uploaded, but is not an 
     #   image format that can be read by RMagick.
-    # * +output_image_jpg_quality+: (Integer, default +85+) When rendering JPGs, this represents the amount of
+    # * +output_image_jpg_quality+: (Integer, default 85) When rendering JPGs, this represents the amount of
     #   compression.  Valid values are 0-100, where 0 is very small and very ugly, and 100 is near lossless but
     #   very large in filesize.
     # * +preprocess_image+: (Block, no default) Call this class method just like you would call +operate+ in a view.
@@ -67,6 +67,9 @@ module Fleximage
         class_eval do
           include Fleximage::Model::InstanceMethods
           
+          # Call this class method just like you would call +operate+ in a view.
+          # The image transoformation in the provided block will be run on every uploaded image before its saved as the 
+          # master image.
           def self.preprocess_image(&block)
             preprocess_image_operation(block)
           end
@@ -158,7 +161,11 @@ module Fleximage
       #   p = Product.find(1)
       #   p.images.create(params[:photo])
       def image_file=(file)
-        if file.respond_to?(:read) && file.size > 0
+        # Get the size of the file.  file.size works for form-uploaded images, file.stat.size works
+        # for file object created by File.open('foo.jpg', 'rb')
+        file_size = file.respond_to?(:size) ? file.size : file.stat.size
+        
+        if file.respond_to?(:read) && file_size > 0
           # Create RMagick Image object from uploaded file
           if file.path
             @uploaded_image = Magick::Image.read(file.path).first
@@ -173,7 +180,7 @@ module Fleximage
           @missing_image = false
           @invalid_image = false
         else
-          if self.class.require_image
+          if self.class.require_image && !@uploaded_image
             @missing_image = true
           end
         end
@@ -197,7 +204,7 @@ module Fleximage
         if file_url =~ %r{^https?://}
           self.image_file = open(file_url)
         elsif file_url.empty?
-          @missing_image = true
+          @missing_image = true unless @uploaded_image
         else
           @invalid_image = true
         end
@@ -290,7 +297,7 @@ module Fleximage
       # Execute image presence and validity validations.
       def validate #:nodoc:
         field_name = (@image_file_url && @image_file_url.any?) ? :image_file_url : :image_file
-        
+          
         if self.class.require_image && @missing_image && !has_image?
           errors.add field_name, self.class.missing_image_message
         elsif @invalid_image

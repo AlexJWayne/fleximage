@@ -192,14 +192,19 @@ Example:
         </div>
       
         <div class="method-description">
+          <p>
+Call this class method just like you would call <tt>operate</tt> in a view.
+The image transoformation in the provided block will be run on every
+uploaded image before its saved as the master image.
+</p>
           <p><a class="source-toggle" href="#"
             onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000002-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 70</span>
-70:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">preprocess_image</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-71:             <span class="ruby-identifier">preprocess_image_operation</span>(<span class="ruby-identifier">block</span>)
-72:           <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 73</span>
+73:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">preprocess_image</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+74:             <span class="ruby-identifier">preprocess_image_operation</span>(<span class="ruby-identifier">block</span>)
+75:           <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -238,40 +243,43 @@ directory you want your images stored on your server.
  67:         <span class="ruby-identifier">class_eval</span> <span class="ruby-keyword kw">do</span>
  68:           <span class="ruby-identifier">include</span> <span class="ruby-constant">Fleximage</span><span class="ruby-operator">::</span><span class="ruby-constant">Model</span><span class="ruby-operator">::</span><span class="ruby-constant">InstanceMethods</span>
  69:           
- 70:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">preprocess_image</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
- 71:             <span class="ruby-identifier">preprocess_image_operation</span>(<span class="ruby-identifier">block</span>)
- 72:           <span class="ruby-keyword kw">end</span>
- 73:         <span class="ruby-keyword kw">end</span>
- 74:         
- 75:         <span class="ruby-comment cmt"># Where images get stored</span>
- 76:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:image_directory</span>
+ 70:           <span class="ruby-comment cmt"># Call this class method just like you would call +operate+ in a view.</span>
+ 71:           <span class="ruby-comment cmt"># The image transoformation in the provided block will be run on every uploaded image before its saved as the </span>
+ 72:           <span class="ruby-comment cmt"># master image.</span>
+ 73:           <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">preprocess_image</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+ 74:             <span class="ruby-identifier">preprocess_image_operation</span>(<span class="ruby-identifier">block</span>)
+ 75:           <span class="ruby-keyword kw">end</span>
+ 76:         <span class="ruby-keyword kw">end</span>
  77:         
- 78:         <span class="ruby-comment cmt"># Put uploads from different days into different subdirectories</span>
- 79:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:use_creation_date_based_directories</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>
+ 78:         <span class="ruby-comment cmt"># Where images get stored</span>
+ 79:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:image_directory</span>
  80:         
- 81:         <span class="ruby-comment cmt"># Require a valid image.  Defaults to true.  Set to false if its ok to have no image for</span>
- 82:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:require_image</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>
+ 81:         <span class="ruby-comment cmt"># Put uploads from different days into different subdirectories</span>
+ 82:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:use_creation_date_based_directories</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>
  83:         
- 84:         <span class="ruby-comment cmt"># Missing image message</span>
- 85:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:missing_image_message</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'is required'</span>
+ 84:         <span class="ruby-comment cmt"># Require a valid image.  Defaults to true.  Set to false if its ok to have no image for</span>
+ 85:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:require_image</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>
  86:         
- 87:         <span class="ruby-comment cmt"># Invalid image message</span>
- 88:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:invalid_image_message</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'was not a readable image'</span>
+ 87:         <span class="ruby-comment cmt"># Missing image message</span>
+ 88:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:missing_image_message</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'is required'</span>
  89:         
- 90:         <span class="ruby-comment cmt"># Sets the quality of rendered JPGs</span>
- 91:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:output_image_jpg_quality</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">85</span>
+ 90:         <span class="ruby-comment cmt"># Invalid image message</span>
+ 91:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:invalid_image_message</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'was not a readable image'</span>
  92:         
- 93:         <span class="ruby-comment cmt"># A block that processes an image before it gets saved as the master image of a record.</span>
- 94:         <span class="ruby-comment cmt"># Can be helpful to resize potentially huge images to something more manageable. Set via</span>
- 95:         <span class="ruby-comment cmt"># the &quot;preprocess_image { |image| ... }&quot; class method.</span>
- 96:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:preprocess_image_operation</span>
- 97:         
- 98:         <span class="ruby-comment cmt"># Image related save and destroy callbacks</span>
- 99:         <span class="ruby-identifier">after_destroy</span> <span class="ruby-identifier">:delete_image_file</span>
-100:         <span class="ruby-identifier">after_save</span>    <span class="ruby-identifier">:save_image_file</span>
-101:         
-102:         <span class="ruby-identifier">image_directory</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:image_directory</span>]
-103:       <span class="ruby-keyword kw">end</span>
+ 93:         <span class="ruby-comment cmt"># Sets the quality of rendered JPGs</span>
+ 94:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:output_image_jpg_quality</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">85</span>
+ 95:         
+ 96:         <span class="ruby-comment cmt"># A block that processes an image before it gets saved as the master image of a record.</span>
+ 97:         <span class="ruby-comment cmt"># Can be helpful to resize potentially huge images to something more manageable. Set via</span>
+ 98:         <span class="ruby-comment cmt"># the &quot;preprocess_image { |image| ... }&quot; class method.</span>
+ 99:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:preprocess_image_operation</span>
+100:         
+101:         <span class="ruby-comment cmt"># Image related save and destroy callbacks</span>
+102:         <span class="ruby-identifier">after_destroy</span> <span class="ruby-identifier">:delete_image_file</span>
+103:         <span class="ruby-identifier">after_save</span>    <span class="ruby-identifier">:save_image_file</span>
+104:         
+105:         <span class="ruby-identifier">image_directory</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:image_directory</span>]
+106:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
