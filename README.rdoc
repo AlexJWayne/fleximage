@@ -30,9 +30,9 @@ Fleximage uses a simple templating engine that allows you to re-render images ex
 * Require absolutely zero controller code.
 
 
-== Getting Started
+= Getting Started
 
-=== 1. Installing the plugin
+== 1. Installing the plugin
 
 If running on rails edge:
 
@@ -45,7 +45,7 @@ http://github.com/Squeegy/fleximage/tarball/master
 Unzip, and place the root +fleximage+ folder in your <tt>railsapproot/vendor/plugins</tt> directory.
 
 
-=== 2. Activating your model
+== 2. Activating your model
 
 You need to let your model know it should be Fleximage friendly.  Lets say you have a model for photos.
   
@@ -59,7 +59,7 @@ The :+image_directory+ option tells the plugin where to store your master images
 There are many other options for your model.  Refer to the <tt>Fleximage::Model::ClassMethods</tt> class in the +rdoc+ for more information on these.
 
 
-=== 3. The upload form
+== 3. The upload form
 
 Your users need a way to upload their images into your site.  Here is how we might render a form to create a photo record.
   
@@ -117,7 +117,7 @@ When the user submits the form, all you have to do is assign the form contents t
   end
 
 
-=== 4. Linking to the generated images
+== 4. Linking to the generated images
 
 Rails 2 has amazing support for format driven responses.  Given a photo object, by default it would have an HTML view that describes information about that photo.  With Fleximage, the JPG or (GIF or PNG) view can be the image data itself.
 
@@ -145,7 +145,7 @@ That image tag uses a Rails route as its +src+.  In this case, that route corres
 This is the URL where the image will be.
 
 
-=== 5. Rendering the image
+== 5. Rendering the image
 
 Now it's time to actually create a template to render the image.  This happens through a special view with a .+flexi+ extension.  This view template will pull out the master image for you, and send it to the browser as binary data after your processing of it done.
 

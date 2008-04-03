@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Wed Apr 02 19:53:01 -0700 2008</td>
+      <td>Thu Apr 03 16:01:44 -0700 2008</td>
     </tr>
     </table>
   </div>
@@ -148,8 +148,8 @@ snippets of direct RMagick code.
 
 </li>
 </ul>
-<h2>Getting Started</h2>
-<h3>1. Installing the plugin</h3>
+<h1>Getting Started</h1>
+<h2>1. Installing the plugin</h2>
 <p>
 If running on rails edge:
 </p>
@@ -168,7 +168,7 @@ href="http://github.com/Squeegy/fleximage/tarball/master">github.com/Squeegy/fle
 Unzip, and place the root <tt>fleximage</tt> folder in your
 <tt>railsapproot/vendor/plugins</tt> directory.
 </p>
-<h3>2. Activating your model</h3>
+<h2>2. Activating your model</h2>
 <p>
 You need to let your model know it should be <a
 href="../classes/Fleximage.html">Fleximage</a> friendly. Lets say you have
@@ -192,7 +192,7 @@ There are many other options for your model. Refer to the <tt><a
 href="../classes/Fleximage/Model/ClassMethods.html">Fleximage::Model::ClassMethods</a></tt>
 class in the <tt>rdoc</tt> for more information on these.
 </p>
-<h3>3. The upload form</h3>
+<h2>3. The upload form</h2>
 <p>
 Your users need a way to upload their images into your site. Here is how we
 might render a form to create a photo record.
@@ -272,7 +272,7 @@ controller:
     end
   end
 </pre>
-<h3>4. Linking to the generated images</h3>
+<h2>4. Linking to the generated images</h2>
 <p>
 Rails 2 has amazing support for format driven responses. Given a photo
 object, by default it would have an HTML view that describes information
@@ -309,7 +309,7 @@ resource, which would give us a URL like:
 <p>
 This is the URL where the image will be.
 </p>
-<h3>5. Rendering the image</h3>
+<h2>5. Rendering the image</h2>
 <p>
 Now it&#8216;s time to actually create a template to render the image. This
 happens through a special view with a .<tt>flexi</tt> extension. This view

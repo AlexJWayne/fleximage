@@ -86,14 +86,13 @@ Provides methods that every model instance that acts_as_fleximage needs.
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000011">delete_image_file</a>&nbsp;&nbsp;
+      <a href="#M000010">delete_image_file</a>&nbsp;&nbsp;
       <a href="#M000003">directory_path</a>&nbsp;&nbsp;
       <a href="#M000004">file_path</a>&nbsp;&nbsp;
       <a href="#M000008">has_image?</a>&nbsp;&nbsp;
       <a href="#M000005">image_file=</a>&nbsp;&nbsp;
       <a href="#M000007">image_file_url</a>&nbsp;&nbsp;
       <a href="#M000006">image_file_url=</a>&nbsp;&nbsp;
-      <a href="#M000010">method_missing</a>&nbsp;&nbsp;
       <a href="#M000009">operate</a>&nbsp;&nbsp;
       </div>
     </div>
@@ -116,11 +115,11 @@ Provides methods that every model instance that acts_as_fleximage needs.
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000011" class="method-detail">
-        <a name="M000011"></a>
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
 
         <div class="method-heading">
-          <a href="#M000011" class="method-signature">
+          <a href="#M000010" class="method-signature">
           <span class="method-name">delete_image_file</span><span class="method-args">()</span>
           </a>
         </div>
@@ -132,13 +131,13 @@ record gets destroyed, but you can call it manually if you want to remove
 the image from the record.
 </p>
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000011-source">
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 298</span>
-298:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_image_file</span>
-299:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">file_path</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">file_path</span>)
-300:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 280</span>
+280:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_image_file</span>
+281:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">file_path</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">file_path</span>)
+282:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -386,46 +385,6 @@ machine, or pull from the internet.
         </div>
       </div>
 
-      <div id="method-M000010" class="method-detail">
-        <a name="M000010"></a>
-
-        <div class="method-heading">
-          <a href="#M000010" class="method-signature">
-          <span class="method-name">method_missing</span><span class="method-args">(method_name, *args)</span>
-          </a>
-        </div>
-      
-        <div class="method-description">
-          <p>
-If in a view, a call to an unknown method will look for an <a
-href="../Operator.html">Operator</a> by that method&#8216;s name. If it
-find one, it will execute that operator, otherwise it will simply call
-super for the default method missing behavior.
-</p>
-          <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000010-source">
-<pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 281</span>
-281:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-282:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@operating</span>
-283:           <span class="ruby-identifier">operator_class</span> = <span class="ruby-node">&quot;Fleximage::Operator::#{method_name.to_s.camelcase}&quot;</span>.<span class="ruby-identifier">constantize</span>
-284:           <span class="ruby-ivar">@output_image</span> = <span class="ruby-identifier">operator_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-285:         <span class="ruby-keyword kw">else</span>
-286:           <span class="ruby-keyword kw">super</span>
-287:         <span class="ruby-keyword kw">end</span>
-288:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-289:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/uninitialized constant Fleximage::Operator::/</span>
-290:           <span class="ruby-keyword kw">super</span>
-291:         <span class="ruby-keyword kw">else</span>
-292:           <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span>
-293:         <span class="ruby-keyword kw">end</span>
-294:       <span class="ruby-keyword kw">end</span>
-</pre>
-          </div>
-        </div>
-      </div>
-
       <div id="method-M000009" class="method-detail">
         <a name="M000009"></a>
 
@@ -455,9 +414,9 @@ code inside a block passed to this method.
      <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 238</span>
 238:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
 239:         <span class="ruby-identifier">returning</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">do</span>
-240:           <span class="ruby-ivar">@operating</span> = <span class="ruby-keyword kw">true</span>
-241:           <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>)
-242:           <span class="ruby-ivar">@operating</span> = <span class="ruby-keyword kw">false</span>
+240:           <span class="ruby-identifier">proxy</span> = <span class="ruby-constant">ImageProxy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">load_image</span>)
+241:           <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">proxy</span>)
+242:           <span class="ruby-ivar">@output_image</span> = <span class="ruby-identifier">proxy</span>.<span class="ruby-identifier">image</span>
 243:         <span class="ruby-keyword kw">end</span>
 244:       <span class="ruby-keyword kw">end</span>
 </pre>
