@@ -23,6 +23,10 @@ module Fleximage
     #   image with an id of 123 and a creation date of November 24, 2007.  Turing this off would cause the path
     #   to be "#{image_directory}/123.png" instead.  This helps keep the OS from having directories that are too 
     #   full.
+    # * +image_storage_format+: (:png or :jpg, default :png) The format of your master images.  Using :png will give 
+    #   you the best quality, since the master images as stored as lossless version of the original upload.  :jpg 
+    #   will apply lossy compression, but the master image file sizes will be much smaller.  If storage space is a 
+    #   concern, us :jpg.
     # * +require_image+: (Boolean, default +true+) The model will raise a validation error if no image is uploaded
     #   with the record.  Setting to false allows record to be saved with no images.
     # * +missing_image_message+: (String, default "is required") Validation message to display when no image was uploaded for 
@@ -41,6 +45,7 @@ module Fleximage
     #   class Photo < ActiveRecord::Base
     #     acts_as_fleximage :image_directory => 'public/images/uploaded'
     #     use_creation_date_based_directories true
+    #     image_storage_format :png
     #     require_image true
     #     missing_image_message 'is required'
     #     invalid_image_message 'was not a readable image'
@@ -80,6 +85,9 @@ module Fleximage
         
         # Put uploads from different days into different subdirectories
         dsl_accessor :use_creation_date_based_directories, :default => true
+        
+        # The format are master images are stored in
+        dsl_accessor :image_storage_format, :default => Proc.new { :png }
         
         # Require a valid image.  Defaults to true.  Set to false if its ok to have no image for
         dsl_accessor :require_image, :default => true
@@ -135,7 +143,7 @@ module Fleximage
       #   
       #   @some_image.file_path #=> /var/www/myapp/uploaded_images/123.png
       def file_path
-        "#{directory_path}/#{id}.png"
+        "#{directory_path}/#{id}.#{self.class.image_storage_format}"
       end
       
       # Sets the image file for this record to an uploaded file.  This can 
@@ -172,10 +180,7 @@ module Fleximage
           else
             @uploaded_image = Magick::Image.from_blob(file.read).first
           end
-          
-          # Convert to a lossless format for saving the master image
-          @uploaded_image.format = 'PNG'
-          
+                    
           # Success, make sure everything is valid
           @missing_image = false
           @invalid_image = false
@@ -309,8 +314,16 @@ module Fleximage
         # Write this image to disk
         def save_image_file
           if @uploaded_image
+            # perform preprocessing
             perform_preprocess_operation
+            
+            # Convert to storage format
+            @uploaded_image.format = self.class.image_storage_format.to_s.upcase
+            
+            # Make sure target directory exists
             FileUtils.mkdir_p(directory_path)
+            
+            # Write master image file
             @uploaded_image.write(file_path)
             
             # Start GC to close up memory leaks
