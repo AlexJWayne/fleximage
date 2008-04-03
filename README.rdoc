@@ -198,9 +198,9 @@ For more information on image operators, open up <tt>vendor/plugins/fleximage/rd
 * Fleximage::Operator::UnsharpMask
 
 
-== Other Useful Information
+= Other Useful Information
 
-=== Image output format
+== Image output format
 
 You don't want to render JPGs?  That's fine.  Just link to the format you want (:+jpg+, :+gif+ or :+png+) and declare the your template name to match and the image will be rendered properly.  For instance, this will render a +gif+.
 
@@ -213,6 +213,14 @@ You don't want to render JPGs?  That's fine.  Just link to the format you want (
   end
 
 The Fleximage template engine will automatically detect the format that is being asked for, and render the right type of image.
+
+== Converting from flat to nested image storage
+
+  rake fleximage:convert:flat_to_nested FLEXIMAGE_CLASS=photo
+  
+TODO: write description.
+
+
 
 ------
 Copyright (c) 2008 Alex Wayne beautifulpixel.com, released under the MIT license.
