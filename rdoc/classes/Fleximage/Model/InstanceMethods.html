@@ -135,10 +135,10 @@ the image from the record.
             onclick="toggleCode('M000011-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000011-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 289</span>
-289:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_image_file</span>
-290:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">file_path</span>)
-291:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 298</span>
+298:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_image_file</span>
+299:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">file_path</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">file_path</span>)
+300:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -172,19 +172,19 @@ number files in a directory.
             onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000003-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 121</span>
-121:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">directory_path</span>
-122:         <span class="ruby-comment cmt"># base directory</span>
-123:         <span class="ruby-identifier">directory</span> = <span class="ruby-node">&quot;#{RAILS_ROOT}/#{self.class.image_directory}&quot;</span>
-124:         
-125:         <span class="ruby-comment cmt"># specific creation date based directory suffix.</span>
-126:         <span class="ruby-identifier">creation</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">:created_at</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">:created_on</span>]
-127:         <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">use_creation_date_based_directories</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">creation</span> 
-128:           <span class="ruby-node">&quot;#{directory}/#{creation.year}/#{creation.month}/#{creation.day}&quot;</span>
-129:         <span class="ruby-keyword kw">else</span>
-130:           <span class="ruby-identifier">directory</span>
-131:         <span class="ruby-keyword kw">end</span>
-132:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 129</span>
+129:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">directory_path</span>
+130:         <span class="ruby-comment cmt"># base directory</span>
+131:         <span class="ruby-identifier">directory</span> = <span class="ruby-node">&quot;#{RAILS_ROOT}/#{self.class.image_directory}&quot;</span>
+132:         
+133:         <span class="ruby-comment cmt"># specific creation date based directory suffix.</span>
+134:         <span class="ruby-identifier">creation</span> = <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">:created_at</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword kw">self</span>[<span class="ruby-identifier">:created_on</span>]
+135:         <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">use_creation_date_based_directories</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">creation</span> 
+136:           <span class="ruby-node">&quot;#{directory}/#{creation.year}/#{creation.month}/#{creation.day}&quot;</span>
+137:         <span class="ruby-keyword kw">else</span>
+138:           <span class="ruby-identifier">directory</span>
+139:         <span class="ruby-keyword kw">end</span>
+140:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -210,10 +210,10 @@ Returns the path to the master image file for this record.
             onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000004-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 137</span>
-137:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_path</span>
-138:         <span class="ruby-node">&quot;#{directory_path}/#{id}.png&quot;</span>
-139:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 145</span>
+145:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">file_path</span>
+146:         <span class="ruby-node">&quot;#{directory_path}/#{id}.#{self.class.image_storage_format}&quot;</span>
+147:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -236,10 +236,10 @@ Return true if this record has an image.
             onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000008-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 216</span>
-216:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_image?</span>
-217:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">file_path</span>)
-218:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 225</span>
+225:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">has_image?</span>
+226:         <span class="ruby-constant">File</span>.<span class="ruby-identifier">exists?</span>(<span class="ruby-identifier">file_path</span>)
+227:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -284,34 +284,35 @@ situations you would expect it to.
             onclick="toggleCode('M000005-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000005-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 163</span>
-163:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_file=</span>(<span class="ruby-identifier">file</span>)
-164:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:read</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
-165:           <span class="ruby-comment cmt"># Create RMagick Image object from uploaded file</span>
-166:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">path</span>
-167:             <span class="ruby-ivar">@uploaded_image</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>.<span class="ruby-identifier">path</span>).<span class="ruby-identifier">first</span>
-168:           <span class="ruby-keyword kw">else</span>
-169:             <span class="ruby-ivar">@uploaded_image</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">from_blob</span>(<span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span>).<span class="ruby-identifier">first</span>
-170:           <span class="ruby-keyword kw">end</span>
-171:           
-172:           <span class="ruby-comment cmt"># Convert to a lossless format for saving the master image</span>
-173:           <span class="ruby-ivar">@uploaded_image</span>.<span class="ruby-identifier">format</span> = <span class="ruby-value str">'PNG'</span>
-174:           
-175:           <span class="ruby-comment cmt"># Success, make sure everything is valid</span>
-176:           <span class="ruby-ivar">@missing_image</span> = <span class="ruby-keyword kw">false</span>
-177:           <span class="ruby-ivar">@invalid_image</span> = <span class="ruby-keyword kw">false</span>
-178:         <span class="ruby-keyword kw">else</span>
-179:           <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">require_image</span>
-180:             <span class="ruby-ivar">@missing_image</span> = <span class="ruby-keyword kw">true</span>
-181:           <span class="ruby-keyword kw">end</span>
-182:         <span class="ruby-keyword kw">end</span>
-183:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">ImageMagickError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-184:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/no decode delegate for this image format/</span>
-185:           <span class="ruby-ivar">@invalid_image</span> = <span class="ruby-keyword kw">true</span>
-186:         <span class="ruby-keyword kw">else</span>
-187:           <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span>
-188:         <span class="ruby-keyword kw">end</span>
-189:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 171</span>
+171:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_file=</span>(<span class="ruby-identifier">file</span>)
+172:         <span class="ruby-comment cmt"># Get the size of the file.  file.size works for form-uploaded images, file.stat.size works</span>
+173:         <span class="ruby-comment cmt"># for file object created by File.open('foo.jpg', 'rb')</span>
+174:         <span class="ruby-identifier">file_size</span> = <span class="ruby-identifier">file</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:size</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">stat</span>.<span class="ruby-identifier">size</span>
+175:         
+176:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:read</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">file_size</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+177:           <span class="ruby-comment cmt"># Create RMagick Image object from uploaded file</span>
+178:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">path</span>
+179:             <span class="ruby-ivar">@uploaded_image</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">file</span>.<span class="ruby-identifier">path</span>).<span class="ruby-identifier">first</span>
+180:           <span class="ruby-keyword kw">else</span>
+181:             <span class="ruby-ivar">@uploaded_image</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">from_blob</span>(<span class="ruby-identifier">file</span>.<span class="ruby-identifier">read</span>).<span class="ruby-identifier">first</span>
+182:           <span class="ruby-keyword kw">end</span>
+183:                     
+184:           <span class="ruby-comment cmt"># Success, make sure everything is valid</span>
+185:           <span class="ruby-ivar">@missing_image</span> = <span class="ruby-keyword kw">false</span>
+186:           <span class="ruby-ivar">@invalid_image</span> = <span class="ruby-keyword kw">false</span>
+187:         <span class="ruby-keyword kw">else</span>
+188:           <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">require_image</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@uploaded_image</span>
+189:             <span class="ruby-ivar">@missing_image</span> = <span class="ruby-keyword kw">true</span>
+190:           <span class="ruby-keyword kw">end</span>
+191:         <span class="ruby-keyword kw">end</span>
+192:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">ImageMagickError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+193:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/no decode delegate for this image format/</span>
+194:           <span class="ruby-ivar">@invalid_image</span> = <span class="ruby-keyword kw">true</span>
+195:         <span class="ruby-keyword kw">else</span>
+196:           <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span>
+197:         <span class="ruby-keyword kw">end</span>
+198:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -336,10 +337,10 @@ to make forms happy.
             onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000007-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 211</span>
-211:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_file_url</span>
-212:         <span class="ruby-ivar">@image_file_url</span>
-213:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 220</span>
+220:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_file_url</span>
+221:         <span class="ruby-ivar">@image_file_url</span>
+222:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -369,17 +370,17 @@ machine, or pull from the internet.
             onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000006-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 198</span>
-198:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_file_url=</span>(<span class="ruby-identifier">file_url</span>)
-199:         <span class="ruby-ivar">@image_file_url</span> = <span class="ruby-identifier">file_url</span>
-200:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file_url</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">%r{^https?://}</span>
-201:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">image_file</span> = <span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_url</span>)
-202:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">file_url</span>.<span class="ruby-identifier">empty?</span>
-203:           <span class="ruby-ivar">@missing_image</span> = <span class="ruby-keyword kw">true</span>
-204:         <span class="ruby-keyword kw">else</span>
-205:           <span class="ruby-ivar">@invalid_image</span> = <span class="ruby-keyword kw">true</span>
-206:         <span class="ruby-keyword kw">end</span>
-207:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 207</span>
+207:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_file_url=</span>(<span class="ruby-identifier">file_url</span>)
+208:         <span class="ruby-ivar">@image_file_url</span> = <span class="ruby-identifier">file_url</span>
+209:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file_url</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">%r{^https?://}</span>
+210:           <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">image_file</span> = <span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_url</span>)
+211:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">file_url</span>.<span class="ruby-identifier">empty?</span>
+212:           <span class="ruby-ivar">@missing_image</span> = <span class="ruby-keyword kw">true</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@uploaded_image</span>
+213:         <span class="ruby-keyword kw">else</span>
+214:           <span class="ruby-ivar">@invalid_image</span> = <span class="ruby-keyword kw">true</span>
+215:         <span class="ruby-keyword kw">end</span>
+216:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -405,21 +406,21 @@ super for the default method missing behavior.
             onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000010-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 272</span>
-272:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-273:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@operating</span>
-274:           <span class="ruby-identifier">operator_class</span> = <span class="ruby-node">&quot;Fleximage::Operator::#{method_name.to_s.camelcase}&quot;</span>.<span class="ruby-identifier">constantize</span>
-275:           <span class="ruby-ivar">@output_image</span> = <span class="ruby-identifier">operator_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-276:         <span class="ruby-keyword kw">else</span>
-277:           <span class="ruby-keyword kw">super</span>
-278:         <span class="ruby-keyword kw">end</span>
-279:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-280:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/uninitialized constant Fleximage::Operator::/</span>
-281:           <span class="ruby-keyword kw">super</span>
-282:         <span class="ruby-keyword kw">else</span>
-283:           <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span>
-284:         <span class="ruby-keyword kw">end</span>
-285:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 281</span>
+281:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+282:         <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@operating</span>
+283:           <span class="ruby-identifier">operator_class</span> = <span class="ruby-node">&quot;Fleximage::Operator::#{method_name.to_s.camelcase}&quot;</span>.<span class="ruby-identifier">constantize</span>
+284:           <span class="ruby-ivar">@output_image</span> = <span class="ruby-identifier">operator_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>).<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+285:         <span class="ruby-keyword kw">else</span>
+286:           <span class="ruby-keyword kw">super</span>
+287:         <span class="ruby-keyword kw">end</span>
+288:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+289:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/uninitialized constant Fleximage::Operator::/</span>
+290:           <span class="ruby-keyword kw">super</span>
+291:         <span class="ruby-keyword kw">else</span>
+292:           <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span>
+293:         <span class="ruby-keyword kw">end</span>
+294:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -451,14 +452,14 @@ code inside a block passed to this method.
             onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000009-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 229</span>
-229:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
-230:         <span class="ruby-identifier">returning</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">do</span>
-231:           <span class="ruby-ivar">@operating</span> = <span class="ruby-keyword kw">true</span>
-232:           <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>)
-233:           <span class="ruby-ivar">@operating</span> = <span class="ruby-keyword kw">false</span>
-234:         <span class="ruby-keyword kw">end</span>
-235:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 238</span>
+238:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+239:         <span class="ruby-identifier">returning</span> <span class="ruby-keyword kw">self</span> <span class="ruby-keyword kw">do</span>
+240:           <span class="ruby-ivar">@operating</span> = <span class="ruby-keyword kw">true</span>
+241:           <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-keyword kw">self</span>)
+242:           <span class="ruby-ivar">@operating</span> = <span class="ruby-keyword kw">false</span>
+243:         <span class="ruby-keyword kw">end</span>
+244:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

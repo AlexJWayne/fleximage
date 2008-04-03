@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Wed Apr 02 12:56:49 -0700 2008</td>
+      <td>Wed Apr 02 19:53:01 -0700 2008</td>
     </tr>
     </table>
   </div>
@@ -423,8 +423,8 @@ href="../classes/Fleximage/Operator/UnsharpMask.html">Fleximage::Operator::Unsha
 
 </li>
 </ul>
-<h2>Other Useful Information</h2>
-<h3>Image output format</h3>
+<h1>Other Useful Information</h1>
+<h2>Image output format</h2>
 <p>
 You don&#8216;t want to render JPGs? That&#8216;s fine. Just link to the
 format you want (:<tt>jpg</tt>, :<tt>gif</tt> or :<tt>png</tt>) and declare
@@ -444,6 +444,69 @@ For instance, this will render a <tt>gif</tt>.
 The <a href="../classes/Fleximage.html">Fleximage</a> template engine will
 automatically detect the format that is being asked for, and render the
 right type of image.
+</p>
+<h2>Converting/Upgrading your master image store</h2>
+<p>
+Are you upgrading your live app to the new file store creation date based
+format? Did you start out with PNG image storage, and later realize you
+need to store with the more space economic JPG instead? Not problem, <a
+href="../classes/Fleximage.html">Fleximage</a> provides some rake tasks to
+help you out.
+</p>
+<p>
+Each conversion rake task requires that you tell it the class for which
+that you are changing the file store. For example, if you want to change to
+the new creation date based storage structure, for the class
+<tt>Photo</tt>, you can run a rake task like this:
+</p>
+<pre>
+  rake fleximage:convert:to_nested FLEXIMAGE_CLASS=Photo
+</pre>
+<p>
+Or if you want to run this on your production database
+</p>
+<pre>
+  rake fleximage:convert:to_nested FLEXIMAGE_CLASS=Photo RAILS_ENV=production
+</pre>
+<p>
+<b>IMPORTANT</b>: These tasks manipulate the source files that make up your
+images. I take no responsibility if these rake tasks delete all your
+images. <b>It is highly advised you back up you master image directory
+before running any of these tasks on your production site.</b>
+</p>
+<p>
+Here are all the conversion tasks:
+</p>
+<ul>
+<li>fleximage:convert:to_nested : Converts your master image store from the
+flat based path/to/images/123.png format to the creation date based format
+path/to/images/2008/11/12/123.png based format. Use this task if you are
+upgrading from an older version of <a
+href="../classes/Fleximage.html">Fleximage</a>.
+
+</li>
+<li>fleximage:convert:to_flat : Converts your master image store from the
+creation date based path/to/images/2008/11/12/123.png format to the flat
+format path/to/images/123.png format. Note this will leave the date based
+directories in place, but they will be empty and can be easily manually
+deleted.
+
+</li>
+<li>fleximage:convert:to_jpg : Converts all your stored master images from PNG
+format to JPG format. This will compress your previously lossless master
+images.
+
+</li>
+<li>fleximage:convert:to_png : Converts all your stored master images from JPG
+format to PNG format.
+
+</li>
+</ul>
+<p>
+After you run any of these tasks, make sure to update your model&#8216;s
+class accessors <tt>use_creation_date_based_directories</tt> and
+<tt>image_storage_format</tt> to reflect the state of your image store.
+Otherwise, the plugin will not find you master images for rendering.
 </p>
 
     </div>

@@ -214,13 +214,29 @@ You don't want to render JPGs?  That's fine.  Just link to the format you want (
 
 The Fleximage template engine will automatically detect the format that is being asked for, and render the right type of image.
 
-== Converting from flat to nested image storage
+== Converting/Upgrading your master image store
 
-  rake fleximage:convert:flat_to_nested FLEXIMAGE_CLASS=photo
+Are you upgrading your live app to the new file store creation date based format?  Did you start out with PNG image storage, and later realize you need to store with the more space economic JPG instead?  Not problem, Fleximage provides some rake tasks to help you out.
   
-TODO: write description.
+Each conversion rake task requires that you tell it the class for which that you are changing the file store.  For example, if you want to change to the new creation date based storage structure, for the class +Photo+, you can run a rake task like this:
 
+  rake fleximage:convert:to_nested FLEXIMAGE_CLASS=Photo
 
+Or if you want to run this on your production database
+
+  rake fleximage:convert:to_nested FLEXIMAGE_CLASS=Photo RAILS_ENV=production
+
+*IMPORTANT*: These tasks manipulate the source files that make up your images.  I take no responsibility if these rake tasks delete all your images.  <b>It is highly advised you back up you master image directory before running any of these tasks on your production site.</b>
+
+Here are all the conversion tasks:
+
+* fleximage:convert:to_nested : Converts your master image store from the flat based path/to/images/123.png format to the creation date based format path/to/images/2008/11/12/123.png based format.  Use this task if you are upgrading from an older version of Fleximage.
+* fleximage:convert:to_flat : Converts your master image store from the creation date based path/to/images/2008/11/12/123.png format to the flat format path/to/images/123.png format.  Note this will leave the date based directories in place, but they will be empty and can be easily manually deleted.
+* fleximage:convert:to_jpg : Converts all your stored master images from PNG format to JPG format.  This will compress your previously lossless master images.
+* fleximage:convert:to_png : Converts all your stored master images from JPG format to PNG format.
+
+After you run any of these tasks, make sure to update your model's class accessors +use_creation_date_based_directories+ and +image_storage_format+ to reflect the state of your image store.  Otherwise, the plugin will not find you master images for rendering.
 
 ------
 Copyright (c) 2008 Alex Wayne beautifulpixel.com, released under the MIT license.
+Special Thanks to Chris Vannoy for intelligent code review, suggestions and contributions to making this plugin awesome.
