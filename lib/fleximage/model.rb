@@ -237,9 +237,9 @@ module Fleximage
       #   end
       def operate(&block)
         returning self do
-          @operating = true
-          block.call(self)
-          @operating = false
+          proxy = ImageProxy.new(load_image)
+          block.call(proxy)
+          @output_image = proxy.image
         end
       end
       
@@ -273,24 +273,6 @@ module Fleximage
         end
       ensure
         GC.start
-      end
-      
-      # If in a view, a call to an unknown method will look for an Operator by that method's name.
-      # If it find one, it will execute that operator, otherwise it will simply call super for the
-      # default method missing behavior.
-      def method_missing(method_name, *args)
-        if @operating
-          operator_class = "Fleximage::Operator::#{method_name.to_s.camelcase}".constantize
-          @output_image = operator_class.new(self).execute(*args)
-        else
-          super
-        end
-      rescue NameError => e
-        if e.to_s =~ /uninitialized constant Fleximage::Operator::/
-          super
-        else
-          raise e
-        end
       end
       
       # Delete the image file for this record. This is automatically ran after this record gets 

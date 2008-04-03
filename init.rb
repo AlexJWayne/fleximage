@@ -26,6 +26,9 @@ end
 require 'fleximage/model'
 ActiveRecord::Base.class_eval { include Fleximage::Model }
 
+# Image Proxy
+require 'fleximage/image_proxy'
+
 # Setup View
 require 'fleximage/view'
 ActionController::Base.exempt_from_layout :flexi

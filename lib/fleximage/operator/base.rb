@@ -16,14 +16,14 @@ module Fleximage
     #   data.
     class Base
       # Create a operator, capturing the model object to operate on
-      def initialize(model_object) #:nodoc:
-        @model_object = model_object
+      def initialize(proxy, image) #:nodoc:
+        @proxy = proxy
+        @image = image
       end
       
       # Start the operation
       def execute(*args) #:nodoc:
-        @image = @model_object.load_image
-        @model_object.instance_variable_set "@output_image", operate(*args)
+        @proxy.image = operate(*args)
       end
       
       # Perform the operation.  Override this method in your Operator::Base subclasses
