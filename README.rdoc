@@ -2,7 +2,7 @@
 
 == Overview
 
-Fleximage is a Rails plugin that tried to make image uploading and rendering super easy.
+Fleximage is a Rails plugin that tries to make image uploading and rendering super easy.
 
 There are 2 pieces involved in making Rails image handling easy.
 
@@ -63,7 +63,7 @@ There are many other options for your model.  Refer to the <tt>Fleximage::Model:
 
 Your users need a way to upload their images into your site.  Here is how we might render a form to create a photo record.
   
-  # app/views/new.html.erb
+  # app/views/photos/new.html.erb
   
   <% form_for @photo, :html => { :multipart => true } do |f| %>
     <p>
