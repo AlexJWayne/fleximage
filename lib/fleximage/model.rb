@@ -188,7 +188,9 @@ module Fleximage
           else
             @uploaded_image = Magick::Image.from_blob(file.read).first
           end
-                    
+          
+          set_magic_attributes(file)
+          
           # Success, make sure everything is valid
           @missing_image = false
           @invalid_image = false
@@ -215,7 +217,18 @@ module Fleximage
       def image_file_url=(file_url)
         @image_file_url = file_url
         if file_url =~ %r{^https?://}
-          self.image_file = open(file_url)
+          file = open(file_url)
+          
+          # Force a URL based file to have an original_filename
+          eval <<-EOV
+            class << file
+              def original_filename
+                "#{file_url}"
+              end
+            end
+          EOV
+          
+          self.image_file = file
         elsif file_url.empty?
           @missing_image = true unless @uploaded_image
         else
@@ -327,6 +340,12 @@ module Fleximage
             operate(&self.class.preprocess_image_operation)
             @uploaded_image = @output_image
           end
+        end
+        
+        def set_magic_attributes(file)
+          self.image_filename = file.original_filename  if self.respond_to?(:image_filename=)
+          self.image_width    = @uploaded_image.columns if self.respond_to?(:image_width=)
+          self.image_height   = @uploaded_image.rows    if self.respond_to?(:image_height=)
         end
     end
     
