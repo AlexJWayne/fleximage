@@ -8,7 +8,7 @@ module Fleximage
     # Use the following keys in the +options+ hash:
     # 
     # * alignment: symbol like in <tt>ImageOverlay</tt>
-    # * position: size string
+    # * offset: size string
     # * antialias: true or false
     # * color: string or <tt>color(r, g, b)</tt>
     # * font_size: integer
@@ -20,15 +20,15 @@ module Fleximage
     #
     #   @photo.operate do |image|
     #     image.text('I like Cheese',
-    #       :alignment => :bottom_left,
-    #       :position => '10x10',
+    #       :alignment => :top_left,
+    #       :offset => '300x150',
     #       :antialias => true,
-    #       :color => 'blue',
+    #       :color => 'pink',
     #       :font_size => 24,
     #       :font => 'path/to/myfont.ttf',
-    #       :rotate => 15,
+    #       :rotate => -15,
     #       :shadow => {
-    #         :blur => 3,
+    #         :blur => 1,
     #         :opacity => 0.5,
     #       }
     #     )
@@ -37,7 +37,7 @@ module Fleximage
       def operate(string_to_write, options = {})
         options = {
           :alignment  => :top_left,
-          :position   => '0x0',
+          :offset     => '0x0',
           :antialias  => true,
           :color      => 'black',
           :font_size  => '12',
@@ -46,7 +46,7 @@ module Fleximage
           :rotate     => 0,
           :shadow     => nil,
         }.merge(options)
-        options[:position] = size_to_xy(options[:position])
+        options[:offset] = size_to_xy(options[:offset])
 
         # prepare drawing surface
         text                = Magick::Draw.new
@@ -65,7 +65,7 @@ module Fleximage
 
         # draw text on transparent image
         temp_image = Magick::Image.new(@image.columns, @image.rows) { self.background_color = 'none' }
-        temp_image = temp_image.annotate(text, 0, 0, options[:position][0], options[:position][1], string_to_write)
+        temp_image = temp_image.annotate(text, 0, 0, options[:offset][0], options[:offset][1], string_to_write)
 
         # add drop shadow to text image
         if options[:shadow]
