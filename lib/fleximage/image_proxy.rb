@@ -11,6 +11,9 @@ module Fleximage
   # In this example, +image+ is an instance of ImageProxy
   class ImageProxy
     
+    class OepratorNotFound < NameError #:nodoc:
+    end
+    
     # The image to be manipulated by operators.
     attr_accessor :image
     
@@ -30,8 +33,8 @@ module Fleximage
       @image = operator_class.new(self, @image).execute(*args)
     
     rescue NameError => e
-      if e.to_s =~ /uninitialized constant Fleximage::Operator::/
-        raise "No correspoding operator found for the method \"#{method}\""
+      if e.to_s =~ /uninitialized constant Fleximage::Operator::#{method_name.to_s.camelcase}/
+        raise OepratorNotFound, "No correspoding operator found for the method \"#{method_name}\""
       else
         raise e
       end

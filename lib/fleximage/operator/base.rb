@@ -1,6 +1,9 @@
 module Fleximage
   module Operator
     
+    class BadOperatorResult < RuntimeError #:nodoc:
+    end
+    
     # The Operator::Base class is what all other Operator classes inherit from.
     # To write your own Operator class, simply inherit from this class, and 
     # implement your own operate methods, with your own arguments.  Just 
@@ -11,9 +14,6 @@ module Fleximage
     #
     # * @image : The current image from the model.  Use this is a starting 
     #   point for all transformations.
-    # * @model_object : The model object that this image belongs to.  Use
-    #   its methods if you need to do something specific based on model 
-    #   data.
     class Base
       # Create a operator, capturing the model object to operate on
       def initialize(proxy, image) #:nodoc:
@@ -23,7 +23,14 @@ module Fleximage
       
       # Start the operation
       def execute(*args) #:nodoc:
-        @proxy.image = operate(*args)
+        result = operate(*args)
+        
+        unless result.is_a?(Magick::Image)
+          raise BadOperatorResult, "expected #{self.class}#operate to return an instance of Magick::Image. \n"+
+                                   "Got instance of #{result.class} instead."
+        end
+        
+        @proxy.image = result
       end
       
       # Perform the operation.  Override this method in your Operator::Base subclasses

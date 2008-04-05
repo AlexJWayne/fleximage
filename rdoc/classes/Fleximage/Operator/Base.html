@@ -96,10 +96,6 @@ href="Base.html#M000017">operate</a> method:
 all transformations.
 
 </li>
-<li>@model_object : The model object that this image belongs to. Use its
-methods if you need to do something specific based on model data.
-
-</li>
 </ul>
 
     </div>
@@ -157,10 +153,10 @@ image operators.
             onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000017-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 31</span>
-31:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-32:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Override this method in your own subclass.&quot;</span>
-33:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 38</span>
+38:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+39:         <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Override this method in your own subclass.&quot;</span>
+40:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -185,14 +181,14 @@ href="Base.html#M000017">operate</a> on instead.
             onclick="toggleCode('M000019-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000019-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 62</span>
-62:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scale</span>(<span class="ruby-identifier">size</span>, <span class="ruby-identifier">img</span> = <span class="ruby-keyword kw">nil</span>)
-63:         (<span class="ruby-identifier">img</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@image</span>).<span class="ruby-identifier">change_geometry!</span>(<span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">size</span>).<span class="ruby-identifier">join</span>(<span class="ruby-value str">'x'</span>)) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cols</span>, <span class="ruby-identifier">rows</span>, <span class="ruby-identifier">img</span><span class="ruby-operator">|</span>
-64:           <span class="ruby-identifier">cols</span> = <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">cols</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
-65:           <span class="ruby-identifier">rows</span> = <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rows</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
-66:           <span class="ruby-identifier">img</span>.<span class="ruby-identifier">resize!</span>(<span class="ruby-identifier">cols</span>, <span class="ruby-identifier">rows</span>)
-67:         <span class="ruby-keyword kw">end</span>
-68:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 69</span>
+69:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scale</span>(<span class="ruby-identifier">size</span>, <span class="ruby-identifier">img</span> = <span class="ruby-keyword kw">nil</span>)
+70:         (<span class="ruby-identifier">img</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@image</span>).<span class="ruby-identifier">change_geometry!</span>(<span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">size</span>).<span class="ruby-identifier">join</span>(<span class="ruby-value str">'x'</span>)) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">cols</span>, <span class="ruby-identifier">rows</span>, <span class="ruby-identifier">img</span><span class="ruby-operator">|</span>
+71:           <span class="ruby-identifier">cols</span> = <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">cols</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+72:           <span class="ruby-identifier">rows</span> = <span class="ruby-value">1</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">rows</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span>
+73:           <span class="ruby-identifier">img</span>.<span class="ruby-identifier">resize!</span>(<span class="ruby-identifier">cols</span>, <span class="ruby-identifier">rows</span>)
+74:         <span class="ruby-keyword kw">end</span>
+75:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -218,10 +214,10 @@ instead.
             onclick="toggleCode('M000020-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000020-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 73</span>
-73:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scale_and_crop</span>(<span class="ruby-identifier">size</span>, <span class="ruby-identifier">img</span> = <span class="ruby-keyword kw">nil</span>)
-74:         (<span class="ruby-identifier">img</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@image</span>).<span class="ruby-identifier">crop_resized!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">size</span>))
-75:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 80</span>
+80:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">scale_and_crop</span>(<span class="ruby-identifier">size</span>, <span class="ruby-identifier">img</span> = <span class="ruby-keyword kw">nil</span>)
+81:         (<span class="ruby-identifier">img</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@image</span>).<span class="ruby-identifier">crop_resized!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">size</span>))
+82:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -264,16 +260,16 @@ Usage:
             onclick="toggleCode('M000018-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000018-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 49</span>
-49:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">size</span>)
-50:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">size</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">size</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
-51:           <span class="ruby-identifier">size</span>
-52:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">'x'</span>)
-53:           <span class="ruby-identifier">size</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'x'</span>).<span class="ruby-identifier">collect</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:to_i</span>)
-54:         <span class="ruby-keyword kw">else</span>
-55:           [<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_i</span>]
-56:         <span class="ruby-keyword kw">end</span>
-57:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 56</span>
+56:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">size</span>)
+57:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">size</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">size</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
+58:           <span class="ruby-identifier">size</span>
+59:         <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">'x'</span>)
+60:           <span class="ruby-identifier">size</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'x'</span>).<span class="ruby-identifier">collect</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">:to_i</span>)
+61:         <span class="ruby-keyword kw">else</span>
+62:           [<span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">size</span>.<span class="ruby-identifier">to_i</span>]
+63:         <span class="ruby-keyword kw">end</span>
+64:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -299,10 +295,10 @@ instead.
             onclick="toggleCode('M000021-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000021-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 80</span>
-80:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stretch</span>(<span class="ruby-identifier">size</span>, <span class="ruby-identifier">img</span> = <span class="ruby-keyword kw">nil</span>)
-81:         (<span class="ruby-identifier">img</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@image</span>).<span class="ruby-identifier">resize!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">size</span>))
-82:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 87</span>
+87:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">stretch</span>(<span class="ruby-identifier">size</span>, <span class="ruby-identifier">img</span> = <span class="ruby-keyword kw">nil</span>)
+88:         (<span class="ruby-identifier">img</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@image</span>).<span class="ruby-identifier">resize!</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">size</span>))
+89:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -336,12 +332,12 @@ To use a blend mode remove the <tt>CompositeOp</tt> form the name and
             onclick="toggleCode('M000022-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000022-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 91</span>
-91:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">symbol_to_blending_mode</span>(<span class="ruby-identifier">mode</span>)
-92:         <span class="ruby-node">&quot;Magick::#{mode.to_s.camelize}CompositeOp&quot;</span>.<span class="ruby-identifier">constantize</span>
-93:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span>
-94:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;:#{mode} is not a valid blending mode.&quot;</span>
-95:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/operator/base.rb, line 98</span>
+ 98:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">symbol_to_blending_mode</span>(<span class="ruby-identifier">mode</span>)
+ 99:         <span class="ruby-node">&quot;Magick::#{mode.to_s.camelize}CompositeOp&quot;</span>.<span class="ruby-identifier">constantize</span>
+100:       <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span>
+101:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;:#{mode} is not a valid blending mode.&quot;</span>
+102:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

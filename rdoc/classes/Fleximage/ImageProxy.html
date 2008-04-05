@@ -161,10 +161,10 @@ Just provide the name of the image
             onclick="toggleCode('M000025-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000025-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/image_proxy.rb, line 18</span>
-18:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">image</span>)
-19:       <span class="ruby-ivar">@image</span> = <span class="ruby-identifier">image</span>
-20:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/image_proxy.rb, line 21</span>
+21:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">image</span>)
+22:       <span class="ruby-ivar">@image</span> = <span class="ruby-identifier">image</span>
+23:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -192,21 +192,21 @@ the default method missing behavior.
             onclick="toggleCode('M000026-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000026-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/image_proxy.rb, line 25</span>
-25:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-26:       <span class="ruby-comment cmt"># Find the operator class</span>
-27:       <span class="ruby-identifier">operator_class</span> = <span class="ruby-node">&quot;Fleximage::Operator::#{method_name.to_s.camelcase}&quot;</span>.<span class="ruby-identifier">constantize</span>
-28:       
-29:       <span class="ruby-comment cmt"># Execute the operator</span>
-30:       <span class="ruby-ivar">@image</span> = <span class="ruby-identifier">operator_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-ivar">@image</span>).<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
-31:     
-32:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-33:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/uninitialized constant Fleximage::Operator::/</span>
-34:         <span class="ruby-identifier">raise</span> <span class="ruby-node">&quot;No correspoding operator found for the method \&quot;#{method}\&quot;&quot;</span>
-35:       <span class="ruby-keyword kw">else</span>
-36:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span>
-37:       <span class="ruby-keyword kw">end</span>
-38:     <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/image_proxy.rb, line 28</span>
+28:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">method_name</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+29:       <span class="ruby-comment cmt"># Find the operator class</span>
+30:       <span class="ruby-identifier">operator_class</span> = <span class="ruby-node">&quot;Fleximage::Operator::#{method_name.to_s.camelcase}&quot;</span>.<span class="ruby-identifier">constantize</span>
+31:       
+32:       <span class="ruby-comment cmt"># Execute the operator</span>
+33:       <span class="ruby-ivar">@image</span> = <span class="ruby-identifier">operator_class</span>.<span class="ruby-identifier">new</span>(<span class="ruby-keyword kw">self</span>, <span class="ruby-ivar">@image</span>).<span class="ruby-identifier">execute</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+34:     
+35:     <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">NameError</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+36:       <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">e</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/uninitialized constant Fleximage::Operator::#{method_name.to_s.camelcase}/</span>
+37:         <span class="ruby-identifier">raise</span> <span class="ruby-constant">OepratorNotFound</span>, <span class="ruby-node">&quot;No correspoding operator found for the method \&quot;#{method_name}\&quot;&quot;</span>
+38:       <span class="ruby-keyword kw">else</span>
+39:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">e</span>
+40:       <span class="ruby-keyword kw">end</span>
+41:     <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
