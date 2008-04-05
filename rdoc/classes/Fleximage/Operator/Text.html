@@ -94,7 +94,7 @@ Use the following keys in the <tt>options</tt> hash:
 href="ImageOverlay.html">ImageOverlay</a></tt>
 
 </li>
-<li>position: size string
+<li>offset: size string
 
 </li>
 <li>antialias: true or false
@@ -122,15 +122,15 @@ Example:
 <pre>
   @photo.operate do |image|
     image.text('I like Cheese',
-      :alignment =&gt; :bottom_left,
-      :position =&gt; '10x10',
+      :alignment =&gt; :top_left,
+      :offset =&gt; '300x150',
       :antialias =&gt; true,
-      :color =&gt; 'blue',
+      :color =&gt; 'pink',
       :font_size =&gt; 24,
       :font =&gt; 'path/to/myfont.ttf',
-      :rotate =&gt; 15,
+      :rotate =&gt; -15,
       :shadow =&gt; {
-        :blur =&gt; 3,
+        :blur =&gt; 1,
         :opacity =&gt; 0.5,
       }
     )
@@ -186,7 +186,7 @@ Example:
 37:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-identifier">string_to_write</span>, <span class="ruby-identifier">options</span> = {})
 38:         <span class="ruby-identifier">options</span> = {
 39:           <span class="ruby-identifier">:alignment</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:top_left</span>,
-40:           <span class="ruby-identifier">:position</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'0x0'</span>,
+40:           <span class="ruby-identifier">:offset</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'0x0'</span>,
 41:           <span class="ruby-identifier">:antialias</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
 42:           <span class="ruby-identifier">:color</span>      =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'black'</span>,
 43:           <span class="ruby-identifier">:font_size</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'12'</span>,
@@ -195,7 +195,7 @@ Example:
 46:           <span class="ruby-identifier">:rotate</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>,
 47:           <span class="ruby-identifier">:shadow</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">nil</span>,
 48:         }.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
-49:         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:position</span>] = <span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:position</span>])
+49:         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:offset</span>] = <span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:offset</span>])
 50: 
 51:         <span class="ruby-comment cmt"># prepare drawing surface</span>
 52:         <span class="ruby-identifier">text</span>                = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Draw</span>.<span class="ruby-identifier">new</span>
@@ -214,7 +214,7 @@ Example:
 65: 
 66:         <span class="ruby-comment cmt"># draw text on transparent image</span>
 67:         <span class="ruby-identifier">temp_image</span> = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Image</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@image</span>.<span class="ruby-identifier">columns</span>, <span class="ruby-ivar">@image</span>.<span class="ruby-identifier">rows</span>) { <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">background_color</span> = <span class="ruby-value str">'none'</span> }
-68:         <span class="ruby-identifier">temp_image</span> = <span class="ruby-identifier">temp_image</span>.<span class="ruby-identifier">annotate</span>(<span class="ruby-identifier">text</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:position</span>][<span class="ruby-value">0</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:position</span>][<span class="ruby-value">1</span>], <span class="ruby-identifier">string_to_write</span>)
+68:         <span class="ruby-identifier">temp_image</span> = <span class="ruby-identifier">temp_image</span>.<span class="ruby-identifier">annotate</span>(<span class="ruby-identifier">text</span>, <span class="ruby-value">0</span>, <span class="ruby-value">0</span>, <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:offset</span>][<span class="ruby-value">0</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:offset</span>][<span class="ruby-value">1</span>], <span class="ruby-identifier">string_to_write</span>)
 69: 
 70:         <span class="ruby-comment cmt"># add drop shadow to text image</span>
 71:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:shadow</span>]
