@@ -1,7 +1,7 @@
 module Fleximage
   module Operator
     
-    # Sharpen an image using an unsharp mask filter
+    # Sharpen an image using an unsharp mask filter.
     # 
     #   image.unsharp_mask(options = {})
     #

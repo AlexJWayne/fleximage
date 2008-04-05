@@ -43,16 +43,18 @@ module Fleximage
     # Example:
     #
     #   class Photo < ActiveRecord::Base
-    #     acts_as_fleximage :image_directory => 'public/images/uploaded'
-    #     use_creation_date_based_directories true
-    #     image_storage_format :png
-    #     require_image true
-    #     missing_image_message 'is required'
-    #     invalid_image_message 'was not a readable image'
-    #     output_image_jpg_quality 85
-    #   
-    #     preprocess_image do |image|
-    #       image.resize '1024x768'
+    #     acts_as_fleximage do 
+    #       image_directory 'public/images/uploaded'
+    #       use_creation_date_based_directories true
+    #       image_storage_format      :png
+    #       require_image             true
+    #       missing_image_message     'is required'
+    #       invalid_image_message     'was not a readable image'
+    #       output_image_jpg_quality  85
+    #       
+    #       preprocess_image do |image|
+    #         image.resize '1024x768'
+    #       end
     #     end
     #   
     #     # normal model methods...
@@ -61,12 +63,9 @@ module Fleximage
       
       # Use this method to include Fleximage functionality in your model.  It takes an 
       # options hash with a single required key, :+image_directory+.  This key should 
-      # point to the directory you want your images stored on your server.
+      # point to the directory you want your images stored on your server.  Or
+      # configure with a nice looking block.
       def acts_as_fleximage(options = {})
-        # Require the declaration of a master image storage directory
-        unless options[:image_directory]
-          raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option (relative to RAILS_ROOT)"
-        end
         
         # Insert methods
         class_eval do
@@ -110,7 +109,16 @@ module Fleximage
         after_destroy :delete_image_file
         after_save    :save_image_file
         
-        image_directory options[:image_directory]
+        # execute configuration block
+        yield if block_given?
+        
+        # set the image directory from passed options
+        image_directory options[:image_directory] if options[:image_directory]
+        
+        # Require the declaration of a master image storage directory
+        unless image_directory
+          raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option (relative to RAILS_ROOT)"
+        end
       end
     end
     
