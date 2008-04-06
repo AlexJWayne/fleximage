@@ -351,7 +351,7 @@ module Fleximage
         end
         
         # Write image to file system and cleanup garbage.
-        def save_image_file
+        def post_save
           if @uploaded_image && !self.class.db_store?
             # Make sure target directory exists
             FileUtils.mkdir_p(directory_path)
