@@ -258,7 +258,7 @@ module Fleximage
       #   end
       def operate(&block)
         returning self do
-          proxy = ImageProxy.new(load_image)
+          proxy = ImageProxy.new(load_image, self)
           block.call(proxy)
           @output_image = proxy.image
         end

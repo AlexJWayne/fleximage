@@ -14,11 +14,14 @@ module Fleximage
     #
     # * @image : The current image from the model.  Use this is a starting 
     #   point for all transformations.
+    # * @model : The model instance that this image transformation is happenining
+    #   in.  Use it to get data out of your model for display in your image.
     class Base
       # Create a operator, capturing the model object to operate on
-      def initialize(proxy, image) #:nodoc:
+      def initialize(proxy, image, model_obj) #:nodoc:
         @proxy = proxy
         @image = image
+        @model = model_obj
       end
       
       # Start the operation

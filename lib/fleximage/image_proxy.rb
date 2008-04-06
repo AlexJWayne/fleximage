@@ -18,8 +18,9 @@ module Fleximage
     attr_accessor :image
     
     # Create a new image operator proxy.  Just provide the name of the image
-    def initialize(image)
+    def initialize(image, model_obj)
       @image = image
+      @model = model_obj
     end
     
     # A call to an unknown method will look for an Operator by that method's name.
@@ -30,7 +31,7 @@ module Fleximage
       operator_class = "Fleximage::Operator::#{method_name.to_s.camelcase}".constantize
       
       # Execute the operator
-      @image = operator_class.new(self, @image).execute(*args)
+      @image = operator_class.new(self, @image, @model).execute(*args)
     
     rescue NameError => e
       if e.to_s =~ /uninitialized constant Fleximage::Operator::#{method_name.to_s.camelcase}/
