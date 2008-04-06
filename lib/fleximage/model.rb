@@ -67,7 +67,7 @@ module Fleximage
       # configure with a nice looking block.
       def acts_as_fleximage(options = {})
         
-        # Insert methods
+        # Insert class methods
         class_eval do
           include Fleximage::Model::InstanceMethods
           
@@ -76,6 +76,13 @@ module Fleximage
           # master image.
           def self.preprocess_image(&block)
             preprocess_image_operation(block)
+          end
+          
+          # Internal method to ask this class if it stores image in the DB.
+          def self.db_store?
+            columns.find do |col|
+              col.name == 'image_file_data'
+            end
           end
         end
         
@@ -107,7 +114,8 @@ module Fleximage
         
         # Image related save and destroy callbacks
         after_destroy :delete_image_file
-        after_save    :save_image_file
+        before_save   :pre_save
+        after_save    :post_save
         
         # execute configuration block
         yield if block_given?
@@ -116,8 +124,9 @@ module Fleximage
         image_directory options[:image_directory] if options[:image_directory]
         
         # Require the declaration of a master image storage directory
-        unless image_directory
-          raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option (relative to RAILS_ROOT)"
+        if !image_directory && !db_store?
+          raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option\n"+
+                "Or add a database column named image_file_data for DB storage"
         end
       end
     end
@@ -264,10 +273,21 @@ module Fleximage
         end
       end
       
-      # Load the image from disk, or return the cached and potentially 
-      # processed output rmagick image.
+      # Load the image from disk/DB, or return the cached and potentially 
+      # processed output image.
       def load_image #:nodoc:
-        @output_image ||= @uploaded_image || Magick::Image.read(file_path).first
+        @output_image ||= @uploaded_image
+        return @output_image if @output_image
+        
+        if self.class.db_store?
+          if image_file_data
+            @output_image = Magick::Image.from_blob(image_file_data).first
+          else
+            raise MasterImageNotFound, "Master image was not found for this record, so no image can be rendered."
+          end
+        else
+          @output_image = Magick::Image.read(file_path).first
+        end
         
       rescue Magick::ImageMagickError => e
         if e.to_s =~ /unable to open file/
@@ -314,8 +334,8 @@ module Fleximage
       end
       
       private
-        # Write this image to disk
-        def save_image_file
+        # Perform pre save tasks.  Preprocess the image, and write it to DB.
+        def pre_save
           if @uploaded_image
             # perform preprocessing
             perform_preprocess_operation
@@ -323,15 +343,25 @@ module Fleximage
             # Convert to storage format
             @uploaded_image.format = self.class.image_storage_format.to_s.upcase
             
+            # Write image data to the DB field
+            if self.class.db_store?
+              self.image_file_data = @uploaded_image.to_blob
+            end
+          end
+        end
+        
+        # Write image to file system and cleanup garbage.
+        def save_image_file
+          if @uploaded_image && !self.class.db_store?
             # Make sure target directory exists
             FileUtils.mkdir_p(directory_path)
-            
+          
             # Write master image file
             @uploaded_image.write(file_path)
-            
-            # Start GC to close up memory leaks
-            GC.start
           end
+
+          # Start GC to close up memory leaks
+          GC.start if @uploaded_image
         end
         
         # Preprocess this image before saving
@@ -342,6 +372,7 @@ module Fleximage
           end
         end
         
+        # If any magic column names exists fill them with image meta data.
         def set_magic_attributes(file)
           self.image_filename = file.original_filename  if self.respond_to?(:image_filename=)
           self.image_width    = @uploaded_image.columns if self.respond_to?(:image_width=)
