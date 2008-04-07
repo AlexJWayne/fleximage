@@ -32,7 +32,7 @@ require 'fleximage/image_proxy'
 # Setup View
 require 'fleximage/view'
 ActionController::Base.exempt_from_layout :flexi
-ActionView::Base.register_template_handler :flexi, Fleximage::View
+ActionView::Template.register_template_handler :flexi, Fleximage::View
 
 # Register mime types
 Mime::Type.register "image/jpeg", :jpg
