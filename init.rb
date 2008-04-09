@@ -38,3 +38,6 @@ ActionView::Template.register_template_handler :flexi, Fleximage::View
 Mime::Type.register "image/jpeg", :jpg
 Mime::Type.register "image/gif", :gif
 Mime::Type.register "image/png", :png
+
+# IE6 sends jpg data as "image/pjpeg".  Silly IE6.
+Mime::Type.register_alias "image/pjpeg", :jpg
