@@ -66,6 +66,13 @@ namespace :fleximage do
       end
     end
     
+    def ensure_db_store
+      col = model_class.columns.find {|c| c.name == 'image_file_data'}
+      unless col && col.type == :binary
+        raise "No image_file_data field of type :binary for this model!"
+      end
+    end
+    
     desc "Convert a flat images/123.png style image store to a images/2007/11/12/123.png style.  Requires FLEXIMAGE_CLASS=ModelName"
     task :to_nested => :environment do
       convert_directory_format :nested
@@ -84,6 +91,35 @@ namespace :fleximage do
     desc "Convert master images stored as PNGs to JPGs"
     task :to_jpg => :environment do
       convert_image_format :jpg
+    end
+    
+    desc "Convert master image storage to use the database.  Loads all file-stored images into the database."
+    task :to_db => :environment do
+      ensure_db_store
+      model_class.find(:all).each do |obj|
+        if File.exists?(obj.file_path)
+          File.open(obj.file_path, 'rb') do |f|
+            obj.image_file_data = f.read
+            obj.save
+          end
+        end
+      end
+      
+      puts "--- All images successfully moved to the database.  Check to make sure the transfer worked cleanly before deleting your file system image store."
+    end
+    
+    desc "Convert master image storage to use the file system.  Loads all database images into files."
+    task :to_filestore => :environment do
+      ensure_db_store
+      model_class.find(:all).each do |obj|
+        if obj.image_file_data && obj.image_file_data.any?
+          File.open(obj.file_path, 'wb+') do |f|
+            f.write obj.image_file_data
+          end
+        end
+      end
+      
+      puts "--- All images successfully moved to the file system.  Remember to remove your image_file_data field from your models database table."
     end
     
   end

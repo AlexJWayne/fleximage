@@ -144,6 +144,8 @@ module Fleximage
       #
       #   @some_image.directory_path #=> /var/www/myapp/uploaded_images/2008/3/30
       def directory_path
+        raise 'No image directory was defined, cannot generate path' unless self.class.image_directory
+        
         # base directory
         directory = "#{RAILS_ROOT}/#{self.class.image_directory}"
         
