@@ -25,12 +25,11 @@ module Fleximage
         # inject assigns into instance variables
         assigns.each do |key, value|
           instance_variable_set "@#{key}", value
-          value.load_image if value.respond_to?(:load_image)
         end
         
         # inject local assigns into reader methods
         local_assigns.each do |key, value|
-          class << self; self; end.send(:define_method, key) { val }
+          class << self; self; end.send(:define_method, key) { value }
         end
         
         #execute the template
