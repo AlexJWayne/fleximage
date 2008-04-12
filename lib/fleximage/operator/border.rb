@@ -3,7 +3,7 @@ module Fleximage
         
     # Add a border to the outside of the image
     #
-    #   image.border(option = {})
+    #   image.border(options = {})
     # 
     # Use the following keys in the +options+ hash:
     #

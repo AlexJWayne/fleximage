@@ -14,55 +14,120 @@ module Fleximage
     # Provides class methods for Fleximage for use in model classes.  The only class method is
     # acts_as_fleximage which integrates Fleximage functionality into a model class.
     #
-    # The following class level accessors also get inserted:
+    # The following class level accessors also get inserted.
     #
-    # * +image_directory+
-    # * +use_creation_date_based_directories+
-    # * +require_image+
-    # * +missing_image_message+
-    # * +invalid_image_message+
+    # * +image_directory+: (String, no default) Where the master images are stored, directory path relative to your 
+    #   app root.
+    # * +use_creation_date_based_directories+: (Boolean, default +true+) If true, master images will be stored in
+    #   directories based on creation date.  For example: <tt>"#{image_directory}/2007/11/24/123.png"</tt> for an
+    #   image with an id of 123 and a creation date of November 24, 2007.  Turing this off would cause the path
+    #   to be "#{image_directory}/123.png" instead.  This helps keep the OS from having directories that are too 
+    #   full.
+    # * +image_storage_format+: (:png or :jpg, default :png) The format of your master images.  Using :png will give 
+    #   you the best quality, since the master images as stored as lossless version of the original upload.  :jpg 
+    #   will apply lossy compression, but the master image file sizes will be much smaller.  If storage space is a 
+    #   concern, us :jpg.
+    # * +require_image+: (Boolean, default +true+) The model will raise a validation error if no image is uploaded
+    #   with the record.  Setting to false allows record to be saved with no images.
+    # * +missing_image_message+: (String, default "is required") Validation message to display when no image was uploaded for 
+    #   a record.
+    # * +invalid_image_message+: (String default "was not a readable image") Validation message when an image is uploaded, but is not an 
+    #   image format that can be read by RMagick.
+    # * +output_image_jpg_quality+: (Integer, default 85) When rendering JPGs, this represents the amount of
+    #   compression.  Valid values are 0-100, where 0 is very small and very ugly, and 100 is near lossless but
+    #   very large in filesize.
+    # * +preprocess_image+: (Block, no default) Call this class method just like you would call +operate+ in a view.
+    #   The image transoformation in the provided block will be run on every uploaded image before its saved as the 
+    #   master image.
+    #
+    # Example:
+    #
+    #   class Photo < ActiveRecord::Base
+    #     acts_as_fleximage do 
+    #       image_directory 'public/images/uploaded'
+    #       use_creation_date_based_directories true
+    #       image_storage_format      :png
+    #       require_image             true
+    #       missing_image_message     'is required'
+    #       invalid_image_message     'was not a readable image'
+    #       output_image_jpg_quality  85
+    #       
+    #       preprocess_image do |image|
+    #         image.resize '1024x768'
+    #       end
+    #     end
+    #   
+    #     # normal model methods...
+    #   end
     module ClassMethods
       
       # Use this method to include Fleximage functionality in your model.  It takes an 
       # options hash with a single required key, :+image_directory+.  This key should 
-      # point to the directory you want your images stored on your server.
+      # point to the directory you want your images stored on your server.  Or
+      # configure with a nice looking block.
       def acts_as_fleximage(options = {})
-        unless options[:image_directory]
-          raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option (relative to RAILS_ROOT)"
-        end
         
+        # Insert class methods
         class_eval do
           include Fleximage::Model::InstanceMethods
           
-          # Where images get stored
-          dsl_accessor :image_directory
-          
-          # Put uploads from different days into different subdirectories
-          dsl_accessor :use_creation_date_based_directories, :default => true
-          
-          # Require a valid image.  Defaults to true.  Set to false if its ok to have no image for
-          dsl_accessor :require_image, :default => true
-          
-          # Missing image message
-          dsl_accessor :missing_image_message, :default => 'is required'
-          
-          # Invalid image message
-          dsl_accessor :invalid_image_message, :default => 'was not a readable image'
-          
-          # A block that processes an image before it gets saved as the master image of a record.
-          # Can be helpful to resize potentially huge images to something more manageable. Set via
-          # the "preprocess_image { |image| ... }" class method.
-          dsl_accessor :preprocess_image_operation
-          
-          after_destroy :delete_image_file
-          after_save    :save_image_file
-          
+          # Call this class method just like you would call +operate+ in a view.
+          # The image transoformation in the provided block will be run on every uploaded image before its saved as the 
+          # master image.
           def self.preprocess_image(&block)
             preprocess_image_operation(block)
           end
+          
+          # Internal method to ask this class if it stores image in the DB.
+          def self.db_store?
+            columns.find do |col|
+              col.name == 'image_file_data'
+            end
+          end
         end
         
-        image_directory options[:image_directory]
+        # Where images get stored
+        dsl_accessor :image_directory
+        
+        # Put uploads from different days into different subdirectories
+        dsl_accessor :use_creation_date_based_directories, :default => true
+        
+        # The format are master images are stored in
+        dsl_accessor :image_storage_format, :default => Proc.new { :png }
+        
+        # Require a valid image.  Defaults to true.  Set to false if its ok to have no image for
+        dsl_accessor :require_image, :default => true
+        
+        # Missing image message
+        dsl_accessor :missing_image_message, :default => 'is required'
+        
+        # Invalid image message
+        dsl_accessor :invalid_image_message, :default => 'was not a readable image'
+        
+        # Sets the quality of rendered JPGs
+        dsl_accessor :output_image_jpg_quality, :default => 85
+        
+        # A block that processes an image before it gets saved as the master image of a record.
+        # Can be helpful to resize potentially huge images to something more manageable. Set via
+        # the "preprocess_image { |image| ... }" class method.
+        dsl_accessor :preprocess_image_operation
+        
+        # Image related save and destroy callbacks
+        after_destroy :delete_image_file
+        before_save   :pre_save
+        after_save    :post_save
+        
+        # execute configuration block
+        yield if block_given?
+        
+        # set the image directory from passed options
+        image_directory options[:image_directory] if options[:image_directory]
+        
+        # Require the declaration of a master image storage directory
+        if !image_directory && !db_store?
+          raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option\n"+
+                "Or add a database column named image_file_data for DB storage"
+        end
       end
     end
     
@@ -95,7 +160,7 @@ module Fleximage
       #   
       #   @some_image.file_path #=> /var/www/myapp/uploaded_images/123.png
       def file_path
-        "#{directory_path}/#{id}.png"
+        "#{directory_path}/#{id}.#{self.class.image_storage_format}"
       end
       
       # Sets the image file for this record to an uploaded file.  This can 
@@ -121,7 +186,11 @@ module Fleximage
       #   p = Product.find(1)
       #   p.images.create(params[:photo])
       def image_file=(file)
-        if file.respond_to?(:read) && file.size > 0
+        # Get the size of the file.  file.size works for form-uploaded images, file.stat.size works
+        # for file object created by File.open('foo.jpg', 'rb')
+        file_size = file.respond_to?(:size) ? file.size : file.stat.size
+        
+        if file.respond_to?(:read) && file_size > 0
           # Create RMagick Image object from uploaded file
           if file.path
             @uploaded_image = Magick::Image.read(file.path).first
@@ -129,14 +198,13 @@ module Fleximage
             @uploaded_image = Magick::Image.from_blob(file.read).first
           end
           
-          # Convert to a lossless format for saving the master image
-          @uploaded_image.format = 'PNG'
+          set_magic_attributes(file)
           
           # Success, make sure everything is valid
           @missing_image = false
           @invalid_image = false
         else
-          if self.class.require_image
+          if self.class.require_image && !@uploaded_image
             @missing_image = true
           end
         end
@@ -158,9 +226,20 @@ module Fleximage
       def image_file_url=(file_url)
         @image_file_url = file_url
         if file_url =~ %r{^https?://}
-          self.image_file = open(file_url)
+          file = open(file_url)
+          
+          # Force a URL based file to have an original_filename
+          eval <<-EOV
+            class << file
+              def original_filename
+                "#{file_url}"
+              end
+            end
+          EOV
+          
+          self.image_file = file
         elsif file_url.empty?
-          @missing_image = true
+          @missing_image = true unless @uploaded_image
         else
           @invalid_image = true
         end
@@ -188,16 +267,27 @@ module Fleximage
       #   end
       def operate(&block)
         returning self do
-          @operating = true
-          block.call(self)
-          @operating = false
+          proxy = ImageProxy.new(load_image, self)
+          block.call(proxy)
+          @output_image = proxy.image
         end
       end
       
-      # Load the image from disk, or return the cached and potentially 
-      # processed output rmagick image.
+      # Load the image from disk/DB, or return the cached and potentially 
+      # processed output image.
       def load_image #:nodoc:
-        @output_image ||= @uploaded_image || Magick::Image.read(file_path).first
+        @output_image ||= @uploaded_image
+        return @output_image if @output_image
+        
+        if self.class.db_store?
+          if image_file_data
+            @output_image = Magick::Image.from_blob(image_file_data).first
+          else
+            raise MasterImageNotFound, "Master image was not found for this record, so no image can be rendered."
+          end
+        else
+          @output_image = Magick::Image.read(file_path).first
+        end
         
       rescue Magick::ImageMagickError => e
         if e.to_s =~ /unable to open file/
@@ -210,43 +300,32 @@ module Fleximage
         end
       end
       
-      # Convert the current output image to a jpg, and return it in 
-      # binary form.
-      def output_image #:nodoc:
-        @output_image.format = 'JPG'
-        @output_image.to_blob
+      # Convert the current output image to a jpg, and return it in binary form.  options support a
+      # :format key that can be :jpg, :gif or :png
+      def output_image(options = {}) #:nodoc:
+        format = (options[:format] || :jpg).to_s.upcase
+        @output_image.format = format
+        @output_image.strip!
+        if format = 'JPG'
+          quality = self.class.output_image_jpg_quality
+          @output_image.to_blob { self.quality = quality }
+        else
+          @output_image.to_blob
+        end
       ensure
         GC.start
-      end
-      
-      # If in a view, a call to an unknown method will look for an Operator by that method's name.
-      # If it find one, it will execute that operator, otherwise it will simply call super for the
-      # default method missing behavior.
-      def method_missing(method_name, *args)
-        if @operating
-          operator_class = "Fleximage::Operator::#{method_name.to_s.camelcase}".constantize
-          @output_image = operator_class.new(self).execute(*args)
-        else
-          super
-        end
-      rescue NameError => e
-        if e.to_s =~ /uninitialized constant Fleximage::Operator::/
-          super
-        else
-          raise e
-        end
       end
       
       # Delete the image file for this record. This is automatically ran after this record gets 
       # destroyed, but you can call it manually if you want to remove the image from the record.
       def delete_image_file
-        File.delete(file_path)
+        File.delete(file_path) if File.exists?(file_path)
       end
       
       # Execute image presence and validity validations.
       def validate #:nodoc:
         field_name = (@image_file_url && @image_file_url.any?) ? :image_file_url : :image_file
-        
+          
         if self.class.require_image && @missing_image && !has_image?
           errors.add field_name, self.class.missing_image_message
         elsif @invalid_image
@@ -255,15 +334,34 @@ module Fleximage
       end
       
       private
-        # Write this image to disk
-        def save_image_file
-          perform_preprocess_operation
+        # Perform pre save tasks.  Preprocess the image, and write it to DB.
+        def pre_save
           if @uploaded_image
+            # perform preprocessing
+            perform_preprocess_operation
+            
+            # Convert to storage format
+            @uploaded_image.format = self.class.image_storage_format.to_s.upcase
+            
+            # Write image data to the DB field
+            if self.class.db_store?
+              self.image_file_data = @uploaded_image.to_blob
+            end
+          end
+        end
+        
+        # Write image to file system and cleanup garbage.
+        def post_save
+          if @uploaded_image && !self.class.db_store?
+            # Make sure target directory exists
             FileUtils.mkdir_p(directory_path)
+          
+            # Write master image file
             @uploaded_image.write(file_path)
           end
-        ensure
-          GC.start
+
+          # Start GC to close up memory leaks
+          GC.start if @uploaded_image
         end
         
         # Preprocess this image before saving
@@ -272,6 +370,13 @@ module Fleximage
             operate(&self.class.preprocess_image_operation)
             @uploaded_image = @output_image
           end
+        end
+        
+        # If any magic column names exists fill them with image meta data.
+        def set_magic_attributes(file)
+          self.image_filename = file.original_filename  if self.respond_to?(:image_filename=)
+          self.image_width    = @uploaded_image.columns if self.respond_to?(:image_width=)
+          self.image_height   = @uploaded_image.rows    if self.respond_to?(:image_height=)
         end
     end
     

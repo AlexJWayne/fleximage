@@ -80,7 +80,7 @@
 
     <div id="description">
       <p>
-Sharpen an image using an unsharp mask filter
+Sharpen an image using an unsharp mask filter.
 </p>
 <pre>
   image.unsharp_mask(options = {})
@@ -88,6 +88,25 @@ Sharpen an image using an unsharp mask filter
 <p>
 Use the following keys in the <tt>options</tt> hash:
 </p>
+<ul>
+<li><tt>radius</tt>: The radius of the Gaussian operator. The default is 0.0.
+
+</li>
+<li><tt>sigma</tt>: The standard deviation of the Gaussian operator. A good
+starting value is 1.0, which is the default.
+
+</li>
+<li><tt>amount</tt>: The percentage of the blurred image to be added to the
+receiver, specified as a fraction between 0 and 1.0. A good starting value
+is 1.0, which is the default.
+
+</li>
+<li><tt>threshold</tt>: The threshold needed to apply the amount, specified as
+a fraction between 0 and 1.0. A good starting value is 0.05, which is the
+default.
+
+</li>
+</ul>
 <p>
 Example:
 </p>
@@ -106,7 +125,7 @@ Example:
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000024">operate</a>&nbsp;&nbsp;
+      <a href="#M000023">operate</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -128,33 +147,33 @@ Example:
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000024" class="method-detail">
-        <a name="M000024"></a>
+      <div id="method-M000023" class="method-detail">
+        <a name="M000023"></a>
 
         <div class="method-heading">
-          <a href="#M000024" class="method-signature">
+          <a href="#M000023" class="method-signature">
           <span class="method-name">operate</span><span class="method-args">(options = {})</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000024-source">
+            onclick="toggleCode('M000023-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000023-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/operator/unsharp_mask.rb, line 16</span>
-16:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-identifier">options</span> = {})
-17:         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">symbolize_keys</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:symbolize_keys</span>)
-18:         <span class="ruby-identifier">options</span> = {
-19:           <span class="ruby-identifier">:radius</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span><span class="ruby-value">.0</span>,
-20:           <span class="ruby-identifier">:sigma</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1.0</span>,
-21:           <span class="ruby-identifier">:amount</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span><span class="ruby-value">.5</span>,
-22:           <span class="ruby-identifier">:threshold</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span><span class="ruby-value">.05</span>
-23:         }.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
-24: 
-25:         <span class="ruby-comment cmt"># sharpen image</span>
-26:         <span class="ruby-ivar">@image</span> = <span class="ruby-ivar">@image</span>.<span class="ruby-identifier">unsharp_mask</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:radius</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:sigma</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:amount</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:threshold</span>])
-27:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/operator/unsharp_mask.rb, line 21</span>
+21:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-identifier">options</span> = {})
+22:         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">symbolize_keys</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:symbolize_keys</span>)
+23:         <span class="ruby-identifier">options</span> = {
+24:           <span class="ruby-identifier">:radius</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span><span class="ruby-value">.0</span>,
+25:           <span class="ruby-identifier">:sigma</span>     =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1.0</span>,
+26:           <span class="ruby-identifier">:amount</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-value">1.0</span>,
+27:           <span class="ruby-identifier">:threshold</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span><span class="ruby-value">.05</span>
+28:         }.<span class="ruby-identifier">merge</span>(<span class="ruby-identifier">options</span>)
+29: 
+30:         <span class="ruby-comment cmt"># sharpen image</span>
+31:         <span class="ruby-ivar">@image</span> = <span class="ruby-ivar">@image</span>.<span class="ruby-identifier">unsharp_mask</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:radius</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:sigma</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:amount</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:threshold</span>])
+32:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
