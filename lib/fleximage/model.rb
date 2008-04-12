@@ -253,7 +253,7 @@ module Fleximage
       
       # Return true if this record has an image.
       def has_image?
-        File.exists?(file_path)
+        self.class.db_store? ? image_file_data : File.exists?(file_path)
       end
       
       # Call from a .flexi view template.  This enables the rendering of operators 
