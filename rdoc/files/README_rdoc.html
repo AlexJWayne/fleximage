@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Thu Apr 03 23:20:55 -0700 2008</td>
+      <td>Sat Apr 12 12:01:03 -0700 2008</td>
     </tr>
     </table>
   </div>
@@ -80,12 +80,11 @@ There are 2 pieces involved in making Rails image handling easy.
 </p>
 <h3>1. Image Uploads</h3>
 <p>
-In this post Rails 2, resource driven world, <a
+In this post Rails 2, resource-driven world, <a
 href="../classes/Fleximage.html">Fleximage</a> believes that images should
-belong directly to a record. So you simply tell your model have to tell
-your model class to act as <a
-href="../classes/Fleximage.html">Fleximage</a>, and your model effortlessly
-gains the ability to handle file uploads.
+belong directly to a record. So you simply tell your model class to act as
+<a href="../classes/Fleximage.html">Fleximage</a>, and your model
+effortlessly gains the ability to handle file uploads.
 </p>
 <ul>
 <li>Your model gains the ability to interface directly with a
@@ -93,11 +92,11 @@ gains the ability to handle file uploads.
 model code.
 
 </li>
-<li>Accept uploads form a web address, pulling in the image form the internet
+<li>Accept uploads from a web address, pulling in the image from the internet
 and saving it locally.
 
 </li>
-<li>Image presence validation with a customizable form field errors message.
+<li>Image presence validation with customizable form field error messages.
 
 </li>
 <li>Image format validation that will not allow the file to be uploaded unless
@@ -116,27 +115,27 @@ images back to the web browser. Most of the time, you need to display the
 image in different sizes or formats in different places on your site. For
 example, a product image in a store may need a square thumbnail image, a
 medium image for its focus page, and a large image for an &quot;enlarge
-this photo&quot;, popup.
+this photo&quot; popup.
 </p>
 <p>
 <a href="../classes/Fleximage.html">Fleximage</a> uses a simple templating
 engine that allows you to re-render images exactly how you need them. Using
-the same &quot;master image&quot;, many images can be rendered from the
+the same &quot;master image,&quot; many images can be rendered from the
 same source. You can even go beyond resizing; there is support for image
 overlays, text drawing, drop shadows, borders and more. The rendering
 engine is flexible and extensible to whatever your dynamic image needs are.
 </p>
 <ul>
 <li>Renderer implemented as template engine, which fits in perfectly with Rails
-2 RESTful style format sensitive views.
+2 RESTful style format-sensitive views.
 
 </li>
 <li>Does not need to have everything resized on upload allowing your site
-layout the change later on, and all image will re-render themselves just
+layout the change later on, and all images will re-render themselves just
 right with your new rendering templates.
 
 </li>
-<li>Support for special effects like text, image or logo overlays, borders,
+<li>Support for special effects like text, image or logo overlays, borders and
 shadows.
 
 </li>
@@ -144,7 +143,7 @@ shadows.
 snippets of direct RMagick code.
 
 </li>
-<li>Require absolutely zero controller code.
+<li>Requires absolutely zero controller code.
 
 </li>
 </ul>
@@ -157,7 +156,7 @@ If running on rails edge:
   ./script/plugin install git://github.com/Squeegy/fleximage.git
 </pre>
 <p>
-Otherwise, you have to do a manual install since Rails did not yet support
+Otherwise, you have to do a manual install since Rails does not yet support
 git. Download this file:
 </p>
 <p>
@@ -171,7 +170,7 @@ Unzip, and place the root <tt>fleximage</tt> folder in your
 <h2>2. Activating your model</h2>
 <p>
 You need to let your model know it should be <a
-href="../classes/Fleximage.html">Fleximage</a> friendly. Lets say you have
+href="../classes/Fleximage.html">Fleximage</a>-friendly. Lets say you have
 a model for photos.
 </p>
 <pre>
@@ -322,8 +321,8 @@ The filename of the template should look like this:
 controller action that will render this view. The <tt>jpg</tt> tells the
 controller to render this view when the <tt>jpg</tt> format is asked for.
 The <tt>flexi</tt> tells Rails to render this view with the <a
-href="../classes/Fleximage.html">Fleximage</a> tempalte engine, rather than
-<tt>erb</tt> or <tt>builder</tt> or other template types.
+href="../classes/Fleximage.html">Fleximage</a> template engine, rather than
+<tt>erb</tt>, <tt>builder</tt> or other template types.
 </p>
 <p>
 The syntax of the view is pure ruby, but to process the image the view
