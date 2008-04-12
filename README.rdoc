@@ -8,26 +8,26 @@ There are 2 pieces involved in making Rails image handling easy.
 
 === 1. Image Uploads
 
-In this post Rails 2, resource driven world, Fleximage believes that images should belong directly to a record.  So you simply tell your model have to tell your model class to act as Fleximage, and your model effortlessly gains the ability to handle file uploads.
+In this post Rails 2, resource-driven world, Fleximage believes that images should belong directly to a record.  So you simply tell your model class to act as Fleximage, and your model effortlessly gains the ability to handle file uploads.
 
 * Your model gains the ability to interface directly with a +file_field+ form, allowing uploads with zero extra controller or model code.
-* Accept uploads form a web address, pulling in the image form the internet and saving it locally.
-* Image presence validation with a customizable form field errors message.
+* Accept uploads from a web address, pulling in the image from the internet and saving it locally.
+* Image presence validation with customizable form field error messages.
 * Image format validation that will not allow the file to be uploaded unless RMagick can parse it into useable image data.
 * Image pre-processing to keep uploaded images under a certain size, or other on-upload image processing tasks.
 
 
 === 2. Image Rendering
 
-The other half of the problem comes from the need to send the uploaded images back to the web browser.  Most of the time, you need to display the image in different sizes or formats in different places on your site.  For example, a product image in a store may need a square thumbnail image, a medium image for its focus page, and a large image for an "enlarge this photo", popup.
+The other half of the problem comes from the need to send the uploaded images back to the web browser.  Most of the time, you need to display the image in different sizes or formats in different places on your site.  For example, a product image in a store may need a square thumbnail image, a medium image for its focus page, and a large image for an "enlarge this photo" popup.
 
-Fleximage uses a simple templating engine that allows you to re-render images exactly how you need them.  Using the same "master image", many images can be rendered from the same source.  You can even go beyond resizing; there is support for image overlays, text drawing, drop shadows, borders and more.  The rendering engine is flexible and extensible to whatever your dynamic image needs are.
+Fleximage uses a simple templating engine that allows you to re-render images exactly how you need them.  Using the same "master image," many images can be rendered from the same source.  You can even go beyond resizing; there is support for image overlays, text drawing, drop shadows, borders and more.  The rendering engine is flexible and extensible to whatever your dynamic image needs are.
 
-* Renderer implemented as template engine, which fits in perfectly with Rails 2 RESTful style format sensitive views.
-* Does not need to have everything resized on upload allowing your site layout the change later on, and all image will re-render themselves just right with your new rendering templates.
-* Support for special effects like text, image or logo overlays, borders, shadows.
+* Renderer implemented as template engine, which fits in perfectly with Rails 2 RESTful style format-sensitive views.
+* Does not need to have everything resized on upload allowing your site layout the change later on, and all images will re-render themselves just right with your new rendering templates.
+* Support for special effects like text, image or logo overlays, borders and shadows.
 * Extensible by adding image operator classes which allow for reusable snippets of direct RMagick code.
-* Require absolutely zero controller code.
+* Requires absolutely zero controller code.
 
 
 = Getting Started
@@ -38,7 +38,7 @@ If running on rails edge:
 
   ./script/plugin install git://github.com/Squeegy/fleximage.git
 
-Otherwise, you have to do a manual install since Rails did not yet support git.  Download this file:
+Otherwise, you have to do a manual install since Rails does not yet support git.  Download this file:
 
 http://github.com/Squeegy/fleximage/tarball/master
 
@@ -47,7 +47,7 @@ Unzip, and place the root +fleximage+ folder in your <tt>railsapproot/vendor/plu
 
 == 2. Activating your model
 
-You need to let your model know it should be Fleximage friendly.  Lets say you have a model for photos.
+You need to let your model know it should be Fleximage-friendly.  Lets say you have a model for photos.
   
   # app/models/photo.rb
   class Photo < ActiveRecord::Base
@@ -149,7 +149,7 @@ This is the URL where the image will be.
 
 Now it's time to actually create a template to render the image.  This happens through a special view with a .+flexi+ extension.  This view template will pull out the master image for you, and send it to the browser as binary data after your processing of it done.
 
-The filename of the template should look like this: <tt>action_name.jpg.flexi</tt>, where +action_name+ is the controller action that will render this view.  The +jpg+ tells the controller to render this view when the +jpg+ format is asked for.  The +flexi+ tells Rails to render this view with the Fleximage tempalte engine, rather than +erb+ or +builder+ or other template types.
+The filename of the template should look like this: <tt>action_name.jpg.flexi</tt>, where +action_name+ is the controller action that will render this view.  The +jpg+ tells the controller to render this view when the +jpg+ format is asked for.  The +flexi+ tells Rails to render this view with the Fleximage template engine, rather than +erb+, +builder+ or other template types.
 
 The syntax of the view is pure ruby, but to process the image the view needs to call +operate+ on the instance of your model.
 
