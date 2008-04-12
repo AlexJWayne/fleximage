@@ -107,6 +107,9 @@ module Fleximage
         # Sets the quality of rendered JPGs
         dsl_accessor :output_image_jpg_quality, :default => 85
         
+        # Set a default image to use when no image has been assigned to this record
+        dsl_accessor :default_image_path
+        
         # A block that processes an image before it gets saved as the master image of a record.
         # Can be helpful to resize potentially huge images to something more manageable. Set via
         # the "preprocess_image { |image| ... }" class method.
@@ -282,10 +285,10 @@ module Fleximage
         return @output_image if @output_image
         
         if self.class.db_store?
-          if image_file_data
+          if image_file_data && image_file_data.any?
             @output_image = Magick::Image.from_blob(image_file_data).first
           else
-            raise MasterImageNotFound, "Master image was not found for this record, so no image can be rendered."
+            master_image_not_found
           end
         else
           @output_image = Magick::Image.read(file_path).first
@@ -293,10 +296,7 @@ module Fleximage
         
       rescue Magick::ImageMagickError => e
         if e.to_s =~ /unable to open file/
-          raise MasterImageNotFound, 
-            "Master image was not found for this record, so no image can be rendered.\n"+
-            "Expected image to be at:\n"+
-            "  #{file_path}"
+          master_image_not_found
         else
           raise e
         end
@@ -379,6 +379,25 @@ module Fleximage
           self.image_filename = file.original_filename  if self.respond_to?(:image_filename=)
           self.image_width    = @uploaded_image.columns if self.respond_to?(:image_width=)
           self.image_height   = @uploaded_image.rows    if self.respond_to?(:image_height=)
+        end
+        
+        # Load the default image, or raise an expection
+        def master_image_not_found
+          # Load the default image
+          if self.class.default_image_path
+            @output_image = Magick::Image.read(self.class.default_image_path).first
+          
+          # No default, not master image, so raise exception
+          else
+            message = "Master image was not found for this record, so no image can be rendered."
+            
+            if !self.class.db_store?
+              message << "\nExpected image to be at:"
+              message << "\n  #{file_path}"
+            end
+            
+            raise MasterImageNotFound, message
+          end
         end
     end
     
