@@ -36,6 +36,8 @@ module Fleximage
     # * +output_image_jpg_quality+: (Integer, default 85) When rendering JPGs, this represents the amount of
     #   compression.  Valid values are 0-100, where 0 is very small and very ugly, and 100 is near lossless but
     #   very large in filesize.
+    # * +default_image_path+: (String, nil default) If no image is present for this record, the image at this path will be
+    #   used instead.  Useful for a placeholder graphic for new content that may not have an image just yet.
     # * +preprocess_image+: (Block, no default) Call this class method just like you would call +operate+ in a view.
     #   The image transoformation in the provided block will be run on every uploaded image before its saved as the 
     #   master image.
@@ -50,6 +52,7 @@ module Fleximage
     #       require_image             true
     #       missing_image_message     'is required'
     #       invalid_image_message     'was not a readable image'
+    #       default_image_path        'public/images/no_photo_yet.png'
     #       output_image_jpg_quality  85
     #       
     #       preprocess_image do |image|
