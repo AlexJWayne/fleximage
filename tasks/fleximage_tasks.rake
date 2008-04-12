@@ -38,30 +38,46 @@ namespace :fleximage do
     def convert_image_format(to_format)
       model_class.find(:all).each do |obj|
         
-        # Generate both types of file paths
-        png_path = obj.file_path.gsub(/\.jpg$/, '.png')
-        jpg_path = obj.file_path.gsub(/\.png$/, '.jpg')
+        # convert DB stored images
+        if model_class.db_store?
+          if obj.image_file_data && obj.image_file_data.any?
+            begin
+              image = Magick::Image.from_blob(obj.image_file_data).first
+              image.format = to_format.to_s.upcase
+              obj.image_file_data = image.to_blob
+              obj.save
+            rescue Exception => e
+              puts "Could not convert image for #{model_class} with id #{obj.id}\n  #{e.class} #{e}\n"
+            end
+          end
         
-        # Output stub
-        output = (to_format == :jpg) ? 'PNG -> JPG' : 'JPG -> PNG'
+        # Convert file system stored images
+        else        
+          # Generate both types of file paths
+          png_path = obj.file_path.gsub(/\.jpg$/, '.png')
+          jpg_path = obj.file_path.gsub(/\.png$/, '.jpg')
         
-        # Assign old path and new path based on desired image format
-        if to_format == :jpg
-          old_path = png_path
-          new_path = jpg_path
-        else
-          old_path = jpg_path
-          new_path = png_path
-        end
+          # Output stub
+          output = (to_format == :jpg) ? 'PNG -> JPG' : 'JPG -> PNG'
         
-        # Perform conversion
-        if File.exists?(old_path)
-          image = Magick::Image.read(old_path).first
-          image.format = to_format.to_s.upcase
-          image.write(new_path)
-          File.delete(old_path)
+          # Assign old path and new path based on desired image format
+          if to_format == :jpg
+            old_path = png_path
+            new_path = jpg_path
+          else
+            old_path = jpg_path
+            new_path = png_path
+          end
+        
+          # Perform conversion
+          if File.exists?(old_path)
+            image = Magick::Image.read(old_path).first
+            image.format = to_format.to_s.upcase
+            image.write(new_path)
+            File.delete(old_path)
           
-          puts "#{output} : Image #{obj.id}"
+            puts "#{output} : Image #{obj.id}"
+          end
         end
       end
     end
