@@ -89,6 +89,10 @@ module Fleximage
           end
         end
         
+        # The filename of the temp image.  Used for storing of good images when validation fails
+        # and the form needs to be redisplayed.
+        attr_reader :image_file_temp
+        
         # Where images get stored
         dsl_accessor :image_directory
         
@@ -199,6 +203,7 @@ module Fleximage
         file_size = file.respond_to?(:size) ? file.size : file.stat.size
         
         if file.respond_to?(:read) && file_size > 0
+          
           # Create RMagick Image object from uploaded file
           if file.path
             @uploaded_image = Magick::Image.read(file.path).first
@@ -209,12 +214,8 @@ module Fleximage
           set_magic_attributes(file)
           
           # Success, make sure everything is valid
-          @missing_image = false
           @invalid_image = false
-        else
-          if self.class.require_image && !@uploaded_image
-            @missing_image = true
-          end
+          save_temp_image(file)
         end
       rescue Magick::ImageMagickError => e
         if e.to_s =~ /no decode delegate for this image format/
@@ -237,19 +238,38 @@ module Fleximage
           file = open(file_url)
           
           # Force a URL based file to have an original_filename
-          eval <<-EOV
+          eval <<-CODE
             class << file
               def original_filename
                 "#{file_url}"
               end
             end
-          EOV
+          CODE
           
           self.image_file = file
+          
         elsif file_url.empty?
-          @missing_image = true unless @uploaded_image
+          # Nothing to process, move along
+          
         else
+          # invalid URL, raise invalid image validation error
           @invalid_image = true
+        end
+      end
+      
+      # Sets the uploaded image to the name of a file in RAILS_ROOT/tmp that was just
+      # uploaded.  Use as a hidden field in your forms to keep an uploaded image when
+      # validation fails and the form needs to be redisplayed
+      def image_file_temp=(file_name)
+        @image_file_temp = file_name
+        
+        if !@uploaded_image && file_name && file_name.any?
+          file_path = "#{RAILS_ROOT}/tmp/fleximage/#{file_name}"
+          if File.exists?(file_path)
+            File.open(file_path, 'rb') do |f|
+              self.image_file = f
+            end
+          end
         end
       end
       
@@ -336,8 +356,8 @@ module Fleximage
       # Execute image presence and validity validations.
       def validate #:nodoc:
         field_name = (@image_file_url && @image_file_url.any?) ? :image_file_url : :image_file
-          
-        if self.class.require_image && @missing_image && !has_image?
+        
+        if self.class.require_image && !has_image?
           errors.add field_name, self.class.missing_image_message
         elsif @invalid_image
           errors.add field_name, self.class.invalid_image_message
@@ -370,6 +390,9 @@ module Fleximage
             # Write master image file
             @uploaded_image.write(file_path)
           end
+          
+          # Cleanup temp files
+          delete_temp_image
 
           # Start GC to close up memory leaks
           GC.start if @uploaded_image
@@ -392,6 +415,25 @@ module Fleximage
           end
           self.image_width    = @uploaded_image.columns if self.respond_to?(:image_width=)
           self.image_height   = @uploaded_image.rows    if self.respond_to?(:image_height=)
+        end
+        
+        # Save the image in the rails tmp directory
+        def save_temp_image(file)
+          return if @image_file_temp
+          
+          file_name = file.respond_to?(:original_filename) ? file.original_filename : file.path
+          @image_file_temp = file_name.split('/').last
+          path = "#{RAILS_ROOT}/tmp/fleximage"
+          FileUtils.mkdir_p(path)
+          File.open("#{path}/#{@image_file_temp}", 'w') do |f|
+            file.rewind
+            f.write file.read
+          end
+        end
+        
+        # Delete the temp image after its no longer needed
+        def delete_temp_image
+          FileUtils.rm_rf "#{RAILS_ROOT}/tmp/fleximage/#{@image_file_temp}"
         end
         
         # Load the default image, or raise an expection
