@@ -1,4 +1,5 @@
 require 'open-uri'
+require 'base64'
 
 # Load RMagick
 begin
@@ -34,10 +35,12 @@ require 'fleximage/view'
 ActionController::Base.exempt_from_layout :flexi
 ActionView::Template.register_template_handler :flexi, Fleximage::View
 
+# Setup Helper
+require 'fleximage/helper'
+ActionView::Base.class_eval { include Fleximage::Helper }
+
 # Register mime types
+Mime::Type.register_alias "image/pjpeg", :jpg # IE6 sends jpg data as "image/pjpeg".  Silly IE6.
 Mime::Type.register "image/jpeg", :jpg
 Mime::Type.register "image/gif", :gif
 Mime::Type.register "image/png", :png
-
-# IE6 sends jpg data as "image/pjpeg".  Silly IE6.
-Mime::Type.register_alias "image/pjpeg", :jpg
