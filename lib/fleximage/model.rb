@@ -215,7 +215,7 @@ module Fleximage
           
           # Success, make sure everything is valid
           @invalid_image = false
-          save_temp_image(file)
+          save_temp_image(file) unless @dont_save_temp
         end
       rescue Magick::ImageMagickError => e
         if e.to_s =~ /no decode delegate for this image format/
@@ -264,11 +264,14 @@ module Fleximage
         if !@uploaded_image && file_name && file_name.any?
           @image_file_temp = file_name
           file_path = "#{RAILS_ROOT}/tmp/fleximage/#{file_name}"
+          
+          @dont_save_temp = true
           if File.exists?(file_path)
             File.open(file_path, 'rb') do |f|
               self.image_file = f
             end
           end
+          @dont_save_temp = false
         end
       end
       
