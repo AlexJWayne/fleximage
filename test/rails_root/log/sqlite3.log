@@ -3333,3 +3333,2802 @@ Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fl
 Dependencies: called new_constants_in("Models", :Object)
 Dependencies: New constants: PhotoBare
 Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: Fixtures, FixtureClassNotFound, Fixture
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000172)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000173)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000146)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000143)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: Error during loading, removing partially loaded constants 
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: Fixtures, FixtureClassNotFound, Fixture
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000178)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000191)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000146)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000143)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: Fixture, Fixtures, FixtureClassNotFound
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000174)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000171)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000145)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000143)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: Fixture, Fixtures, FixtureClassNotFound
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000168)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000166)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000145)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000143)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+  [4;36;1mPhotoBare Create (0.000715)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:36:57', '2008-04-18 16:36:57')[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: Fixture, Fixtures, FixtureClassNotFound
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000166)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000165)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000145)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000144)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+  [4;36;1mPhotoBare Create (0.000426)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:39:14', '2008-04-18 16:39:14')[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: Fixtures, FixtureClassNotFound, Fixture
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000165)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000169)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000150)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000149)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :Photo)
+Dependencies: called load_missing_constant(Object, :Photo)
+Dependencies: called load_missing_constant(Object, :Photo)
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: FixtureClassNotFound, Fixture, Fixtures
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000170)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000171)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000144)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000143)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+  [4;36;1mPhotoBare Create (0.000420)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:41:33', '2008-04-18 16:41:33')[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: FixtureClassNotFound, Fixture, Fixtures
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000167)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000168)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000144)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000143)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+  [4;36;1mPhotoBare Create (0.000417)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:41:54', '2008-04-18 16:41:54')[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: Fixtures, FixtureClassNotFound, Fixture
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000167)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000170)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000145)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000144)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+  [4;36;1mPhotoBare Create (0.000420)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:43:37', '2008-04-18 16:43:37')[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: PrettyPrint
+Dependencies: New constants: PP
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: FixtureClassNotFound, Fixtures, Fixture
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000171)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000166)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000146)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000145)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+  [4;36;1mPhotoBare Create (0.000483)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:44:14', '2008-04-18 16:44:14')[0m
+  [4;35;1mPhotoBare Create (0.000479)[0m   [0mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:44:30', '2008-04-18 16:44:30')[0m
+  [4;36;1mPhotoBare Create (0.000449)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:44:30', '2008-04-18 16:44:30')[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: PrettyPrint
+Dependencies: New constants: PP
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: FixtureClassNotFound, Fixtures, Fixture
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000171)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000171)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000146)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000145)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+  [4;36;1mPhotoBare Create (0.000483)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:45:11', '2008-04-18 16:45:11')[0m
+  [4;35;1mPhotoBare Create (0.000563)[0m   [0mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:45:27', '2008-04-18 16:45:27')[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: FixtureClassNotFound, Fixtures, Fixture
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000174)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000203)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000146)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000142)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+  [4;36;1mPhotoBare Create (0.000606)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:50:08', '2008-04-18 16:50:08')[0m
+  [4;35;1mPhotoBare Create (0.000382)[0m   [0mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:50:08', '2008-04-18 16:50:08')[0m
+  [4;36;1mPhotoBare Create (0.000492)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:50:25', '2008-04-18 16:50:25')[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb", ["Application", "ApplicationController", "Controllers::Application"])
+Dependencies: called new_constants_in(:Object, :Object, "Controllers")
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", ["Helpers::ApplicationHelper", "ApplicationHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: ApplicationHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb defined ApplicationHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/application_helper.rb", nil)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb", ["Helpers::PhotoBaresHelper", "PhotoBaresHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoBaresHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_bares_helper.rb defined PhotoBaresHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb", ["Helpers::PhotoDbsHelper", "PhotoDbsHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoDbsHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_dbs_helper.rb defined PhotoDbsHelper
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb", ["Helpers::PhotoFilesHelper", "PhotoFilesHelper"])
+Dependencies: called new_constants_in("Helpers", :Object)
+Dependencies: New constants: PhotoFilesHelper
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/helpers/photo_files_helper.rb defined PhotoFilesHelper
+Dependencies: New constants: ApplicationController
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/controllers/application.rb defined ApplicationController
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: OptionParser
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CSV
+Dependencies: New constants: FixtureClassNotFound, Fixtures, Fixture
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: Dispatcher
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SQLite3
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: SWIG
+Dependencies: New constants: 
+  [4;36;1mSQL (0.000166)[0m   [0;1mselect sqlite_version(*)[0m
+  [4;35;1mSQL (0.000000)[0m   [0mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+  [4;36;1mSQL (0.000000)[0m   [0;1mSQLite3::SQLException: table schema_info already exists: CREATE TABLE schema_info (version integer)[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoFiles
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoDbs
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: CreatePhotoBares
+  [4;35;1mSQL (0.000169)[0m   [0mSELECT version FROM schema_info[0m
+  [4;36;1mSQL (0.000144)[0m   [0;1mSELECT version FROM schema_info[0m
+  [4;35;1mSQL (0.000144)[0m   [0mSELECT version FROM schema_info[0m
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: MockFile
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+Dependencies: New constants: 
+Dependencies: called load_missing_constant(FleximageTest, :PhotoBare)
+Dependencies: called load_missing_constant(Object, :PhotoBare)
+Dependencies: called require_or_load("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", nil)
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare
+Dependencies: called load_file("/Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb", ["Models::PhotoBare", "PhotoBare"])
+Dependencies: called new_constants_in("Models", :Object)
+Dependencies: New constants: PhotoBare
+Dependencies: loading /Users/alex/Projects/fleximage/vendor/plugins/fleximage/test/rails_root/app/models/photo_bare.rb defined PhotoBare
+Dependencies: called new_constants_in(Object)
+Dependencies: New constants: 
+  [4;36;1mPhotoBare Create (0.000490)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:51:36', '2008-04-18 16:51:36')[0m
+  [4;35;1mPhotoBare Create (0.000380)[0m   [0mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:51:36', '2008-04-18 16:51:36')[0m
+  [4;36;1mPhotoBare Create (0.000585)[0m   [0;1mINSERT INTO photo_bares ("updated_at", "created_at") VALUES('2008-04-18 16:51:53', '2008-04-18 16:51:53')[0m
