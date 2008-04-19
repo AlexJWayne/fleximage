@@ -221,6 +221,7 @@ module Fleximage
         error_strings = [
           'Improper image header',
           'no decode delegate for this image format',
+          'UnableToOpenBlob'
         ]
         if e.to_s =~ /#{error_strings.join('|')}/
           @invalid_image = true

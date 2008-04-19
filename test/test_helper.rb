@@ -26,5 +26,6 @@ class Test::Unit::TestCase #:nodoc:
   self.use_instantiated_fixtures  = false
 end
 
-# Require testable file upload class
 require 'test/mock_file'
+require 'open-uri'
+FIXTURES = 'test/fixtures'
