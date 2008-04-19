@@ -1,4 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :avatars
+
   map.resources :photo_bares
 
   map.resources :photo_dbs

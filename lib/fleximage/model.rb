@@ -218,7 +218,11 @@ module Fleximage
           save_temp_image(file) unless @dont_save_temp
         end
       rescue Magick::ImageMagickError => e
-        if e.to_s =~ /no decode delegate for this image format/
+        error_strings = [
+          'Improper image header',
+          'no decode delegate for this image format',
+        ]
+        if e.to_s =~ /#{error_strings.join('|')}/
           @invalid_image = true
         else
           raise e
@@ -356,11 +360,11 @@ module Fleximage
       # Execute image presence and validity validations.
       def validate #:nodoc:
         field_name = (@image_file_url && @image_file_url.any?) ? :image_file_url : :image_file
-        
-        if self.class.require_image && !has_image?
-          errors.add field_name, self.class.missing_image_message
-        elsif @invalid_image
+                
+        if @invalid_image
           errors.add field_name, self.class.invalid_image_message
+        elsif self.class.require_image && !has_image?
+          errors.add field_name, self.class.missing_image_message
         end
       end
       
