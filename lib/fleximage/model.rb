@@ -444,7 +444,7 @@ module Fleximage
         def master_image_not_found
           # Load the default image
           if self.class.default_image_path
-            @output_image = Magick::Image.read(self.class.default_image_path).first
+            @output_image = Magick::Image.read("#{RAILS_ROOT}/#{self.class.default_image_path}").first
           
           # No default, not master image, so raise exception
           else
