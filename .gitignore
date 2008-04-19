@@ -1,2 +1,2 @@
-test/rails_root/log/*
+*.log
 test/rails_root/public/uploads/*
