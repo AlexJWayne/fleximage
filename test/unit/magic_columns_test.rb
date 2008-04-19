@@ -14,5 +14,4 @@ class FleximageMagicColumnsTest < Test::Unit::TestCase
     assert_equal 110,   p.image_height
     assert_equal 276,   p.image_width
   end
-  
 end
