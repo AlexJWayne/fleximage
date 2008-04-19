@@ -13,6 +13,9 @@ ActiveRecord::Migrator.migrate("#{RAILS_ROOT}/db/migrate")
 Test::Unit::TestCase.fixture_path = File.dirname(__FILE__) + "/fixtures/"
 $LOAD_PATH.unshift(Test::Unit::TestCase.fixture_path)
  
+require 'test/mock_file'
+require 'open-uri'
+
 class Test::Unit::TestCase #:nodoc:
   def create_fixtures(*table_names)
     if block_given?
@@ -24,8 +27,18 @@ class Test::Unit::TestCase #:nodoc:
  
   self.use_transactional_fixtures = true
   self.use_instantiated_fixtures  = false
+  
+  def files(name)
+    case name
+    when :photo
+      MockFile.new("#{RAILS_ROOT}/../fixtures/photo.jpg")
+      
+    when :not_a_photo
+      MockFile.new("#{RAILS_ROOT}/../fixtures/not_a_photo.txt")
+    
+    when :web_photo
+      'http://www.google.com/intl/en_ALL/images/logo.gif'
+      
+    end
+  end
 end
-
-require 'test/mock_file'
-require 'open-uri'
-FIXTURES = 'test/fixtures'

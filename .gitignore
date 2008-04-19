@@ -1,2 +1,2 @@
 *.log
-uploads/
+test/rails_root/public/uploads/

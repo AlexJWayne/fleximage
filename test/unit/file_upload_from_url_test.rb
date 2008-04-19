@@ -1,8 +1,8 @@
 require 'test/test_helper'
 
-class FleximageTest < Test::Unit::TestCase
+class FleximageFileUploadFromUrlTest < Test::Unit::TestCase
   def test_should_be_valid_with_image_from_url
-    p = PhotoBare.new(:image_file_url => 'http://www.google.com/intl/en_ALL/images/logo.gif')
+    p = PhotoBare.new(:image_file_url => files(:web_photo))
     assert p.save, 'Record expected to be valid after upload via URL'
   end
   

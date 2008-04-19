@@ -1,6 +1,6 @@
 require 'test/test_helper'
 
-class FleximageTest < Test::Unit::TestCase
+class FleximageRequireImageOptionTest < Test::Unit::TestCase
   def test_should_require_image_by_default
     p = PhotoBare.new
     assert !p.save, 'Record expected to not be allowed to save'
