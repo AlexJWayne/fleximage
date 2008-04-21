@@ -11,7 +11,7 @@ module Fleximage
   # In this example, +image+ is an instance of ImageProxy
   class ImageProxy
     
-    class OepratorNotFound < NameError #:nodoc:
+    class OperatorNotFound < NameError #:nodoc:
     end
     
     # The image to be manipulated by operators.
@@ -35,7 +35,7 @@ module Fleximage
     
     rescue NameError => e
       if e.to_s =~ /uninitialized constant Fleximage::Operator::#{class_name}/
-        raise OepratorNotFound, "No operator Fleximage::Operator::#{class_name} found for the method \"#{method_name}\""
+        raise OperatorNotFound, "No operator Fleximage::Operator::#{class_name} found for the method \"#{method_name}\""
       else
         raise e
       end
