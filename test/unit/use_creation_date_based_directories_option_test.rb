@@ -1,4 +1,4 @@
-require 'test/test_helper'
+require File.dirname(__FILE__) + '/../../test/test_helper'
 
 class FleximageUseCreationDateBasedDirectoriesOptionTest < Test::Unit::TestCase
   def test_should_store_images_with_creation_date_based_directories

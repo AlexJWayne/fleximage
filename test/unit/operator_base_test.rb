@@ -1,4 +1,4 @@
-require 'test/test_helper'
+require File.dirname(__FILE__) + '/../../test/test_helper'
 
 class FleximageOperatorBaseTest < Test::Unit::TestCase
   def setup

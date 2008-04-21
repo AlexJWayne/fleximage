@@ -1,4 +1,4 @@
-require 'test/test_helper'
+require File.dirname(__FILE__) + '/../../test/test_helper'
 
 class FleximageRequireImageOptionTest < Test::Unit::TestCase
   def test_should_require_image_by_default

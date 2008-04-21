@@ -1,5 +1,5 @@
 # Load the environment
-ENV['RAILS_ENV'] ||= 'sqlite3'
+ENV['RAILS_ENV'] ||= 'test'
 require File.dirname(__FILE__) + '/rails_root/config/environment.rb'
  
 # Load the testing framework
@@ -13,7 +13,7 @@ ActiveRecord::Migrator.migrate("#{RAILS_ROOT}/db/migrate")
 Test::Unit::TestCase.fixture_path = File.dirname(__FILE__) + "/fixtures/"
 $LOAD_PATH.unshift(Test::Unit::TestCase.fixture_path)
  
-require 'test/mock_file'
+require File.dirname(__FILE__) + '/mock_file'
 require 'open-uri'
 
 class Test::Unit::TestCase #:nodoc:

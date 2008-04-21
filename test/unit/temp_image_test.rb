@@ -1,4 +1,4 @@
-require 'test/test_helper'
+require File.dirname(__FILE__) + '/../../test/test_helper'
 
 class FleximageTempImageTest < Test::Unit::TestCase
   def test_should_save_and_use_a_temp_image

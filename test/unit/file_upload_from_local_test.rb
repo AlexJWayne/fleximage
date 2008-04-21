@@ -1,4 +1,4 @@
-require 'test/test_helper'
+require File.dirname(__FILE__) + '/../../test/test_helper'
 
 class FleximageFileUploadFromLocalTest < Test::Unit::TestCase
   def test_should_be_valid_with_image
