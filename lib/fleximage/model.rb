@@ -89,6 +89,9 @@ module Fleximage
           end
         end
         
+        # validation callback
+        validate :validate_image
+        
         # The filename of the temp image.  Used for storing of good images when validation fails
         # and the form needs to be redisplayed.
         attr_reader :image_file_temp
@@ -359,7 +362,7 @@ module Fleximage
       end
       
       # Execute image presence and validity validations.
-      def validate #:nodoc:
+      def validate_image #:nodoc:
         field_name = (@image_file_url && @image_file_url.any?) ? :image_file_url : :image_file
                 
         if @invalid_image
