@@ -8,9 +8,10 @@ task :default => :test
 desc 'Test the fleximage plugin.'
 Rake::TestTask.new(:test) do |t|
   t.libs << 'lib'
-  t.pattern = 'test/**/*_test.rb'
+  t.pattern = 'test/unit/**/*_test.rb'
   t.verbose = true
 end
+
 
 desc 'Generate documentation for the fleximage plugin.'
 Rake::RDocTask.new(:rdoc) do |rdoc|

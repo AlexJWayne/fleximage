@@ -89,6 +89,9 @@ module Fleximage
           end
         end
         
+        # validation callback
+        validate :validate_image
+        
         # The filename of the temp image.  Used for storing of good images when validation fails
         # and the form needs to be redisplayed.
         attr_reader :image_file_temp
@@ -218,7 +221,12 @@ module Fleximage
           save_temp_image(file) unless @dont_save_temp
         end
       rescue Magick::ImageMagickError => e
-        if e.to_s =~ /no decode delegate for this image format/
+        error_strings = [
+          'Improper image header',
+          'no decode delegate for this image format',
+          'UnableToOpenBlob'
+        ]
+        if e.to_s =~ /#{error_strings.join('|')}/
           @invalid_image = true
         else
           raise e
@@ -354,13 +362,13 @@ module Fleximage
       end
       
       # Execute image presence and validity validations.
-      def validate #:nodoc:
+      def validate_image #:nodoc:
         field_name = (@image_file_url && @image_file_url.any?) ? :image_file_url : :image_file
-        
-        if self.class.require_image && !has_image?
-          errors.add field_name, self.class.missing_image_message
-        elsif @invalid_image
+                
+        if @invalid_image
           errors.add field_name, self.class.invalid_image_message
+        elsif self.class.require_image && !has_image?
+          errors.add field_name, self.class.missing_image_message
         end
       end
       
@@ -402,13 +410,14 @@ module Fleximage
         def perform_preprocess_operation
           if self.class.preprocess_image_operation
             operate(&self.class.preprocess_image_operation)
+            set_magic_attributes #update width and height magic columns
             @uploaded_image = @output_image
           end
         end
         
         # If any magic column names exists fill them with image meta data.
-        def set_magic_attributes(file)
-          if self.respond_to?(:image_filename=)
+        def set_magic_attributes(file = nil)
+          if file && self.respond_to?(:image_filename=)
             filename = file.original_filename if file.respond_to?(:original_filename)
             filename = file.basename          if file.respond_to?(:basename)
             self.image_filename = filename
@@ -438,7 +447,7 @@ module Fleximage
         def master_image_not_found
           # Load the default image
           if self.class.default_image_path
-            @output_image = Magick::Image.read(self.class.default_image_path).first
+            @output_image = Magick::Image.read("#{RAILS_ROOT}/#{self.class.default_image_path}").first
           
           # No default, not master image, so raise exception
           else

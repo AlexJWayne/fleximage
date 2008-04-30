@@ -1,7 +1,10 @@
 module Fleximage
   module Operator
     
-    class BadOperatorResult < RuntimeError #:nodoc:
+    class BadOperatorResult < Exception #:nodoc:
+    end
+    
+    class OperationNotImplemented < Exception #:nodoc:
     end
     
     # The Operator::Base class is what all other Operator classes inherit from.
@@ -39,7 +42,7 @@ module Fleximage
       # Perform the operation.  Override this method in your Operator::Base subclasses
       # in order to write your own image operators.
       def operate(*args)
-        raise "Override this method in your own subclass."
+        raise OperationNotImplemented, "Override this method in your own subclass."
       end
       
       # ---
