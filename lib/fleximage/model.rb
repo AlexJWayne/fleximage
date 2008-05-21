@@ -70,22 +70,20 @@ module Fleximage
       # configure with a nice looking block.
       def acts_as_fleximage(options = {})
         
-        # Insert class methods
-        class_eval do
-          include Fleximage::Model::InstanceMethods
-          
-          # Call this class method just like you would call +operate+ in a view.
-          # The image transoformation in the provided block will be run on every uploaded image before its saved as the 
-          # master image.
-          def self.preprocess_image(&block)
-            preprocess_image_operation(block)
-          end
-          
-          # Internal method to ask this class if it stores image in the DB.
-          def self.db_store?
-            columns.find do |col|
-              col.name == 'image_file_data'
-            end
+        # Include the necesary instance methods
+        include Fleximage::Model::InstanceMethods
+        
+        # Call this class method just like you would call +operate+ in a view.
+        # The image transoformation in the provided block will be run on every uploaded image before its saved as the 
+        # master image.
+        def self.preprocess_image(&block)
+          preprocess_image_operation(block)
+        end
+        
+        # Internal method to ask this class if it stores image in the DB.
+        def self.db_store?
+          columns.find do |col|
+            col.name == 'image_file_data'
           end
         end
         
@@ -247,10 +245,8 @@ module Fleximage
           
           # Force a URL based file to have an original_filename
           eval <<-CODE
-            class << file
-              def original_filename
-                "#{file_url}"
-              end
+            def file.original_filename
+              "#{file_url}"
             end
           CODE
           

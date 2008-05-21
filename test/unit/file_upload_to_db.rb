@@ -23,4 +23,12 @@ class FleximageFileUploadToDbTest < Test::Unit::TestCase
     assert_equal 1, p.errors.size
     assert_equal 'was not a readable image', p.errors.on(:image_file)
   end
+  
+  def test_should_retrieve_a_stored_image
+    id = PhotoDb.create(:image_file => files(:photo)).id
+    p = PhotoDb.find(id)
+    assert_kind_of Magick::Image, p.load_image
+    assert_equal 768,  p.load_image.columns
+    assert_equal 1024, p.load_image.rows
+  end
 end

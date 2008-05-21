@@ -25,4 +25,11 @@ class FleximageFileUploadFromUrlTest < Test::Unit::TestCase
   rescue SocketError
     print '!'
   end
+  
+  def test_should_have_an_original_filename
+    p = PhotoFile.new(:image_file_url => files(:web_photo))
+    assert_equal p.image_filename, files(:web_photo)
+  rescue SocketError
+    print '!'
+  end
 end
