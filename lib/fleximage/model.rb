@@ -315,8 +315,11 @@ module Fleximage
       # processed output image.
       def load_image #:nodoc:
         @output_image ||= @uploaded_image
+        
+        # Return the current image if we have loaded it already
         return @output_image if @output_image
         
+        # Load the image from disk
         if self.class.db_store?
           if image_file_data && image_file_data.any?
             @output_image = Magick::Image.from_blob(image_file_data).first
@@ -447,7 +450,7 @@ module Fleximage
           
           # No default, not master image, so raise exception
           else
-            message = "Master image was not found for this record, so no image can be rendered."
+            message = "Master image was not found for this record"
             
             if !self.class.db_store?
               message << "\nExpected image to be at:"
