@@ -9,13 +9,8 @@ rescue MissingSourceFile => e
   raise e
 end
 
-# Load dsl_accessor
-begin
-  require 'dsl_accessor'
-rescue MissingSourceFile => e
-  puts %{ERROR :: FlexImage requires the dsl_accessor gem.  "gem install dsl_accessor"}
-  raise e
-end
+# Load dsl_accessor from lib
+require 'dsl_accessor'
 
 # Load Operators
 require 'fleximage/operator/base'
