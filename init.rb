@@ -26,9 +26,16 @@ ActiveRecord::Base.class_eval { include Fleximage::Model }
 require 'fleximage/image_proxy'
 
 # Setup View
-require 'fleximage/view'
 ActionController::Base.exempt_from_layout :flexi
-ActionView::Template.register_template_handler :flexi, Fleximage::View
+if defined?(ActionView::Template)
+  # Rails >= 2.1
+  require 'fleximage/view'
+  ActionView::Template.register_template_handler :flexi, Fleximage::View
+else
+  # Rails < 2.1
+  require 'fleximage/legacy_view'
+  ActionView::Base.register_template_handler :flexi, Fleximage::LegacyView
+end
 
 # Setup Helper
 require 'fleximage/helper'
