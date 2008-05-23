@@ -70,22 +70,20 @@ module Fleximage
       # configure with a nice looking block.
       def acts_as_fleximage(options = {})
         
-        # Insert class methods
-        class_eval do
-          include Fleximage::Model::InstanceMethods
-          
-          # Call this class method just like you would call +operate+ in a view.
-          # The image transoformation in the provided block will be run on every uploaded image before its saved as the 
-          # master image.
-          def self.preprocess_image(&block)
-            preprocess_image_operation(block)
-          end
-          
-          # Internal method to ask this class if it stores image in the DB.
-          def self.db_store?
-            columns.find do |col|
-              col.name == 'image_file_data'
-            end
+        # Include the necesary instance methods
+        include Fleximage::Model::InstanceMethods
+        
+        # Call this class method just like you would call +operate+ in a view.
+        # The image transoformation in the provided block will be run on every uploaded image before its saved as the 
+        # master image.
+        def self.preprocess_image(&block)
+          preprocess_image_operation(block)
+        end
+        
+        # Internal method to ask this class if it stores image in the DB.
+        def self.db_store?
+          columns.find do |col|
+            col.name == 'image_file_data'
           end
         end
         
@@ -247,10 +245,8 @@ module Fleximage
           
           # Force a URL based file to have an original_filename
           eval <<-CODE
-            class << file
-              def original_filename
-                "#{file_url}"
-              end
+            def file.original_filename
+              "#{file_url}"
             end
           CODE
           
@@ -319,8 +315,11 @@ module Fleximage
       # processed output image.
       def load_image #:nodoc:
         @output_image ||= @uploaded_image
+        
+        # Return the current image if we have loaded it already
         return @output_image if @output_image
         
+        # Load the image from disk
         if self.class.db_store?
           if image_file_data && image_file_data.any?
             @output_image = Magick::Image.from_blob(image_file_data).first
@@ -451,7 +450,7 @@ module Fleximage
           
           # No default, not master image, so raise exception
           else
-            message = "Master image was not found for this record, so no image can be rendered."
+            message = "Master image was not found for this record"
             
             if !self.class.db_store?
               message << "\nExpected image to be at:"

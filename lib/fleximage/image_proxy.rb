@@ -30,8 +30,15 @@ module Fleximage
       class_name = method_name.to_s.camelcase
       operator_class = "Fleximage::Operator::#{class_name}".constantize
       
-      # Execute the operator
-      @image = operator_class.new(self, @image, @model).execute(*args)
+      # Define a method for this operator so future calls to this operation are faster
+      self.class.module_eval <<-EOF
+        def #{method_name}(*args)
+          @image = execute_operator(#{operator_class}, *args)
+        end
+      EOF
+      
+      # Call the method that was just defined to perform its functionality.
+      send(method_name, *args)
     
     rescue NameError => e
       if e.to_s =~ /uninitialized constant Fleximage::Operator::#{class_name}/
@@ -40,6 +47,13 @@ module Fleximage
         raise e
       end
     end
+    
+    private
+      # Instantiate and execute the requested image Operator.
+      def execute_operator(operator_class, *args)
+        operator_class.new(self, @image, @model).execute(*args)
+      end
+    
   end
   
 end

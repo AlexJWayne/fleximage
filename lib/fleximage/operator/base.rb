@@ -29,13 +29,16 @@ module Fleximage
       
       # Start the operation
       def execute(*args) #:nodoc:
+        # Get the result of the Operators #operate method
         result = operate(*args)
         
+        # Ensure that the result is an RMagick:Image object
         unless result.is_a?(Magick::Image)
           raise BadOperatorResult, "expected #{self.class}#operate to return an instance of Magick::Image. \n"+
                                    "Got instance of #{result.class} instead."
         end
         
+        # Save the result to the operator proxy
         @proxy.image = result
       end
       
@@ -60,38 +63,42 @@ module Fleximage
       #
       #   x, y = size_to_xy("10x20")
       def size_to_xy(size)
-        if size.is_a?(Array) && size.size == 2
+        case          
+        when size.is_a?(Array) && size.size == 2  # [320, 240]
           size
-        elsif size.to_s.include?('x')
+      
+        when size.to_s.include?('x')              # "320x240"
           size.split('x').collect(&:to_i)
-        else
+        
+        else # Anything else, convert the object to an integer and assume square dimensions
           [size.to_i, size.to_i]
+          
         end
       end
       
       # Scale the image, respecting aspect ratio.  
       # Operation will happen in the main <tt>@image</tt> unless you supply the +img+ argument
       # to operate on instead.
-      def scale(size, img = nil)
-        (img || @image).change_geometry!(size_to_xy(size).join('x')) do |cols, rows, img|
+      def scale(size, img = @image)
+        img.change_geometry!(size_to_xy(size).join('x')) do |cols, rows, _img|
           cols = 1 if cols < 1
           rows = 1 if rows < 1
-          img.resize!(cols, rows)
+          _img.resize!(cols, rows)
         end
       end
       
       # Scale to the desired size and crop edges off to get the exact dimensions needed.
       # Operation will happen in the main <tt>@image</tt> unless you supply the +img+ argument
       # to operate on instead.
-      def scale_and_crop(size, img = nil)
-        (img || @image).crop_resized!(*size_to_xy(size))
+      def scale_and_crop(size, img = @image)
+        img.crop_resized!(*size_to_xy(size))
       end
       
       # Resize the image, with no respect to aspect ratio.  
       # Operation will happen in the main <tt>@image</tt> unless you supply the +img+ argument
       # to operate on instead.
-      def stretch(size, img = nil)
-        (img || @image).resize!(*size_to_xy(size))
+      def stretch(size, img = @image)
+        img.resize!(*size_to_xy(size))
       end
       
       # Convert a symbol to an RMagick blending mode.
