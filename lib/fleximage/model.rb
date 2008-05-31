@@ -91,6 +91,10 @@ module Fleximage
           end
         end
         
+        def self.has_store?
+          db_store? || image_directory
+        end
+        
         # validation callback
         validate :validate_image
         
@@ -327,14 +331,18 @@ module Fleximage
         return @output_image if @output_image
         
         # Load the image from disk
-        if self.class.db_store?
-          if image_file_data && image_file_data.any?
-            @output_image = Magick::Image.from_blob(image_file_data).first
+        if self.class.has_store?
+          if self.class.db_store?
+            if image_file_data && image_file_data.any?
+              @output_image = Magick::Image.from_blob(image_file_data).first
+            else
+              master_image_not_found
+            end
           else
-            master_image_not_found
+            @output_image = Magick::Image.read(file_path).first
           end
         else
-          @output_image = Magick::Image.read(file_path).first
+          master_image_not_found
         end
         
       rescue Magick::ImageMagickError => e
