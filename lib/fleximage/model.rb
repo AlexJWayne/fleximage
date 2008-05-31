@@ -142,7 +142,7 @@ module Fleximage
         image_directory options[:image_directory] if options[:image_directory]
         
         # Require the declaration of a master image storage directory
-        if !image_directory && !db_store?
+        if !image_directory && !db_store? && !default_image && !default_image_path
           raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option\n"+
                 "Or add a database column named image_file_data for DB storage"
         end
