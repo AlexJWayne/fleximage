@@ -52,17 +52,8 @@ module Fleximage
       # - SUPPORT METHODS
       # ---
       
-      # Converts a size object to an [x,y] array.  Acceptible formats are:
-      # 
-      # * 10
-      # * "10"
-      # * "10x20"
-      # * [10, 20]
-      #
-      # Usage:
-      #
-      #   x, y = size_to_xy("10x20")
-      def size_to_xy(size)
+      # Allows access to size conversion globally.  See size_to_xy for a more detailed explanation
+      def self.size_to_xy(size)
         case          
         when size.is_a?(Array) && size.size == 2  # [320, 240]
           size
@@ -74,6 +65,20 @@ module Fleximage
           [size.to_i, size.to_i]
           
         end
+      end
+      
+      # Converts a size object to an [x,y] array.  Acceptible formats are:
+      # 
+      # * 10
+      # * "10"
+      # * "10x20"
+      # * [10, 20]
+      #
+      # Usage:
+      #
+      #   x, y = size_to_xy("10x20")
+      def size_to_xy(size)
+        self.class.size_to_xy size
       end
       
       # Scale the image, respecting aspect ratio.  

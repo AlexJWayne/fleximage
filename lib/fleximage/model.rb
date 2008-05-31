@@ -38,6 +38,9 @@ module Fleximage
     #   very large in filesize.
     # * +default_image_path+: (String, nil default) If no image is present for this record, the image at this path will be
     #   used instead.  Useful for a placeholder graphic for new content that may not have an image just yet.
+    # * +default_image+: A hash which defines an empty starting image.  This hash look like: <tt>:size => '123x456',
+    #   :color => :transparent</tt>, where <tt>:size</tt> defines the dimensions of the default image, and <tt>:color</tt>
+    #   defines the fill.  <tt>:color</tt> can be a named color as a string ('red'), :transparent, or a Magick::Pixel object.
     # * +preprocess_image+: (Block, no default) Call this class method just like you would call +operate+ in a view.
     #   The image transoformation in the provided block will be run on every uploaded image before its saved as the 
     #   master image.
@@ -51,8 +54,9 @@ module Fleximage
     #       image_storage_format      :png
     #       require_image             true
     #       missing_image_message     'is required'
-    #       invalid_image_message     'was not a readable image'
+    #       invalid_image_message     'was not a readable image'\
     #       default_image_path        'public/images/no_photo_yet.png'
+    #       default_image             nil
     #       output_image_jpg_quality  85
     #       
     #       preprocess_image do |image|
@@ -117,6 +121,9 @@ module Fleximage
         
         # Set a default image to use when no image has been assigned to this record
         dsl_accessor :default_image_path
+        
+        # Set a default image based on a a size and fill
+        dsl_accessor :default_image
         
         # A block that processes an image before it gets saved as the master image of a record.
         # Can be helpful to resize potentially huge images to something more manageable. Set via
@@ -444,9 +451,18 @@ module Fleximage
         
         # Load the default image, or raise an expection
         def master_image_not_found
-          # Load the default image
+          # Load the default image from a path
           if self.class.default_image_path
             @output_image = Magick::Image.read("#{RAILS_ROOT}/#{self.class.default_image_path}").first
+          
+          # Or create a default image
+          elsif self.class.default_image
+            x, y = Fleximage::Operator::Base.size_to_xy(self.class.default_image[:size])
+            color = self.class.default_image[:color]
+            
+            @output_image = Magick::Image.new(x, y) do
+              self.background_color = color if color && color != :transparent
+            end
           
           # No default, not master image, so raise exception
           else

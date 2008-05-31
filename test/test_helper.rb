@@ -41,4 +41,20 @@ class Test::Unit::TestCase #:nodoc:
       
     end
   end
+  
+  def color_at(image, coords)
+    image.load_image.pixel_color(*coords)
+  end
+  
+  def to_color(rgb)
+    Magick::Pixel.new(*rgb)
+  end
+  
+  def assert_color(expected, coords, image)
+    coords    = coords.split('x').collect(&:to_i)
+    expected  = to_color(expected)
+    actual    = color_at(image, coords)
+    
+    assert_equal(expected, actual, "Wrong color at (#{coords.join(',')}).  Expected #{expected}, Got #{actual}")
+  end
 end
