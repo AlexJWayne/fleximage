@@ -19,4 +19,13 @@ class FleximageFileUploadFromLocalTest < Test::Unit::TestCase
     assert_equal 1, p.errors.size
     assert_equal 'was not a readable image', p.errors.on(:image_file)
   end
+  
+  def test_should_correct_colorspace_and_dpi
+    p = PhotoBare.new(:image_file => files(:cmyk))
+    image = p.load_image
+    assert_equal Magick::RGBColorspace, image.colorspace
+    assert_equal '72x72', image.density
+    assert_equal 300, image.columns
+    assert_equal 300, image.rows
+  end
 end

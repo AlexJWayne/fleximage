@@ -38,7 +38,10 @@ class Test::Unit::TestCase #:nodoc:
     
     when :web_photo
       'http://www.google.com/intl/en_ALL/images/logo.gif'
-      
+    
+    when :cmyk
+      MockFile.new("#{RAILS_ROOT}/../fixtures/cmyk.jpg")
+    
     end
   end
   

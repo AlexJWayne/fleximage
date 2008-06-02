@@ -223,6 +223,11 @@ module Fleximage
             @uploaded_image = Magick::Image.from_blob(file.read).first
           end
           
+          # Sanitize image data
+          @uploaded_image.colorspace  = Magick::RGBColorspace
+          @uploaded_image.density     = '72'
+          
+          # Save meta data to database
           set_magic_attributes(file)
           
           # Success, make sure everything is valid
