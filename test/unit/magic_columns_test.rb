@@ -16,4 +16,15 @@ class FleximageMagicColumnsTest < Test::Unit::TestCase
   rescue SocketError
     print '!'
   end
+  
+  def test_should_delete_magic_columns_when_image_is_deleted
+    p = PhotoFile.new(:image_file => files(:photo))
+    p.save
+    
+    p = PhotoFile.find(p.id)
+    p.delete_image_file.save
+    
+    assert_nil p.image_width
+    assert_nil p.image_height
+  end
 end

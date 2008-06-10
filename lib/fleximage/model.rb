@@ -377,7 +377,17 @@ module Fleximage
       # Delete the image file for this record. This is automatically ran after this record gets 
       # destroyed, but you can call it manually if you want to remove the image from the record.
       def delete_image_file
-        File.delete(file_path) if !self.class.db_store? && File.exists?(file_path)
+        return unless self.class.has_store?
+        
+        if self.class.db_store?
+          update_attribute :image_file_data, nil unless frozen?
+        else
+          File.delete(file_path) && File.exists?(file_path)
+        end
+        
+        clear_magic_attributes
+        
+        self
       end
       
       # Execute image presence and validity validations.
@@ -431,6 +441,14 @@ module Fleximage
             operate(&self.class.preprocess_image_operation)
             set_magic_attributes #update width and height magic columns
             @uploaded_image = @output_image
+          end
+        end
+        
+        def clear_magic_attributes
+          unless frozen?
+            self.image_filename = nil if respond_to?(:image_filename=)
+            self.image_width    = nil if respond_to?(:image_width=)
+            self.image_height   = nil if respond_to?(:image_height=)
           end
         end
         
