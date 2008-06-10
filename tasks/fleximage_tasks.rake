@@ -1,12 +1,24 @@
 namespace :fleximage do
-  namespace :convert do
-    
-    # Find the model class
-    def model_class
-      raise 'You must specify a FLEXIMAGE_CLASS=MyClass' unless ENV['FLEXIMAGE_CLASS']
-      @model_class ||= ENV['FLEXIMAGE_CLASS'].camelcase.constantize
+  
+  # Find the model class
+  def model_class
+    raise 'You must specify a FLEXIMAGE_CLASS=MyClass' unless ENV['FLEXIMAGE_CLASS']
+    @model_class ||= ENV['FLEXIMAGE_CLASS'].camelcase.constantize
+  end
+  
+  desc "Populate width and height magic columns from the current image store.  Useful when migrating from on old installation."
+  task :dimensions => :environment do
+    model_class.find(:all).each do |obj|
+      if obj.has_image?
+        img = obj.load_image
+        obj.update_attribute :image_width,  img.columns if obj.respond_to?(:image_width=)
+        obj.update_attribute :image_height, img.rows    if obj.respond_to?(:image_height=)
+      end
     end
-    
+  end
+  
+  namespace :convert do
+        
     def convert_directory_format(to_format)
       model_class.find(:all).each do |obj|
         
