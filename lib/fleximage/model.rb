@@ -382,7 +382,7 @@ module Fleximage
         if self.class.db_store?
           update_attribute :image_file_data, nil unless frozen?
         else
-          File.delete(file_path) && File.exists?(file_path)
+          File.delete(file_path) if File.exists?(file_path)
         end
         
         clear_magic_attributes
