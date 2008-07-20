@@ -102,6 +102,9 @@ module Fleximage
         # and the form needs to be redisplayed.
         attr_reader :image_file_temp
         
+        # Setter for jpg compression quality at the instance level
+        attr_accessor :jpg_compression_quality
+        
         # Where images get stored
         dsl_accessor :image_directory
         
@@ -339,11 +342,13 @@ module Fleximage
         if self.class.has_store?
           if self.class.db_store?
             if image_file_data && image_file_data.any?
+              # Load the image from the database column
               @output_image = Magick::Image.from_blob(image_file_data).first
             else
               master_image_not_found
             end
           else
+            # Load the image from the disk
             @output_image = Magick::Image.read(file_path).first
           end
         else
@@ -365,7 +370,7 @@ module Fleximage
         @output_image.format = format
         @output_image.strip!
         if format = 'JPG'
-          quality = self.class.output_image_jpg_quality
+          quality = @jpg_compression_quality || self.class.output_image_jpg_quality
           @output_image.to_blob { self.quality = quality }
         else
           @output_image.to_blob
