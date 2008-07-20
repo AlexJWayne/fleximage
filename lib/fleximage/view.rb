@@ -37,6 +37,11 @@ module Fleximage
       # Set proper content type
       @view.controller.response.content_type = Mime::Type.lookup_by_extension(requested_format.to_s).to_s
       
+      # Set proper caching headers
+      if defined?(Rails) && Rails.env == 'production'
+        @view.controller.response.headers['Cache-Control'] = 'public, max-age=86400'
+      end
+      
       # return rendered result
       return result.output_image(:format => requested_format)
     ensure
