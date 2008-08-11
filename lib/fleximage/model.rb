@@ -356,7 +356,7 @@ module Fleximage
         end
         
       rescue Magick::ImageMagickError => e
-        if e.to_s =~ /unable to open file/
+        if e.to_s =~ /unable to open (file|image)/
           master_image_not_found
         else
           raise e
