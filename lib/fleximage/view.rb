@@ -5,6 +5,14 @@ module Fleximage
     class TemplateDidNotReturnImage < RuntimeError #:nodoc:
     end
     
+    def self.call(template)
+      "Fleximage::View.new(self).render(template)"
+    end
+
+    def initialize(action_view)
+      @view = action_view
+    end
+    
     def render(template)
       # process the view
       result = @view.instance_eval do
