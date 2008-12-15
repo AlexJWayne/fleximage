@@ -22,6 +22,16 @@ module Fleximage
       @image = image
       @model = model_obj
     end
+
+    # Shortcut for accessing current image width
+    def width
+      @image.columns
+    end
+
+    # Shortcut for accessing current image height
+    def height
+      @image.rows
+    end
     
     # A call to an unknown method will look for an Operator by that method's name.
     # If it finds one, it will execute that operator.
