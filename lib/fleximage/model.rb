@@ -154,6 +154,21 @@ module Fleximage
                 "Or add a database column named image_file_data for DB storage"
         end
       end
+
+      # Create a blank image of the specified width and height.
+      # By default the image will be transparent unless a background color is specified
+      def blank_image(width, height, background_color = nil)
+
+        image = Magick::Image.new(width, height) do
+          self.colorspace = Magick::RGBColorspace
+          self.depth = 8
+          self.density = '72'
+          self.format = 'PNG'
+          self.background_color = background_color ? background_color : Magick::Pixel.new(255, 255, 255, 255)
+        end
+
+        self.new(:image_data => image)
+      end
     end
     
     # Provides methods that every model instance that acts_as_fleximage needs.
@@ -298,6 +313,12 @@ module Fleximage
         end
       end
       
+      # Sets the uploaded image to the passed in Magick::Image object
+      def image_data=(data)
+        @uploaded_image = data          
+        set_magic_attributes(data)          
+      end
+
       # Return the @image_file_url that was previously assigned.  This is not saved
       # in the database, and only exists to make forms happy.
       def image_file_url
@@ -329,7 +350,7 @@ module Fleximage
           @output_image = proxy.image
         end
       end
-      
+
       # Load the image from disk/DB, or return the cached and potentially 
       # processed output image.
       def load_image #:nodoc:
