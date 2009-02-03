@@ -106,4 +106,19 @@ class FleximageOperatorBaseTest < Test::Unit::TestCase
     end
   end
   
+  
+  # gravity lookup
+  
+  def test_should_lookup_correct_gravity
+    assert_equal Magick::CenterGravity,     @op.symbol_to_gravity(:center)
+    assert_equal Magick::NorthGravity,      @op.symbol_to_gravity(:top)
+    assert_equal Magick::SouthWestGravity,  @op.symbol_to_gravity(:bottom_left)
+  end
+  
+  def test_should_raise_error_with_a_bad_gravity
+    assert_raise(ArgumentError) do
+      @op.symbol_to_gravity(:foo)
+    end
+  end
+  
 end

@@ -74,7 +74,7 @@ module Fleximage
         # apply shadow
         @image = shadow.composite(
           @image, 
-          GRAVITIES[:top_left], 
+          symbol_to_gravity(:top_left), 
           (shadow.columns - @image.columns) / 2 - options[:offset][0], 
           (shadow.rows    - @image.rows)    / 2 - options[:offset][1], 
           symbol_to_blending_mode(:over)

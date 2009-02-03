@@ -23,10 +23,12 @@ module Fleximage
     #       :size => '500x350'
     #     )
     #   end
-    # - or -
+    #
+    # or
+    #
     #   @photo.operate do |image|
     #     image.crop(
-    #       :gravity => :center
+    #       :gravity => :center,
     #       :from    => '100x50',
     #       :size    => '500x350'
     #     )
@@ -48,7 +50,7 @@ module Fleximage
         end
 
         # crop
-        @image.crop!(GRAVITIES[options[:gravity]], options[:from][0], options[:from][1], options[:size][0], options[:size][1], true)
+        @image.crop!(symbol_to_gravity(options[:gravity]), options[:from][0], options[:from][1], options[:size][0], options[:size][1], true)
       end
     end
     
