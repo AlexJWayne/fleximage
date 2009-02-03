@@ -70,7 +70,7 @@ module Fleximage
         #prepare arguments for composite!
         args = []
         args << overlay                                               #overlay image
-        args << GRAVITIES[options[:alignment] || :center]             #gravity
+        args << symbol_to_gravity(options[:alignment] || :center)     #gravity
         args += size_to_xy(options[:offset]) if options[:offset]      #offset
         args << symbol_to_blending_mode(options[:blending] || :over)  #compositing mode
         

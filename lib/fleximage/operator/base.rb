@@ -118,7 +118,17 @@ module Fleximage
       rescue NameError
         raise ArgumentError, ":#{mode} is not a valid blending mode."
       end
+      
+      def symbol_to_gravity(gravity_name)
+        gravity = GRAVITIES[gravity_name]
         
+        if gravity
+          gravity
+        else
+          raise ArgumentError, ":#{gravity_name} is not a valid gravity name.\n\nValid names are :center, :top, :top_right, :right, :bottom_right, :bottom, :bottom_left, :left, :top_left"
+        end
+      end
+      
         
     end # Base
     

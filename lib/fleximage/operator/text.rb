@@ -50,7 +50,7 @@ module Fleximage
 
         # prepare drawing surface
         text                = Magick::Draw.new
-        text.gravity        = GRAVITIES[options[:alignment]]
+        text.gravity        = symbol_to_gravity(options[:alignment])
         text.fill           = options[:color]
         text.text_antialias = options[:antialias]
         text.pointsize      = options[:font_size].to_i
