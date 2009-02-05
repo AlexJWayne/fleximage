@@ -48,7 +48,7 @@ module Fleximage
 				#prepare attributes for composite operation
 				args = []
 				args << @image
-				args << GRAVITIES[options[:alignment] || :center]
+				args << symbol_to_gravity(options[:alignment] || :center)
 				args += size_to_xy(options[:offset]) if options[:offset]
 				args << symbol_to_blending_mode(options[:blending] || :over)
 		
