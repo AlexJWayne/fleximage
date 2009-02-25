@@ -154,6 +154,21 @@ module Fleximage
                 "Or add a database column named image_file_data for DB storage"
         end
       end
+      
+      def image_file_exists(file)
+        # File must be a valid object
+        return false if file.nil?
+        
+        # Get the size of the file.  file.size works for form-uploaded images, file.stat.size works
+        # for file object created by File.open('foo.jpg', 'rb').  It must have a size > 0.
+        return false if (file.respond_to?(:size) ? file.size : file.stat.size) <= 0
+        
+        # object must respond to the read method to fetch its contents.
+        return false if !file.respond_to?(:read)
+        
+        # file validation passed, return true
+        true
+      end
     end
     
     # Provides methods that every model instance that acts_as_fleximage needs.
@@ -213,14 +228,7 @@ module Fleximage
       #   p = Product.find(1)
       #   p.images.create(params[:photo])
       def image_file=(file)
-        # Can't process a file if there's no file to process.
-        # This is needed for when requre_image is set to false and there's a possibility that file will be nil.
-        return if file.nil?
-        # Get the size of the file.  file.size works for form-uploaded images, file.stat.size works
-        # for file object created by File.open('foo.jpg', 'rb')
-        file_size = file.respond_to?(:size) ? file.size : file.stat.size
-        
-        if file.respond_to?(:read) && file_size > 0
+        if self.class.image_file_exists(file)
           
           # Create RMagick Image object from uploaded file
           if file.path
