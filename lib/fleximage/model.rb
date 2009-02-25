@@ -213,6 +213,9 @@ module Fleximage
       #   p = Product.find(1)
       #   p.images.create(params[:photo])
       def image_file=(file)
+        # Can't process a file if there's no file to process.
+        # This is needed for when requre_image is set to false and there's a possibility that file will be nil.
+        return if file.nil?
         # Get the size of the file.  file.size works for form-uploaded images, file.stat.size works
         # for file object created by File.open('foo.jpg', 'rb')
         file_size = file.respond_to?(:size) ? file.size : file.stat.size
