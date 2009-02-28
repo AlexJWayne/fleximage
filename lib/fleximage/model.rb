@@ -270,7 +270,7 @@ module Fleximage
       #   @photo.image_file_url = 'http://foo.com/bar.jpg'
       def image_file_url=(file_url)
         @image_file_url = file_url
-        if file_url =~ %r{^https?://}
+        if file_url =~ %r{^(https?|ftp)://}
           file = open(file_url)
           
           # Force a URL based file to have an original_filename
