@@ -34,9 +34,7 @@ or using:
 
   ./script/plugin install git://github.com/moser/fleximage_i18n.git
 
-== Original Doc:
-
-= Fleximage
+= Fleximage (original Doc)
 
 == Overview
 

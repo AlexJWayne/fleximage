@@ -146,7 +146,7 @@ Example:
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000014">operate</a>&nbsp;&nbsp;
+      <a href="#M000024">operate</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -168,19 +168,19 @@ Example:
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000014" class="method-detail">
-        <a name="M000014"></a>
+      <div id="method-M000024" class="method-detail">
+        <a name="M000024"></a>
 
         <div class="method-heading">
-          <a href="#M000014" class="method-signature">
+          <a href="#M000024" class="method-signature">
           <span class="method-name">operate</span><span class="method-args">(string_to_write, options = {})</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000014-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000014-source">
+            onclick="toggleCode('M000024-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000024-source">
 <pre>
     <span class="ruby-comment cmt"># File lib/fleximage/operator/text.rb, line 37</span>
 37:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-identifier">string_to_write</span>, <span class="ruby-identifier">options</span> = {})
@@ -199,7 +199,7 @@ Example:
 50: 
 51:         <span class="ruby-comment cmt"># prepare drawing surface</span>
 52:         <span class="ruby-identifier">text</span>                = <span class="ruby-constant">Magick</span><span class="ruby-operator">::</span><span class="ruby-constant">Draw</span>.<span class="ruby-identifier">new</span>
-53:         <span class="ruby-identifier">text</span>.<span class="ruby-identifier">gravity</span>        = <span class="ruby-constant">GRAVITIES</span>[<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:alignment</span>]]
+53:         <span class="ruby-identifier">text</span>.<span class="ruby-identifier">gravity</span>        = <span class="ruby-identifier">symbol_to_gravity</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:alignment</span>])
 54:         <span class="ruby-identifier">text</span>.<span class="ruby-identifier">fill</span>           = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:color</span>]
 55:         <span class="ruby-identifier">text</span>.<span class="ruby-identifier">text_antialias</span> = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:antialias</span>]
 56:         <span class="ruby-identifier">text</span>.<span class="ruby-identifier">pointsize</span>      = <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:font_size</span>].<span class="ruby-identifier">to_i</span>
