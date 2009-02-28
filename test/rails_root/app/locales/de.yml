@@ -1,0 +1,6 @@
+de:
+  activerecord:
+    errors:
+      messages:
+        missing_image: ist erforderlich
+        invalid_image: war nicht lesbar

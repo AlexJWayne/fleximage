@@ -118,10 +118,42 @@ module Fleximage
         dsl_accessor :require_image, :default => true
         
         # Missing image message
-        dsl_accessor :missing_image_message, :default => 'is required'
+        #dsl_accessor :missing_image_message, :default => 'is required'
+        
+        def self.missing_image_message(str = nil)
+          fb = 'is required'
+          if str.nil?
+            if @missing_image_message
+              @missing_image_message
+            else
+              translation = I18n.translate "activerecord.errors.models.#{self.model_name.underscore}.missing_image"
+              translation = I18n.translate "activerecord.errors.messages.missing_image", :default => fb if translation.match /translation missing:/
+              translation
+            end
+            
+          else
+            @missing_image_message = str
+          end
+        end
+        
         
         # Invalid image message
-        dsl_accessor :invalid_image_message, :default => 'was not a readable image'
+        #dsl_accessor :invalid_image_message, :default => 'was not a readable image'
+        
+        def self.invalid_image_message(str = nil)
+          fb = 'was not a readable image'
+          if str.nil?
+            if @invalid_image_message
+              @invalid_image_message
+            else
+              translation = I18n.translate "activerecord.errors.models.#{self.model_name.underscore}.invalid_image"
+              translation = I18n.translate "activerecord.errors.messages.invalid_image", :default => fb if translation.match /translation missing:/
+              translation
+            end
+          else
+            @invalid_image_message = str
+          end
+        end
         
         # Sets the quality of rendered JPGs
         dsl_accessor :output_image_jpg_quality, :default => 85

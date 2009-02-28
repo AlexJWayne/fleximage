@@ -1,3 +1,31 @@
+= I18n
+
+== Overview
+
+Uses the Rails I18n to translate error messages. 
+While they still can be set by using the 'missing_image_message' and 'invalid_image_message' accessors, it's better to configure them in your locale:
+
+  en:
+    activerecord:
+      errors:
+        messages:
+          missing_image: is really required
+          invalid_image: seems to be broken
+
+They can also be set on a model level:
+
+  en:
+    activerecord:
+      errors:
+        models:
+          photo:
+            missing_image: needs to be attached
+            invalid_image: is broken
+
+If no message is set in your locale, the default one of the original plugin will be shown.
+
+= Original Doc:
+
 = Fleximage
 
 == Overview
