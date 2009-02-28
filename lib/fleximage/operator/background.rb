@@ -6,13 +6,13 @@ module Fleximage
     # It accepts the following options:
     #
     # * +color+: the color of the background image.
-    #   Use an RMagick named color or use the +color+ method in FlexImage::Controller, or a
+    #   Use an RMagick named color or use the +color+ method in Fleximage::Controller, or a
     #   Magick::Pixel object.
     # 
-    # * +size+: The size of the background image, in FlexImage *size* format.  
+    # * +size+: The size of the background image, in Fleximage *size* format.  
     #   By default the background image is the same size as the foreground image
     # 
-    # * +alignment+: A symbol that tells FlexImage where to put the foreground image on 
+    # * +alignment+: A symbol that tells Fleximage where to put the foreground image on 
     #   top of the background image.  Can be any of the following:
     #   <tt>:center, :top, :top_right, :right, :bottom_right, :bottom, :bottom_left, :left, :top_left</tt>.
     #   Default is :+center+
@@ -40,7 +40,7 @@ module Fleximage
         width, height = options.key?(:size) ? size_to_xy(options[:size]) : [@image.columns, @image.rows]
 
         #create the background image onto which we will composite the foreground image
-        bkgnd = Magick::Image.new(width, height) do 
+        bg = Magick::Image.new(width, height) do 
           self.background_color = color
           self.format = 'PNG'
         end
@@ -53,9 +53,9 @@ module Fleximage
         args << symbol_to_blending_mode(options[:blending] || :over)
 
         #composite the foreground image onto the background
-        bkgnd.composite!(*args)
+        bg.composite!(*args)
 
-        return bkgnd
+        return bg
       end
     end
   end
