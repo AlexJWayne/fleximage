@@ -24,7 +24,17 @@ They can also be set on a model level:
 
 If no message is set in your locale, the default one of the original plugin will be shown.
 
-= Original Doc:
+== Installation
+
+Using git:
+
+  git submodule add git://github.com/moser/fleximage_i18n.git vendor/plugins/fleximage_i18n
+
+or using:
+
+  ./script/plugin install git://github.com/moser/fleximage_i18n.git
+
+== Original Doc:
 
 = Fleximage
 
