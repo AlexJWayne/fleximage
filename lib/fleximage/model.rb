@@ -86,17 +86,21 @@ module Fleximage
         
         # Internal method to ask this class if it stores image in the DB.
         def self.db_store?
-          columns.find do |col|
-            col.name == 'image_file_data'
+          if respond_to?(:columns)
+            columns.find do |col|
+              col.name == 'image_file_data'
+            end
+          else
+            false
           end
         end
         
         def self.has_store?
-          db_store? || image_directory
+          respond_to?(:columns) && (db_store? || image_directory)
         end
         
         # validation callback
-        validate :validate_image
+        validate :validate_image if respond_to?(:validate)
         
         # The filename of the temp image.  Used for storing of good images when validation fails
         # and the form needs to be redisplayed.
@@ -138,9 +142,11 @@ module Fleximage
         dsl_accessor :preprocess_image_operation
         
         # Image related save and destroy callbacks
-        after_destroy :delete_image_file
-        before_save   :pre_save
-        after_save    :post_save
+        if respond_to?(:before_save)
+          after_destroy :delete_image_file
+          before_save   :pre_save
+          after_save    :post_save
+        end
         
         # execute configuration block
         yield if block_given?
@@ -149,9 +155,11 @@ module Fleximage
         image_directory options[:image_directory] if options[:image_directory]
         
         # Require the declaration of a master image storage directory
-        if !image_directory && !db_store? && !default_image && !default_image_path
+        if respond_to?(:validate) && !image_directory && !db_store? && !default_image && !default_image_path
           raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option\n"+
-                "Or add a database column named image_file_data for DB storage"
+                "Or add a database column named image_file_data for DB storage\n"+
+                "Or set :virtual to true if this class has no image store at all\n"+
+                "Or set a default image to show with :default_image or :default_image_path"
         end
       end
       
@@ -168,21 +176,6 @@ module Fleximage
         
         # file validation passed, return true
         true
-      end
-
-      # Create a blank image of the specified width and height.
-      # By default the image will be transparent unless a background color is specified
-      def blank_image(width, height, background_color = nil)
-
-        image = Magick::Image.new(width, height) do
-          self.colorspace = Magick::RGBColorspace
-          self.depth = 8
-          self.density = '72'
-          self.format = 'PNG'
-          self.background_color = background_color ? background_color : Magick::Pixel.new(255, 255, 255, 255)
-        end
-
-        self.new(:image_data => image)
       end
     end
     
@@ -322,12 +315,6 @@ module Fleximage
           end
           @dont_save_temp = false
         end
-      end
-      
-      # Sets the uploaded image to the passed in Magick::Image object
-      def image_data=(data)
-        @uploaded_image = data          
-        set_magic_attributes(data)          
       end
 
       # Return the @image_file_url that was previously assigned.  This is not saved
