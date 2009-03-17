@@ -9,6 +9,9 @@ class I18nMessagesTest < Test::Unit::TestCase
     p = PhotoBare.new(:image_file => files(:not_a_photo))
     p.save
     assert_equal "was not a readable image", p.errors["image_file"]
+    p = PhotoBare.new(:image_file => files(:i1x1))
+    p.save
+    assert_equal "is too small (Minimum: 2x2)", p.errors["image_file"]
   end
   
   def test_should_have_german_message
@@ -19,6 +22,9 @@ class I18nMessagesTest < Test::Unit::TestCase
     p = PhotoBare.new(:image_file => files(:not_a_photo))
     p.save
     assert_equal "war nicht lesbar", p.errors["image_file"]
+    p = PhotoBare.new(:image_file => files(:i1x1))
+    p.save
+    assert_equal "ist zu klein (Minimalgröße: 2x2)", p.errors["image_file"]
   ensure
     I18n.locale = "en"
   end
@@ -30,5 +36,8 @@ class I18nMessagesTest < Test::Unit::TestCase
     p = PhotoCustomError.new(:image_file => files(:not_a_photo))
     p.save
     assert_equal "seems to be broken", p.errors["image_file"]
+    p = PhotoCustomError.new(:image_file => files(:i1x1))
+    p.save
+    assert_equal "must be bigger (min. size: 2x2)", p.errors["image_file"]
   end
 end

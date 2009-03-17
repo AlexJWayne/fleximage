@@ -42,6 +42,18 @@ class Test::Unit::TestCase #:nodoc:
     when :cmyk
       MockFile.new("#{RAILS_ROOT}/../fixtures/cmyk.jpg")
     
+    when :i100x100
+      MockFile.new("#{RAILS_ROOT}/../fixtures/100x100.jpg")
+      
+    when :i1x100
+      MockFile.new("#{RAILS_ROOT}/../fixtures/1x100.jpg")
+      
+    when :i100x1
+      MockFile.new("#{RAILS_ROOT}/../fixtures/100x1.jpg")
+      
+    when :i1x1
+      MockFile.new("#{RAILS_ROOT}/../fixtures/1x1.jpg")
+    
     end
   end
   

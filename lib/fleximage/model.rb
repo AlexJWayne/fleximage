@@ -119,7 +119,6 @@ module Fleximage
         
         # Missing image message
         #dsl_accessor :missing_image_message, :default => 'is required'
-        
         def self.missing_image_message(str = nil)
           fb = 'is required'
           if str.nil?
@@ -139,7 +138,6 @@ module Fleximage
         
         # Invalid image message
         #dsl_accessor :invalid_image_message, :default => 'was not a readable image'
-        
         def self.invalid_image_message(str = nil)
           fb = 'was not a readable image'
           if str.nil?
@@ -152,6 +150,30 @@ module Fleximage
             end
           else
             @invalid_image_message = str
+          end
+        end
+        
+        # Image too small message
+        # Should include {{minimum}}
+        def self.image_too_small_message(str = nil)
+          fb = "is too small (Minimum: #{minimum_image_size_to_s})"
+          if str.nil?
+            if @image_too_small_message
+              @image_too_small_message
+            else
+              translation = I18n.translate "activerecord.errors.models.#{self.model_name.underscore}.image_too_small", :minimum => minimum_image_size_to_s
+              translation = I18n.translate "activerecord.errors.messages.image_too_small", :minimum => minimum_image_size_to_s, :default => fb.gsub("{{minimum}}", minimum_image_size_to_s) if translation.match /translation missing:/
+              translation
+            end
+          else
+            @image_too_small_message = str
+          end
+        end
+        
+        def self.minimum_image_size_to_s
+          if minimum_image_size.is_a?(Array) && minimum_image_size.size == 2
+            #if minimum_image_size[0] > 0 && minimum_image_size[1] > 0
+            "#{minimum_image_size[0]}x#{minimum_image_size[1]}"
           end
         end
         
@@ -168,6 +190,11 @@ module Fleximage
         # Can be helpful to resize potentially huge images to something more manageable. Set via
         # the "preprocess_image { |image| ... }" class method.
         dsl_accessor :preprocess_image_operation
+        
+        # Set a minimum size ([x, y] e.g. [800, 600])
+        # Set [0, 600] to just enforce y size or
+        # [800, 0] to just validate x size.
+        dsl_accessor :minimum_image_size
         
         # Image related save and destroy callbacks
         after_destroy :delete_image_file
@@ -446,6 +473,13 @@ module Fleximage
           errors.add field_name, self.class.invalid_image_message
         elsif self.class.require_image && !has_image?
           errors.add field_name, self.class.missing_image_message
+        elsif self.class.minimum_image_size.is_a?(Array) && 
+              self.class.minimum_image_size.size == 2 && 
+              !@uploaded_image.nil?
+          if @uploaded_image.columns < self.class.minimum_image_size[0] || 
+             @uploaded_image.rows < self.class.minimum_image_size[1]
+            errors.add field_name, self.class.image_too_small_message
+          end
         end
       end
       

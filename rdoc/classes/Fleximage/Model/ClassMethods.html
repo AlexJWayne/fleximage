@@ -181,8 +181,10 @@ Example:
       <a href="#M000002">acts_as_fleximage</a>&nbsp;&nbsp;
       <a href="#M000004">db_store?</a>&nbsp;&nbsp;
       <a href="#M000005">has_store?</a>&nbsp;&nbsp;
-      <a href="#M000008">image_file_exists</a>&nbsp;&nbsp;
+      <a href="#M000010">image_file_exists</a>&nbsp;&nbsp;
+      <a href="#M000008">image_too_small_message</a>&nbsp;&nbsp;
       <a href="#M000007">invalid_image_message</a>&nbsp;&nbsp;
+      <a href="#M000009">minimum_image_size_to_s</a>&nbsp;&nbsp;
       <a href="#M000006">missing_image_message</a>&nbsp;&nbsp;
       <a href="#M000003">preprocess_image</a>&nbsp;&nbsp;
       </div>
@@ -264,6 +266,43 @@ Internal method to ask this class if it stores image in the DB.
         </div>
       </div>
 
+      <div id="method-M000008" class="method-detail">
+        <a name="M000008"></a>
+
+        <div class="method-heading">
+          <a href="#M000008" class="method-signature">
+          <span class="method-name">image_too_small_message</span><span class="method-args">(str = nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Image too small message Should include {{minimum}}
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000008-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 158</span>
+158:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">image_too_small_message</span>(<span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>)
+159:           <span class="ruby-identifier">fb</span> = <span class="ruby-node">&quot;is too small (Minimum: #{minimum_image_size_to_s})&quot;</span>
+160:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
+161:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@image_too_small_message</span>
+162:               <span class="ruby-ivar">@image_too_small_message</span>
+163:             <span class="ruby-keyword kw">else</span>
+164:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-node">&quot;activerecord.errors.models.#{self.model_name.underscore}.image_too_small&quot;</span>, <span class="ruby-identifier">:minimum</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">minimum_image_size_to_s</span>
+165:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-value str">&quot;activerecord.errors.messages.image_too_small&quot;</span>, <span class="ruby-identifier">:minimum</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">minimum_image_size_to_s</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">fb</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;{{minimum}}&quot;</span>, <span class="ruby-identifier">minimum_image_size_to_s</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">translation</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp re">/translation missing:/</span>
+166:               <span class="ruby-identifier">translation</span>
+167:             <span class="ruby-keyword kw">end</span>
+168:           <span class="ruby-keyword kw">else</span>
+169:             <span class="ruby-ivar">@image_too_small_message</span> = <span class="ruby-identifier">str</span>
+170:           <span class="ruby-keyword kw">end</span>
+171:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
       <div id="method-M000007" class="method-detail">
         <a name="M000007"></a>
 
@@ -286,21 +325,47 @@ href="ClassMethods.html#M000007">invalid_image_message</a>, :default =&gt;
             onclick="toggleCode('M000007-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000007-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 143</span>
-143:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">invalid_image_message</span>(<span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>)
-144:           <span class="ruby-identifier">fb</span> = <span class="ruby-value str">'was not a readable image'</span>
-145:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
-146:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@invalid_image_message</span>
-147:               <span class="ruby-ivar">@invalid_image_message</span>
-148:             <span class="ruby-keyword kw">else</span>
-149:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-node">&quot;activerecord.errors.models.#{self.model_name.underscore}.invalid_image&quot;</span>
-150:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-value str">&quot;activerecord.errors.messages.invalid_image&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">fb</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">translation</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp re">/translation missing:/</span>
-151:               <span class="ruby-identifier">translation</span>
-152:             <span class="ruby-keyword kw">end</span>
-153:           <span class="ruby-keyword kw">else</span>
-154:             <span class="ruby-ivar">@invalid_image_message</span> = <span class="ruby-identifier">str</span>
-155:           <span class="ruby-keyword kw">end</span>
-156:         <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 141</span>
+141:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">invalid_image_message</span>(<span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>)
+142:           <span class="ruby-identifier">fb</span> = <span class="ruby-value str">'was not a readable image'</span>
+143:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
+144:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@invalid_image_message</span>
+145:               <span class="ruby-ivar">@invalid_image_message</span>
+146:             <span class="ruby-keyword kw">else</span>
+147:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-node">&quot;activerecord.errors.models.#{self.model_name.underscore}.invalid_image&quot;</span>
+148:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-value str">&quot;activerecord.errors.messages.invalid_image&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">fb</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">translation</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp re">/translation missing:/</span>
+149:               <span class="ruby-identifier">translation</span>
+150:             <span class="ruby-keyword kw">end</span>
+151:           <span class="ruby-keyword kw">else</span>
+152:             <span class="ruby-ivar">@invalid_image_message</span> = <span class="ruby-identifier">str</span>
+153:           <span class="ruby-keyword kw">end</span>
+154:         <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000009" class="method-detail">
+        <a name="M000009"></a>
+
+        <div class="method-heading">
+          <a href="#M000009" class="method-signature">
+          <span class="method-name">minimum_image_size_to_s</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000009-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000009-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 173</span>
+173:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">minimum_image_size_to_s</span>
+174:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">minimum_image_size</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">minimum_image_size</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
+175:             <span class="ruby-comment cmt">#if minimum_image_size[0] &gt; 0 &amp;&amp; minimum_image_size[1] &gt; 0</span>
+176:             <span class="ruby-node">&quot;#{minimum_image_size[0]}x#{minimum_image_size[1]}&quot;</span>
+177:           <span class="ruby-keyword kw">end</span>
+178:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -328,22 +393,22 @@ href="ClassMethods.html#M000006">missing_image_message</a>, :default =&gt;
             onclick="toggleCode('M000006-source');return false;">[Source]</a></p>
           <div class="method-source-code" id="M000006-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 123</span>
-123:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">missing_image_message</span>(<span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>)
-124:           <span class="ruby-identifier">fb</span> = <span class="ruby-value str">'is required'</span>
-125:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
-126:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@missing_image_message</span>
-127:               <span class="ruby-ivar">@missing_image_message</span>
-128:             <span class="ruby-keyword kw">else</span>
-129:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-node">&quot;activerecord.errors.models.#{self.model_name.underscore}.missing_image&quot;</span>
-130:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-value str">&quot;activerecord.errors.messages.missing_image&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">fb</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">translation</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp re">/translation missing:/</span>
-131:               <span class="ruby-identifier">translation</span>
-132:             <span class="ruby-keyword kw">end</span>
-133:             
-134:           <span class="ruby-keyword kw">else</span>
-135:             <span class="ruby-ivar">@missing_image_message</span> = <span class="ruby-identifier">str</span>
-136:           <span class="ruby-keyword kw">end</span>
-137:         <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 122</span>
+122:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">missing_image_message</span>(<span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>)
+123:           <span class="ruby-identifier">fb</span> = <span class="ruby-value str">'is required'</span>
+124:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
+125:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@missing_image_message</span>
+126:               <span class="ruby-ivar">@missing_image_message</span>
+127:             <span class="ruby-keyword kw">else</span>
+128:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-node">&quot;activerecord.errors.models.#{self.model_name.underscore}.missing_image&quot;</span>
+129:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-value str">&quot;activerecord.errors.messages.missing_image&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">fb</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">translation</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp re">/translation missing:/</span>
+130:               <span class="ruby-identifier">translation</span>
+131:             <span class="ruby-keyword kw">end</span>
+132:             
+133:           <span class="ruby-keyword kw">else</span>
+134:             <span class="ruby-ivar">@missing_image_message</span> = <span class="ruby-identifier">str</span>
+135:           <span class="ruby-keyword kw">end</span>
+136:         <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
@@ -448,107 +513,134 @@ nice looking block.
 119:         
 120:         <span class="ruby-comment cmt"># Missing image message</span>
 121:         <span class="ruby-comment cmt">#dsl_accessor :missing_image_message, :default =&gt; 'is required'</span>
-122:         
-123:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">missing_image_message</span>(<span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>)
-124:           <span class="ruby-identifier">fb</span> = <span class="ruby-value str">'is required'</span>
-125:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
-126:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@missing_image_message</span>
-127:               <span class="ruby-ivar">@missing_image_message</span>
-128:             <span class="ruby-keyword kw">else</span>
-129:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-node">&quot;activerecord.errors.models.#{self.model_name.underscore}.missing_image&quot;</span>
-130:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-value str">&quot;activerecord.errors.messages.missing_image&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">fb</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">translation</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp re">/translation missing:/</span>
-131:               <span class="ruby-identifier">translation</span>
-132:             <span class="ruby-keyword kw">end</span>
-133:             
-134:           <span class="ruby-keyword kw">else</span>
-135:             <span class="ruby-ivar">@missing_image_message</span> = <span class="ruby-identifier">str</span>
-136:           <span class="ruby-keyword kw">end</span>
-137:         <span class="ruby-keyword kw">end</span>
+122:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">missing_image_message</span>(<span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>)
+123:           <span class="ruby-identifier">fb</span> = <span class="ruby-value str">'is required'</span>
+124:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
+125:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@missing_image_message</span>
+126:               <span class="ruby-ivar">@missing_image_message</span>
+127:             <span class="ruby-keyword kw">else</span>
+128:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-node">&quot;activerecord.errors.models.#{self.model_name.underscore}.missing_image&quot;</span>
+129:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-value str">&quot;activerecord.errors.messages.missing_image&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">fb</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">translation</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp re">/translation missing:/</span>
+130:               <span class="ruby-identifier">translation</span>
+131:             <span class="ruby-keyword kw">end</span>
+132:             
+133:           <span class="ruby-keyword kw">else</span>
+134:             <span class="ruby-ivar">@missing_image_message</span> = <span class="ruby-identifier">str</span>
+135:           <span class="ruby-keyword kw">end</span>
+136:         <span class="ruby-keyword kw">end</span>
+137:         
 138:         
-139:         
-140:         <span class="ruby-comment cmt"># Invalid image message</span>
-141:         <span class="ruby-comment cmt">#dsl_accessor :invalid_image_message, :default =&gt; 'was not a readable image'</span>
-142:         
-143:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">invalid_image_message</span>(<span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>)
-144:           <span class="ruby-identifier">fb</span> = <span class="ruby-value str">'was not a readable image'</span>
-145:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
-146:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@invalid_image_message</span>
-147:               <span class="ruby-ivar">@invalid_image_message</span>
-148:             <span class="ruby-keyword kw">else</span>
-149:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-node">&quot;activerecord.errors.models.#{self.model_name.underscore}.invalid_image&quot;</span>
-150:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-value str">&quot;activerecord.errors.messages.invalid_image&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">fb</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">translation</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp re">/translation missing:/</span>
-151:               <span class="ruby-identifier">translation</span>
-152:             <span class="ruby-keyword kw">end</span>
-153:           <span class="ruby-keyword kw">else</span>
-154:             <span class="ruby-ivar">@invalid_image_message</span> = <span class="ruby-identifier">str</span>
-155:           <span class="ruby-keyword kw">end</span>
-156:         <span class="ruby-keyword kw">end</span>
-157:         
-158:         <span class="ruby-comment cmt"># Sets the quality of rendered JPGs</span>
-159:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:output_image_jpg_quality</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">85</span>
-160:         
-161:         <span class="ruby-comment cmt"># Set a default image to use when no image has been assigned to this record</span>
-162:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:default_image_path</span>
-163:         
-164:         <span class="ruby-comment cmt"># Set a default image based on a a size and fill</span>
-165:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:default_image</span>
-166:         
-167:         <span class="ruby-comment cmt"># A block that processes an image before it gets saved as the master image of a record.</span>
-168:         <span class="ruby-comment cmt"># Can be helpful to resize potentially huge images to something more manageable. Set via</span>
-169:         <span class="ruby-comment cmt"># the &quot;preprocess_image { |image| ... }&quot; class method.</span>
-170:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:preprocess_image_operation</span>
-171:         
-172:         <span class="ruby-comment cmt"># Image related save and destroy callbacks</span>
-173:         <span class="ruby-identifier">after_destroy</span> <span class="ruby-identifier">:delete_image_file</span>
-174:         <span class="ruby-identifier">before_save</span>   <span class="ruby-identifier">:pre_save</span>
-175:         <span class="ruby-identifier">after_save</span>    <span class="ruby-identifier">:post_save</span>
-176:         
-177:         <span class="ruby-comment cmt"># execute configuration block</span>
-178:         <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+139:         <span class="ruby-comment cmt"># Invalid image message</span>
+140:         <span class="ruby-comment cmt">#dsl_accessor :invalid_image_message, :default =&gt; 'was not a readable image'</span>
+141:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">invalid_image_message</span>(<span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>)
+142:           <span class="ruby-identifier">fb</span> = <span class="ruby-value str">'was not a readable image'</span>
+143:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
+144:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@invalid_image_message</span>
+145:               <span class="ruby-ivar">@invalid_image_message</span>
+146:             <span class="ruby-keyword kw">else</span>
+147:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-node">&quot;activerecord.errors.models.#{self.model_name.underscore}.invalid_image&quot;</span>
+148:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-value str">&quot;activerecord.errors.messages.invalid_image&quot;</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">fb</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">translation</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp re">/translation missing:/</span>
+149:               <span class="ruby-identifier">translation</span>
+150:             <span class="ruby-keyword kw">end</span>
+151:           <span class="ruby-keyword kw">else</span>
+152:             <span class="ruby-ivar">@invalid_image_message</span> = <span class="ruby-identifier">str</span>
+153:           <span class="ruby-keyword kw">end</span>
+154:         <span class="ruby-keyword kw">end</span>
+155:         
+156:         <span class="ruby-comment cmt"># Image too small message</span>
+157:         <span class="ruby-comment cmt"># Should include {{minimum}}</span>
+158:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">image_too_small_message</span>(<span class="ruby-identifier">str</span> = <span class="ruby-keyword kw">nil</span>)
+159:           <span class="ruby-identifier">fb</span> = <span class="ruby-node">&quot;is too small (Minimum: #{minimum_image_size_to_s})&quot;</span>
+160:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">nil?</span>
+161:             <span class="ruby-keyword kw">if</span> <span class="ruby-ivar">@image_too_small_message</span>
+162:               <span class="ruby-ivar">@image_too_small_message</span>
+163:             <span class="ruby-keyword kw">else</span>
+164:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-node">&quot;activerecord.errors.models.#{self.model_name.underscore}.image_too_small&quot;</span>, <span class="ruby-identifier">:minimum</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">minimum_image_size_to_s</span>
+165:               <span class="ruby-identifier">translation</span> = <span class="ruby-constant">I18n</span>.<span class="ruby-identifier">translate</span> <span class="ruby-value str">&quot;activerecord.errors.messages.image_too_small&quot;</span>, <span class="ruby-identifier">:minimum</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">minimum_image_size_to_s</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">fb</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">&quot;{{minimum}}&quot;</span>, <span class="ruby-identifier">minimum_image_size_to_s</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">translation</span>.<span class="ruby-identifier">match</span> <span class="ruby-regexp re">/translation missing:/</span>
+166:               <span class="ruby-identifier">translation</span>
+167:             <span class="ruby-keyword kw">end</span>
+168:           <span class="ruby-keyword kw">else</span>
+169:             <span class="ruby-ivar">@image_too_small_message</span> = <span class="ruby-identifier">str</span>
+170:           <span class="ruby-keyword kw">end</span>
+171:         <span class="ruby-keyword kw">end</span>
+172:         
+173:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">minimum_image_size_to_s</span>
+174:           <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">minimum_image_size</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Array</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">minimum_image_size</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">2</span>
+175:             <span class="ruby-comment cmt">#if minimum_image_size[0] &gt; 0 &amp;&amp; minimum_image_size[1] &gt; 0</span>
+176:             <span class="ruby-node">&quot;#{minimum_image_size[0]}x#{minimum_image_size[1]}&quot;</span>
+177:           <span class="ruby-keyword kw">end</span>
+178:         <span class="ruby-keyword kw">end</span>
 179:         
-180:         <span class="ruby-comment cmt"># set the image directory from passed options</span>
-181:         <span class="ruby-identifier">image_directory</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:image_directory</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:image_directory</span>]
+180:         <span class="ruby-comment cmt"># Sets the quality of rendered JPGs</span>
+181:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:output_image_jpg_quality</span>, <span class="ruby-identifier">:default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">85</span>
 182:         
-183:         <span class="ruby-comment cmt"># Require the declaration of a master image storage directory</span>
-184:         <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">image_directory</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">db_store?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">default_image</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">default_image_path</span>
-185:           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;No place to put images!  Declare this via the :image_directory =&gt; 'path/to/directory' option\n&quot;</span><span class="ruby-operator">+</span>
-186:                 <span class="ruby-value str">&quot;Or add a database column named image_file_data for DB storage&quot;</span>
-187:         <span class="ruby-keyword kw">end</span>
-188:       <span class="ruby-keyword kw">end</span>
+183:         <span class="ruby-comment cmt"># Set a default image to use when no image has been assigned to this record</span>
+184:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:default_image_path</span>
+185:         
+186:         <span class="ruby-comment cmt"># Set a default image based on a a size and fill</span>
+187:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:default_image</span>
+188:         
+189:         <span class="ruby-comment cmt"># A block that processes an image before it gets saved as the master image of a record.</span>
+190:         <span class="ruby-comment cmt"># Can be helpful to resize potentially huge images to something more manageable. Set via</span>
+191:         <span class="ruby-comment cmt"># the &quot;preprocess_image { |image| ... }&quot; class method.</span>
+192:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:preprocess_image_operation</span>
+193:         
+194:         <span class="ruby-comment cmt"># Set a minimum size ([x, y] e.g. [800, 600])</span>
+195:         <span class="ruby-comment cmt"># Set [0, 600] to just enforce y size or</span>
+196:         <span class="ruby-comment cmt"># [800, 0] to just validate x size.</span>
+197:         <span class="ruby-identifier">dsl_accessor</span> <span class="ruby-identifier">:minimum_image_size</span>
+198:         
+199:         <span class="ruby-comment cmt"># Image related save and destroy callbacks</span>
+200:         <span class="ruby-identifier">after_destroy</span> <span class="ruby-identifier">:delete_image_file</span>
+201:         <span class="ruby-identifier">before_save</span>   <span class="ruby-identifier">:pre_save</span>
+202:         <span class="ruby-identifier">after_save</span>    <span class="ruby-identifier">:post_save</span>
+203:         
+204:         <span class="ruby-comment cmt"># execute configuration block</span>
+205:         <span class="ruby-keyword kw">yield</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">block_given?</span>
+206:         
+207:         <span class="ruby-comment cmt"># set the image directory from passed options</span>
+208:         <span class="ruby-identifier">image_directory</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:image_directory</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:image_directory</span>]
+209:         
+210:         <span class="ruby-comment cmt"># Require the declaration of a master image storage directory</span>
+211:         <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">image_directory</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">db_store?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">default_image</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">default_image_path</span>
+212:           <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;No place to put images!  Declare this via the :image_directory =&gt; 'path/to/directory' option\n&quot;</span><span class="ruby-operator">+</span>
+213:                 <span class="ruby-value str">&quot;Or add a database column named image_file_data for DB storage&quot;</span>
+214:         <span class="ruby-keyword kw">end</span>
+215:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
       </div>
 
-      <div id="method-M000008" class="method-detail">
-        <a name="M000008"></a>
+      <div id="method-M000010" class="method-detail">
+        <a name="M000010"></a>
 
         <div class="method-heading">
-          <a href="#M000008" class="method-signature">
+          <a href="#M000010" class="method-signature">
           <span class="method-name">image_file_exists</span><span class="method-args">(file)</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000008-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000008-source">
+            onclick="toggleCode('M000010-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000010-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 190</span>
-190:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_file_exists</span>(<span class="ruby-identifier">file</span>)
-191:         <span class="ruby-comment cmt"># File must be a valid object</span>
-192:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">nil?</span>
-193:         
-194:         <span class="ruby-comment cmt"># Get the size of the file.  file.size works for form-uploaded images, file.stat.size works</span>
-195:         <span class="ruby-comment cmt"># for file object created by File.open('foo.jpg', 'rb').  It must have a size &gt; 0.</span>
-196:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">file</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:size</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">stat</span>.<span class="ruby-identifier">size</span>) <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>
-197:         
-198:         <span class="ruby-comment cmt"># object must respond to the read method to fetch its contents.</span>
-199:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">file</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:read</span>)
-200:         
-201:         <span class="ruby-comment cmt"># file validation passed, return true</span>
-202:         <span class="ruby-keyword kw">true</span>
-203:       <span class="ruby-keyword kw">end</span>
+     <span class="ruby-comment cmt"># File lib/fleximage/model.rb, line 217</span>
+217:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">image_file_exists</span>(<span class="ruby-identifier">file</span>)
+218:         <span class="ruby-comment cmt"># File must be a valid object</span>
+219:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">nil?</span>
+220:         
+221:         <span class="ruby-comment cmt"># Get the size of the file.  file.size works for form-uploaded images, file.stat.size works</span>
+222:         <span class="ruby-comment cmt"># for file object created by File.open('foo.jpg', 'rb').  It must have a size &gt; 0.</span>
+223:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> (<span class="ruby-identifier">file</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:size</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">file</span>.<span class="ruby-identifier">stat</span>.<span class="ruby-identifier">size</span>) <span class="ruby-operator">&lt;=</span> <span class="ruby-value">0</span>
+224:         
+225:         <span class="ruby-comment cmt"># object must respond to the read method to fetch its contents.</span>
+226:         <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span><span class="ruby-identifier">file</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-identifier">:read</span>)
+227:         
+228:         <span class="ruby-comment cmt"># file validation passed, return true</span>
+229:         <span class="ruby-keyword kw">true</span>
+230:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>

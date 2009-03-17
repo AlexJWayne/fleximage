@@ -11,6 +11,7 @@ While they still can be set by using the 'missing_image_message' and 'invalid_im
         messages:
           missing_image: is really required
           invalid_image: seems to be broken
+          image_too_small: "seems to be too small, it needs to be {{minimum}} pixels"
 
 They can also be set on a model level:
 
@@ -21,8 +22,23 @@ They can also be set on a model level:
           photo:
             missing_image: needs to be attached
             invalid_image: is broken
+            image_too_small: "is too small (should be >= {{minimum}})"
 
 If no message is set in your locale, the default one of the original plugin will be shown.
+
+== Model class accessor minimum_image_size
+
+If this option is set, the model validates that the image is bigger than or equal to a minimum size.
+
+  minimum_image_size [800, 600]
+  
+You can set one integer to 1 if you just want one dimension be checked. (E.g. [800, 1] for images wider than 799 px)
+
+The corresponding error message can be set either via
+
+  image_too_small_message "too small image (min {{minimum}})"
+  
+or as shown above via I18n.
 
 == Installation
 
