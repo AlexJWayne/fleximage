@@ -67,6 +67,44 @@ module Fleximage
         end
       end
       
+      # This method will return a valid color Magick::Pixel object.  It will also auto adjust
+      # for the bit depth of your ImageMagick configuration.
+      #
+      # Usage:
+      #
+      #   color('red')          #=> Magick::Pixel with a red color
+      #   color(0, 255, 0)      #=> Magick::Pixel with a green color
+      #   color(0, 0, 255, 47)  #=> Magick::Pixel with a blue clolor and slightly transparent
+      #
+      #   # on an ImageMagick with a QuantumDepth of 16
+      #   color(0, 255, 0)      #=> Magick::Pixel with rgb of (0, 65535, 0) (auto adjusted to 16bit channels)
+      #
+      def self.color(*args)
+        if args.size == 1 && args.first.is_a?(String)
+          args.first
+        else
+          
+          # adjust color to proper bit depth
+          if Magick::QuantumDepth != 8
+            max = case Magick::QuantumDepth
+              when 16: 65_535
+              when 32: 4_294_967_295
+            end
+            
+            args.map! do |value|
+              (value.to_f/255 * max).to_i
+            end
+          end
+          
+          # create the pixel
+          Magick::Pixel.new(*args)
+        end
+      end
+      
+      def color(*args)
+        self.class.color(*args)
+      end
+      
       # Converts a size object to an [x,y] array.  Acceptible formats are:
       # 
       # * 10

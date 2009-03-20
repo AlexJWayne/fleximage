@@ -19,11 +19,7 @@ module Fleximage
         
         # Shorthand color creation
         def color(*args)
-          if args.size == 1 && args.first.is_a?(String)
-            args.first
-          else
-            Magick::Pixel.new(*args)
-          end
+          Fleximage::Operator::Base.color(*args)
         end
         
         #execute the template

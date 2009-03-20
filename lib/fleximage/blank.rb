@@ -61,7 +61,7 @@ module Fleximage
         self.depth      = 8
         self.density    = '72'
         self.format     = 'PNG'
-        self.background_color = options[:color] || Magick::Pixel.new(255, 255, 255, 255)
+        self.background_color = options[:color] || 'none'
       end
       
       @output_image = @uploaded_image
