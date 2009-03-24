@@ -117,17 +117,22 @@ module Fleximage
         # Require a valid image.  Defaults to true.  Set to false if its ok to have no image for
         dsl_accessor :require_image, :default => true
         
+        
+        def self.translate_error_message(name, fallback, options = {})
+          translation = I18n.translate "activerecord.errors.models.#{self.model_name.underscore}.#{name}", options
+          if translation.match /translation missing:/
+            I18n.translate "activerecord.errors.messages.#{name}", options.merge({ :default => fallback })
+          end
+        end
+        
         # Missing image message
         #dsl_accessor :missing_image_message, :default => 'is required'
         def self.missing_image_message(str = nil)
-          fb = 'is required'
           if str.nil?
             if @missing_image_message
               @missing_image_message
             else
-              translation = I18n.translate "activerecord.errors.models.#{self.model_name.underscore}.missing_image"
-              translation = I18n.translate "activerecord.errors.messages.missing_image", :default => fb if translation.match /translation missing:/
-              translation
+              translate_error_message("missing_image", "is required")
             end
             
           else
@@ -139,14 +144,11 @@ module Fleximage
         # Invalid image message
         #dsl_accessor :invalid_image_message, :default => 'was not a readable image'
         def self.invalid_image_message(str = nil)
-          fb = 'was not a readable image'
           if str.nil?
             if @invalid_image_message
               @invalid_image_message
             else
-              translation = I18n.translate "activerecord.errors.models.#{self.model_name.underscore}.invalid_image"
-              translation = I18n.translate "activerecord.errors.messages.invalid_image", :default => fb if translation.match /translation missing:/
-              translation
+              translate_error_message("invalid_image", "was not a readable image")
             end
           else
             @invalid_image_message = str
@@ -156,14 +158,12 @@ module Fleximage
         # Image too small message
         # Should include {{minimum}}
         def self.image_too_small_message(str = nil)
-          fb = "is too small (Minimum: #{minimum_image_size_to_s})"
+          fb = "is too small (Minimum: {{minimum}})"
           if str.nil?
             if @image_too_small_message
-              @image_too_small_message
+              @image_too_small_message.gsub("{{minimum}}", minimum_image_size_to_s)
             else
-              translation = I18n.translate "activerecord.errors.models.#{self.model_name.underscore}.image_too_small", :minimum => minimum_image_size_to_s
-              translation = I18n.translate "activerecord.errors.messages.image_too_small", :minimum => minimum_image_size_to_s, :default => fb.gsub("{{minimum}}", minimum_image_size_to_s) if translation.match /translation missing:/
-              translation
+              translate_error_message("image_too_small", fb.gsub("{{minimum}}", minimum_image_size_to_s), :minimum => minimum_image_size_to_s)
             end
           else
             @image_too_small_message = str
@@ -172,7 +172,6 @@ module Fleximage
         
         def self.minimum_image_size_to_s
           if minimum_image_size.is_a?(Array) && minimum_image_size.size == 2
-            #if minimum_image_size[0] > 0 && minimum_image_size[1] > 0
             "#{minimum_image_size[0]}x#{minimum_image_size[1]}"
           end
         end
