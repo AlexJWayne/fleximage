@@ -56,7 +56,7 @@
     </tr>
     <tr class="top-aligned-row">
       <td><strong>Last Update:</strong></td>
-      <td>Sat Apr 12 13:26:28 -0700 2008</td>
+      <td>Tue Mar 17 15:28:58 +0100 2009</td>
     </tr>
     </table>
   </div>
@@ -69,7 +69,75 @@
   <div id="contextContent">
 
     <div id="description">
-      <h1><a href="../classes/Fleximage.html">Fleximage</a></h1>
+      <h1>I18n</h1>
+<h2>Overview</h2>
+<p>
+Uses the Rails I18n to translate error messages. While they still can be
+set by using the &#8216;missing_image_message&#8217; and
+&#8216;invalid_image_message&#8217; accessors, it&#8216;s better to
+configure them in your locale:
+</p>
+<pre>
+  en:
+    activerecord:
+      errors:
+        messages:
+          missing_image: is really required
+          invalid_image: seems to be broken
+          image_too_small: &quot;seems to be too small, it needs to be {{minimum}} pixels&quot;
+</pre>
+<p>
+They can also be set on a model level:
+</p>
+<pre>
+  en:
+    activerecord:
+      errors:
+        models:
+          photo:
+            missing_image: needs to be attached
+            invalid_image: is broken
+            image_too_small: &quot;is too small (should be &gt;= {{minimum}})&quot;
+</pre>
+<p>
+If no message is set in your locale, the default one of the original plugin
+will be shown.
+</p>
+<h2>ModelClassAccessor minimum_image_size</h2>
+<p>
+If this option is set, the model validates that the image is bigger than or
+equal to a minimum size.
+</p>
+<pre>
+  minimum_image_size [800, 600]
+</pre>
+<p>
+You can set one integer to 1 if you just want one dimension be checked.
+(E.g. [800, 1] for images wider than 799 px)
+</p>
+<p>
+The corresponding error message can be set either via
+</p>
+<pre>
+  image_too_small_message &quot;too small image (min {{minimum}})&quot;
+</pre>
+<p>
+or as shown above via I18n.
+</p>
+<h2>Installation</h2>
+<p>
+Using git:
+</p>
+<pre>
+  git submodule add git://github.com/moser/fleximage_i18n.git vendor/plugins/fleximage_i18n
+</pre>
+<p>
+or using:
+</p>
+<pre>
+  ./script/plugin install git://github.com/moser/fleximage_i18n.git
+</pre>
+<h1><a href="../classes/Fleximage.html">Fleximage</a> (original Doc)</h1>
 <h2>Overview</h2>
 <p>
 <a href="../classes/Fleximage.html">Fleximage</a> is a Rails plugin that

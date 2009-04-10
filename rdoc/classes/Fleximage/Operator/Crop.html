@@ -91,6 +91,11 @@ down and right from there.
 Use the following keys in the <tt>options</tt> hash:
 </p>
 <ul>
+<li><tt>gravity</tt>: Select gravity for the crop. Default is :top_left
+(Magick::NorthWestGravity) Choose from GRAVITITES constant defined in
+base.rb.
+
+</li>
 <li><tt>from</tt>: coorinates for the upper left corner of resulting image.
 
 </li>
@@ -99,9 +104,9 @@ of the :<tt>from</tt> coordinate.
 
 </li>
 </ul>
-<p>
-Both options are <b>required</b>.
-</p>
+<pre>
+ size and from options are *required*.
+</pre>
 <p>
 Example:
 </p>
@@ -110,6 +115,18 @@ Example:
     image.crop(
       :from =&gt; '100x50',
       :size =&gt; '500x350'
+    )
+  end
+</pre>
+<p>
+or
+</p>
+<pre>
+  @photo.operate do |image|
+    image.crop(
+      :gravity =&gt; :center,
+      :from    =&gt; '100x50',
+      :size    =&gt; '500x350'
     )
   end
 </pre>
@@ -123,7 +140,7 @@ Example:
       <h3 class="section-bar">Methods</h3>
 
       <div class="name-list">
-      <a href="#M000017">operate</a>&nbsp;&nbsp;
+      <a href="#M000035">operate</a>&nbsp;&nbsp;
       </div>
     </div>
 
@@ -145,38 +162,39 @@ Example:
     <div id="methods">
       <h3 class="section-bar">Public Instance methods</h3>
 
-      <div id="method-M000017" class="method-detail">
-        <a name="M000017"></a>
+      <div id="method-M000035" class="method-detail">
+        <a name="M000035"></a>
 
         <div class="method-heading">
-          <a href="#M000017" class="method-signature">
+          <a href="#M000035" class="method-signature">
           <span class="method-name">operate</span><span class="method-args">(options = {})</span>
           </a>
         </div>
       
         <div class="method-description">
           <p><a class="source-toggle" href="#"
-            onclick="toggleCode('M000017-source');return false;">[Source]</a></p>
-          <div class="method-source-code" id="M000017-source">
+            onclick="toggleCode('M000035-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000035-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/fleximage/operator/crop.rb, line 25</span>
-25:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-identifier">options</span> = {})
-26:         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">symbolize_keys</span>
-27: 
-28:         <span class="ruby-comment cmt"># required integer keys</span>
-29:         [<span class="ruby-identifier">:from</span>, <span class="ruby-identifier">:size</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
-30:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;:#{key} must be included in crop options&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>]
-31:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>])
-32:         <span class="ruby-keyword kw">end</span>
-33: 
-34:         <span class="ruby-comment cmt"># width and height must not be zero</span>
-35:         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:size</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dimension</span><span class="ruby-operator">|</span>
-36:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;:size must not be zero for X or Y&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dimension</span>.<span class="ruby-identifier">zero?</span>
-37:         <span class="ruby-keyword kw">end</span>
-38: 
-39:         <span class="ruby-comment cmt"># crop</span>
-40:         <span class="ruby-ivar">@image</span>.<span class="ruby-identifier">crop!</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:from</span>][<span class="ruby-value">0</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:from</span>][<span class="ruby-value">1</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:size</span>][<span class="ruby-value">0</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:size</span>][<span class="ruby-value">1</span>], <span class="ruby-keyword kw">true</span>)
-41:       <span class="ruby-keyword kw">end</span>
+    <span class="ruby-comment cmt"># File lib/fleximage/operator/crop.rb, line 37</span>
+37:       <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">operate</span>(<span class="ruby-identifier">options</span> = {})
+38:         <span class="ruby-identifier">options</span> = <span class="ruby-identifier">options</span>.<span class="ruby-identifier">symbolize_keys</span>
+39:         <span class="ruby-identifier">options</span>.<span class="ruby-identifier">reverse_merge!</span>(<span class="ruby-identifier">:gravity</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:top_left</span>)
+40: 
+41:         <span class="ruby-comment cmt"># required integer keys</span>
+42:         [<span class="ruby-identifier">:from</span>, <span class="ruby-identifier">:size</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span><span class="ruby-operator">|</span>
+43:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-node">&quot;:#{key} must be included in crop options&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>]
+44:           <span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">size_to_xy</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">key</span>])
+45:         <span class="ruby-keyword kw">end</span>
+46: 
+47:         <span class="ruby-comment cmt"># width and height must not be zero</span>
+48:         <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:size</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">dimension</span><span class="ruby-operator">|</span>
+49:           <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>, <span class="ruby-value str">&quot;:size must not be zero for X or Y&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">dimension</span>.<span class="ruby-identifier">zero?</span>
+50:         <span class="ruby-keyword kw">end</span>
+51: 
+52:         <span class="ruby-comment cmt"># crop</span>
+53:         <span class="ruby-ivar">@image</span>.<span class="ruby-identifier">crop!</span>(<span class="ruby-identifier">symbol_to_gravity</span>(<span class="ruby-identifier">options</span>[<span class="ruby-identifier">:gravity</span>]), <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:from</span>][<span class="ruby-value">0</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:from</span>][<span class="ruby-value">1</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:size</span>][<span class="ruby-value">0</span>], <span class="ruby-identifier">options</span>[<span class="ruby-identifier">:size</span>][<span class="ruby-value">1</span>], <span class="ruby-keyword kw">true</span>)
+54:       <span class="ruby-keyword kw">end</span>
 </pre>
           </div>
         </div>
