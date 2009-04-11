@@ -164,19 +164,14 @@ module Fleximage
         def self.image_too_small_message(str = nil)
           fb = "is too small (Minimum: {{minimum}})"
           if str.nil?
+            minimum_size = Fleximage::Operator::Base.size_to_xy(validates_image_size).join('x')
             if @image_too_small_message
-              @image_too_small_message.gsub("{{minimum}}", minimum_image_size_to_s)
+              @image_too_small_message.gsub("{{minimum}}", minimum_size)
             else
-              translate_error_message("image_too_small", fb.gsub("{{minimum}}", minimum_image_size_to_s), :minimum => minimum_image_size_to_s)
+              translate_error_message("image_too_small", fb.gsub("{{minimum}}", minimum_size), :minimum => minimum_size)
             end
           else
             @image_too_small_message = str
-          end
-        end
-        
-        def self.minimum_image_size_to_s
-          if minimum_image_size.is_a?(Array) && minimum_image_size.size == 2
-            "#{minimum_image_size[0]}x#{minimum_image_size[1]}"
           end
         end
         
@@ -194,10 +189,10 @@ module Fleximage
         # the "preprocess_image { |image| ... }" class method.
         dsl_accessor :preprocess_image_operation
         
-        # Set a minimum size ([x, y] e.g. [800, 600])
-        # Set [0, 600] to just enforce y size or
-        # [800, 0] to just validate x size.
-        dsl_accessor :minimum_image_size
+        # Set a minimum size ([x, y] e.g. 200, '800x600', [800, 600])
+        # Set '0x600' to just enforce y size or
+        # '800x0' to just validate x size.
+        dsl_accessor :validates_image_size
         
         # Image related save and destroy callbacks
         if respond_to?(:before_save)
@@ -475,18 +470,23 @@ module Fleximage
       # Execute image presence and validity validations.
       def validate_image #:nodoc:
         field_name = (@image_file_url && @image_file_url.any?) ? :image_file_url : :image_file
-                
+        
+        # Could not read the file as an image
         if @invalid_image
           errors.add field_name, self.class.invalid_image_message
+        
+        # no image uploaded and one is required
         elsif self.class.require_image && !has_image?
           errors.add field_name, self.class.missing_image_message
-        elsif self.class.minimum_image_size.is_a?(Array) && 
-              self.class.minimum_image_size.size == 2 && 
-              !@uploaded_image.nil?
-          if @uploaded_image.columns < self.class.minimum_image_size[0] || 
-             @uploaded_image.rows < self.class.minimum_image_size[1]
+        
+        # Image does not meet minimum size
+        elsif self.class.validates_image_size && !@uploaded_image.nil?
+          x, y = Fleximage::Operator::Base.size_to_xy(self.class.validates_image_size)
+          
+          if @uploaded_image.columns < x || @uploaded_image.rows < y
             errors.add field_name, self.class.image_too_small_message
           end
+          
         end
       end
       

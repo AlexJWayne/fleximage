@@ -12,7 +12,7 @@ class FleximageBlankTest < Test::Unit::TestCase
   
   def test_should_be_transparent_by_default
     p = Fleximage::Blank.new('320x480')
-    assert_color([255, 255, 255, 255], '50x50', p)
+    assert_color([0, 0, 0, 255], '50x50', p)
   end
   
   def test_should_color_image
