@@ -41,6 +41,9 @@ end
 require 'fleximage/helper'
 ActionView::Base.class_eval { include Fleximage::Helper }
 
+# Setup Aviary Controller
+ActionController::Base.class_eval{ include Fleximage::AviaryController }
+
 # Register mime types
 Mime::Type.register_alias "image/pjpeg", :jpg # IE6 sends jpg data as "image/pjpeg".  Silly IE6.
 Mime::Type.register "image/jpeg", :jpg
