@@ -1,10 +1,8 @@
 module Fleximage
   
   module AviaryController
-    
     def self.api_key(value = nil)
-      @@api_key ||= nil
-      @@api_key = value if value
+      value ? @api_key = value : @api_key
     end
     
     def self.api_key=(value = nil)
