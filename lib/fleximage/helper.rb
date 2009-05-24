@@ -28,8 +28,9 @@ module Fleximage
     #
     # All other options are passed directly to the @link_to@ helper.
     def link_to_edit_in_aviary(text, model, options = {})
-      image_url = options.delete(:image_url)        || url_for(:action => 'aviary_image',        :id => model, :only_path => false)
-      post_url  = options.delete(:image_update_url) || url_for(:action => 'aviary_image_update', :id => model, :only_path => false)
+      key       = aviary_image_hash(model)
+      image_url = options.delete(:image_url)        || url_for(:action => 'aviary_image',        :id => model, :only_path => false, :key => key)
+      post_url  = options.delete(:image_update_url) || url_for(:action => 'aviary_image_update', :id => model, :only_path => false, :key => key)
       api_key   = Fleximage::AviaryController.api_key
       url       = "http://aviary.com/flash/aviary/index.aspx?tid=1&phoenix&apil=#{api_key}&loadurl=#{CGI.escape image_url}&posturl=#{CGI.escape post_url}"
       

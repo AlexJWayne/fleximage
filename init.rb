@@ -1,5 +1,6 @@
 require 'open-uri'
 require 'base64'
+require 'digest/sha1'
 
 # Load RMagick
 begin
