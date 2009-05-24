@@ -352,6 +352,26 @@ module Fleximage
         end
       end
       
+      # Set the image for this record by reading in file data as a string.
+      #
+      #   data = File.read('my_image_file.jpg')
+      #   photo = Photo.find(123)
+      #   photo.image_file_string = data
+      #   photo.save
+      def image_file_string=(data)
+        self.image_file = StringIO.new(data)
+      end
+      
+      # Set the image for this record by reading in a file as a base64 encoded string.
+      #
+      #   data = Base64.encode64(File.read('my_image_file.jpg'))
+      #   photo = Photo.find(123)
+      #   photo.image_file_base64 = data
+      #   photo.save
+      def image_file_base64=(data)
+        self.image_file_string = Base64.decode64(data)
+      end
+      
       # Sets the uploaded image to the name of a file in RAILS_ROOT/tmp that was just
       # uploaded.  Use as a hidden field in your forms to keep an uploaded image when
       # validation fails and the form needs to be redisplayed
@@ -555,7 +575,7 @@ module Fleximage
         # Save the image in the rails tmp directory
         def save_temp_image(file)
           file_name = file.respond_to?(:original_filename) ? file.original_filename : file.path
-          @image_file_temp = file_name.split('/').last
+          @image_file_temp = Time.now.to_f.to_s.sub('.', '_')
           path = "#{RAILS_ROOT}/tmp/fleximage"
           FileUtils.mkdir_p(path)
           File.open("#{path}/#{@image_file_temp}", 'w') do |f|
