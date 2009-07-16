@@ -421,6 +421,14 @@ module Fleximage
           @output_image = proxy.image
         end
       end
+      
+      # Self destructive operate.  This will modify the master image for this record with
+      # the updated and processed result of the operation AND SAVES THE RECORD
+      def operate!(&block)
+        operate(&block)
+        self.image_file_string = output_image
+        save
+      end
 
       # Load the image from disk/DB, or return the cached and potentially 
       # processed output image.
