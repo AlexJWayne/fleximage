@@ -321,6 +321,10 @@ module Fleximage
           raise e
         end
       end
+
+      def image_file
+        has_image?
+      end
       
       # Assign the image via a URL, which will make the plugin go
       # and fetch the image at the provided URL.  The image will be stored
@@ -361,7 +365,7 @@ module Fleximage
       def image_file_string=(data)
         self.image_file = StringIO.new(data)
       end
-      
+
       # Set the image for this record by reading in a file as a base64 encoded string.
       #
       #   data = Base64.encode64(File.read('my_image_file.jpg'))
@@ -371,7 +375,7 @@ module Fleximage
       def image_file_base64=(data)
         self.image_file_string = Base64.decode64(data)
       end
-      
+
       # Sets the uploaded image to the name of a file in RAILS_ROOT/tmp that was just
       # uploaded.  Use as a hidden field in your forms to keep an uploaded image when
       # validation fails and the form needs to be redisplayed
@@ -421,7 +425,7 @@ module Fleximage
           @output_image = proxy.image
         end
       end
-      
+
       # Self destructive operate.  This will modify the master image for this record with
       # the updated and processed result of the operation AND SAVES THE RECORD
       def operate!(&block)
@@ -476,6 +480,7 @@ module Fleximage
           @output_image.to_blob
         end
       ensure
+        @output_image.destroy!
         GC.start
       end
       
@@ -549,7 +554,10 @@ module Fleximage
           delete_temp_image
 
           # Start GC to close up memory leaks
-          GC.start if @uploaded_image
+          if @uploaded_image
+            @uploaded_image.destroy!
+            GC.start
+          end
         end
         
         # Preprocess this image before saving
@@ -623,6 +631,9 @@ module Fleximage
             
             raise MasterImageNotFound, message
           end
+        ensure
+          @output_image.destroy! if @output_image
+          GC.start
         end
     end
     
