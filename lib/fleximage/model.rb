@@ -288,19 +288,28 @@ module Fleximage
       #   
       #   @some_image.file_path #=> /var/www/myapp/uploaded_images/123.png
       def file_path
-        "#{directory_path}/#{id}.#{self.image_storage_format}"
+        "#{directory_path}/#{id}.#{extension}"
       end
 
       # Returns original format of the image if the image_format column exists
       # otherwise returns the globally set format.
-      def image_storage_format
+      def extension
         if self.respond_to?( :image_format)
-          self.image_format
+          case image_format
+          when "JPEG"
+            "jpg"
+          else
+            image_format ? image_format.downcase : self.class.image_storage_format
+          end
         else
           self.class.image_storage_format
         end
       end
       
+      def url_format
+        extension.to_sym
+      end
+
       # Sets the image file for this record to an uploaded file.  This can 
       # be called directly, or passively like from an ActiveRecord mass 
       # assignment.
@@ -585,7 +594,7 @@ module Fleximage
             perform_preprocess_operation
             
             # Convert to storage format
-            @uploaded_image.format = self.class.image_storage_format.to_s.upcase unless self.respond_to?( :image_format)
+            @uploaded_image.format = self.class.image_storage_format.to_s.upcase unless respond_to?( :image_format)
             
             # Write image data to the DB field
             if self.class.db_store?
