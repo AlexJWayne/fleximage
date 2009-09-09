@@ -288,7 +288,17 @@ module Fleximage
       #   
       #   @some_image.file_path #=> /var/www/myapp/uploaded_images/123.png
       def file_path
-        "#{directory_path}/#{id}.#{self.class.image_storage_format}"
+        "#{directory_path}/#{id}.#{self.image_storage_format}"
+      end
+
+      # Returns original format of the image if the image_format column exists
+      # otherwise returns the globally set format.
+      def image_storage_format
+        if self.respond_to?( :image_format)
+          self.image_format
+        else
+          self.class.image_storage_format
+        end
       end
       
       # Sets the image file for this record to an uploaded file.  This can 
@@ -575,7 +585,7 @@ module Fleximage
             perform_preprocess_operation
             
             # Convert to storage format
-            @uploaded_image.format = self.class.image_storage_format.to_s.upcase
+            @uploaded_image.format = self.class.image_storage_format.to_s.upcase unless self.respond_to?( :image_format)
             
             # Write image data to the DB field
             if self.class.db_store?
@@ -624,6 +634,7 @@ module Fleximage
             self.image_filename = nil if respond_to?(:image_filename=)
             self.image_width    = nil if respond_to?(:image_width=)
             self.image_height   = nil if respond_to?(:image_height=)
+            self.image_format   = nil if respond_to?(:image_format=)
           end
         end
         
@@ -636,6 +647,7 @@ module Fleximage
           end
           self.image_width    = @uploaded_image.columns if self.respond_to?(:image_width=)
           self.image_height   = @uploaded_image.rows    if self.respond_to?(:image_height=)
+          self.image_format   = @uploaded_image.format  if self.respond_to?(:image_format=)
         end
         
         # Save the image in the rails tmp directory
