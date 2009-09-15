@@ -10,6 +10,9 @@ rescue MissingSourceFile => e
   raise e
 end
 
+# Apply a few RMagick patches
+require 'fleximage/rmagick_image_patch'
+
 # Load dsl_accessor from lib
 require 'dsl_accessor'
 
