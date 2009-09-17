@@ -380,7 +380,7 @@ module Fleximage
       # uploaded.  Use as a hidden field in your forms to keep an uploaded image when
       # validation fails and the form needs to be redisplayed
       def image_file_temp=(file_name)
-        if !@uploaded_image && file_name && file_name.any?
+        if !@uploaded_image && file_name && file_name.present?
           @image_file_temp = file_name
           file_path = "#{RAILS_ROOT}/tmp/fleximage/#{file_name}"
           
@@ -445,7 +445,7 @@ module Fleximage
         # Load the image from disk
         if self.class.has_store?
           if self.class.db_store?
-            if image_file_data && image_file_data.any?
+            if image_file_data && image_file_data.present?
               # Load the image from the database column
               @output_image = Magick::Image.from_blob(image_file_data).first
             else
@@ -502,7 +502,7 @@ module Fleximage
       
       # Execute image presence and validity validations.
       def validate_image #:nodoc:
-        field_name = (@image_file_url && @image_file_url.any?) ? :image_file_url : :image_file
+        field_name = (@image_file_url && @image_file_url.present?) ? :image_file_url : :image_file
         
         # Could not read the file as an image
         if @invalid_image
