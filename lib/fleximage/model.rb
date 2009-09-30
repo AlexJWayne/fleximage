@@ -269,10 +269,13 @@ module Fleximage
       #
       #   @some_image.directory_path #=> /var/www/myapp/uploaded_images/2008/3/30
       def directory_path
-        raise 'No image directory was defined, cannot generate path' unless self.class.image_directory
+        directory = self.class.image_directory
+        raise 'No image directory was defined, cannot generate path' unless directory
         
         # base directory
-        directory = "#{RAILS_ROOT}/#{self.class.image_directory}"
+        if /\A\// !~ directory
+          directory = "#{RAILS_ROOT}/#{directory}"
+        end
         
         # specific creation date based directory suffix.
         creation = self[:created_at] || self[:created_on]
