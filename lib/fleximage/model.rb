@@ -665,7 +665,7 @@ module Fleximage
           @image_file_temp = Time.now.to_f.to_s.sub('.', '_')
           path = "#{RAILS_ROOT}/tmp/fleximage"
           FileUtils.mkdir_p(path)
-          File.open("#{path}/#{@image_file_temp}", 'w') do |f|
+          File.open("#{path}/#{@image_file_temp}", 'wb') do |f|
             file.rewind
             f.write file.read
           end
