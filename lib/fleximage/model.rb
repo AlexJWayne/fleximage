@@ -18,6 +18,8 @@ module Fleximage
     #
     # * +image_directory+: (String, no default) Where the master images are stored, directory path relative to your 
     #   app root.
+    # * +s3_bucket+: Name of the bucket on Amazon S3 where your master images are stored.  To use this you must 
+    #   call establish_connection! on the aws/s3 gem form your app's initilization
     # * +use_creation_date_based_directories+: (Boolean, default +true+) If true, master images will be stored in
     #   directories based on creation date.  For example: <tt>"#{image_directory}/2007/11/24/123.png"</tt> for an
     #   image with an id of 123 and a creation date of November 24, 2007.  Turing this off would cause the path
@@ -86,6 +88,7 @@ module Fleximage
         
         # Internal method to ask this class if it stores image in the DB.
         def self.db_store?
+          return false if s3_store?
           if respond_to?(:columns)
             columns.find do |col|
               col.name == 'image_file_data'
@@ -93,6 +96,14 @@ module Fleximage
           else
             false
           end
+        end
+        
+        def self.s3_store?
+          !!s3_bucket
+        end
+        
+        def self.file_store?
+          !db_store? && !s3_store?
         end
         
         def self.has_store?
@@ -111,6 +122,9 @@ module Fleximage
         
         # Where images get stored
         dsl_accessor :image_directory
+        
+        # Amazon S3 bucket where the master images are stored
+        dsl_accessor :s3_bucket
         
         # Put uploads from different days into different subdirectories
         dsl_accessor :use_creation_date_based_directories, :default => true
@@ -204,11 +218,20 @@ module Fleximage
         # execute configuration block
         yield if block_given?
         
+        # Create S3 bucket if it's not present
+        if s3_bucket
+          begin
+            AWS::S3::Bucket.find(s3_bucket)
+          rescue AWS::S3::NoSuchBucket
+            AWS::S3::Bucket.create(s3_bucket)
+          end
+        end
+        
         # set the image directory from passed options
         image_directory options[:image_directory] if options[:image_directory]
         
         # Require the declaration of a master image storage directory
-        if respond_to?(:validate) && !image_directory && !db_store? && !default_image && !default_image_path
+        if respond_to?(:validate) && !image_directory && !db_store? && !s3_store? && !default_image && !default_image_path
           raise "No place to put images!  Declare this via the :image_directory => 'path/to/directory' option\n"+
                 "Or add a database column named image_file_data for DB storage\n"+
                 "Or set :virtual to true if this class has no image store at all\n"+
@@ -406,7 +429,13 @@ module Fleximage
       end
       
       def has_saved_image?
-        self.class.db_store? ? !!image_file_data : File.exists?(file_path)
+        if self.class.db_store?
+          !!image_file_data
+        elsif self.class.s3_store?
+          AWS::S3::S3Object.exists?("#{id}.#{self.class.image_storage_format}", self.class.s3_bucket)
+        elsif self.class.file_store?
+          File.exists?(file_path)
+        end
       end
       
       # Call from a .flexi view template.  This enables the rendering of operators 
@@ -443,20 +472,32 @@ module Fleximage
         return @output_image if @output_image
         
         # Load the image from disk
-        if self.class.has_store?
-          if self.class.db_store?
-            if image_file_data && image_file_data.present?
-              # Load the image from the database column
-              @output_image = Magick::Image.from_blob(image_file_data).first
-            else
-              master_image_not_found
-            end
-          else
-            # Load the image from the disk
-            @output_image = Magick::Image.read(file_path).first
+        if self.class.db_store?
+          # Load the image from the database column
+          if image_file_data && image_file_data.present?
+            @output_image = Magick::Image.from_blob(image_file_data).first
           end
+          
+        elsif self.class.s3_store?
+          # Load image from S3
+          filename = "#{id}.#{self.class.image_storage_format}"
+          bucket   = self.class.s3_bucket
+          
+          if AWS::S3::S3Object.exists?(filename, bucket)
+            @output_image = Magick::Image.from_blob(AWS::S3::S3Object.value(filename, bucket)).first
+          end
+        
+        else
+          # Load the image from the disk
+          @output_image = Magick::Image.read(file_path).first
+        
+        end
+        
+        if @output_image
+          @output_image
         else
           master_image_not_found
+          nil
         end
         
       rescue Magick::ImageMagickError => e
@@ -491,6 +532,8 @@ module Fleximage
         
         if self.class.db_store?
           update_attribute :image_file_data, nil unless frozen?
+        elsif self.class.s3_store?
+          AWS::S3::S3Object.delete "#{id}.#{self.class.image_storage_format}", self.class.s3_bucket
         else
           File.delete(file_path) if File.exists?(file_path)
         end
@@ -540,14 +583,21 @@ module Fleximage
           end
         end
         
-        # Write image to file system and cleanup garbage.
+        # Write image to file system/S3 and cleanup garbage.
         def post_save
-          if @uploaded_image && !self.class.db_store?
-            # Make sure target directory exists
-            FileUtils.mkdir_p(directory_path)
+          if @uploaded_image
+            if self.class.file_store?
+              # Make sure target directory exists
+              FileUtils.mkdir_p(directory_path)
           
-            # Write master image file
-            @uploaded_image.write(file_path)
+              # Write master image file
+              @uploaded_image.write(file_path)
+              
+            elsif self.class.s3_store?
+              blob = StringIO.new(@uploaded_image.to_blob)
+              AWS::S3::S3Object.store("#{id}.#{self.class.image_storage_format}", blob, self.class.s3_bucket)
+              
+            end
           end
           
           # Cleanup temp files
