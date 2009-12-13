@@ -24,6 +24,7 @@ super easy.
      "Rakefile",
      "VERSION",
      "autotest.rb",
+     "fleximage.gemspec",
      "init.rb",
      "lib/dsl_accessor.rb",
      "lib/fleximage.rb",
