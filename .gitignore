@@ -1,6 +1,27 @@
+## MAC OS
+.DS_Store
+
+## TEXTMATE
+*.tmproj
+tmtags
+
+## EMACS
+*~
+\#*
+.\#*
+
+## VIM
+TAGS
+*.sw[op]
+
+## PROJECT::GENERAL
+coverage
+rdoc
+pkg
+*.gemspec
+
+## PROJECT::SPECIFIC
 test/rails_root/log/*
 test/rails_root/public/uploads/*
 test/rails_root/tmp/**/*
-.DS_Store
 *.sqlite3
-*~
