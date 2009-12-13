@@ -18,7 +18,6 @@ TAGS
 coverage
 rdoc
 pkg
-*.gemspec
 
 ## PROJECT::SPECIFIC
 test/rails_root/log/*
