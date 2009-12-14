@@ -1,6 +1,7 @@
 require 'open-uri'
 require 'base64'
 require 'digest/sha1'
+require 'aws/s3'
 
 # Load RMagick
 begin

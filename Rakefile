@@ -22,6 +22,7 @@ Rake::RDocTask.new(:rdoc) do |rdoc|
   rdoc.rdoc_files.include('README.rdoc')
   rdoc.rdoc_files.include('lib/**/*.rb')
 end
+
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gem|
@@ -34,10 +35,11 @@ EOF
 Fleximage is a Rails plugin that tries to make image uploading and rendering
 super easy.
 EOF
-    gem.email = "jj@bjjb.org"
-    gem.homepage = "http://github.com/jjbuckley/fleximage"
+    gem.email = "ruby@beautifulpixel.com"
+    gem.homepage = "http://github.com/Squeegy/fleximage"
     gem.authors = `git log --pretty=format:"%an"`.split("\n").uniq.sort
     gem.add_dependency "rmagick"
+    gem.add_dependency "aws-s3"
     gem.add_development_dependency "rails", "=2.2.2"
   end
   Jeweler::GemcutterTasks.new
