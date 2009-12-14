@@ -6,6 +6,8 @@ class FleximageMagicColumnsTest < Test::Unit::TestCase
     assert_equal 'photo.jpg', p.image_filename
     assert_equal 1024,  p.image_height
     assert_equal 768,   p.image_width
+    assert_equal 'JPEG', p.image_format
+    assert_equal 'jpg', p.extension
   end
   
   def test_should_save_data_in_magic_columns_from_url
@@ -13,6 +15,8 @@ class FleximageMagicColumnsTest < Test::Unit::TestCase
     assert_equal files(:web_photo), p.image_filename
     assert_equal 110,   p.image_height
     assert_equal 276,   p.image_width
+    assert_equal 'GIF', p.image_format
+    assert_equal 'gif', p.extension
   rescue SocketError
     print '!'
   end

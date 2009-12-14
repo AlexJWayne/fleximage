@@ -594,7 +594,7 @@ module Fleximage
             perform_preprocess_operation
             
             # Convert to storage format
-            @uploaded_image.format = self.class.image_storage_format.to_s.upcase unless respond_to?( :image_format)
+            @uploaded_image.format = self.class.image_storage_format.to_s.upcase unless respond_to?(:image_format)
             
             # Write image data to the DB field
             if self.class.db_store?

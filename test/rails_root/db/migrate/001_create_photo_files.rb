@@ -4,6 +4,7 @@ class CreatePhotoFiles < ActiveRecord::Migration
       t.string :image_filename
       t.integer :image_width
       t.integer :image_height
+      t.string  :image_format
 
       t.timestamps
     end

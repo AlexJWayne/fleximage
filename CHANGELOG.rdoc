@@ -1,5 +1,12 @@
+== fleximage 1.0.2 12-14-2009
 
+* Don't prepend RAILS_ROOT to absolute image directory path
+* Added support for an "image_format" database column.
 
-== Fleximage 1.0.0 12-13-09
+== fleximage 1.0.1 12-13-2009
+
+* Now with completely passing tests
+
+== fleximage 1.0.0 12-13-2009
 
 * Initial gem release.
