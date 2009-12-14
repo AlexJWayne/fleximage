@@ -18,8 +18,9 @@ module Fleximage
     #
     # * +image_directory+: (String, no default) Where the master images are stored, directory path relative to your 
     #   app root.
-    # * +s3_bucket+: Name of the bucket on Amazon S3 where your master images are stored.  To use this you must 
-    #   call establish_connection! on the aws/s3 gem form your app's initilization
+    # * <tt>s3_bucket</tt>: Name of the bucket on Amazon S3 where your master images are stored.  To use this you must 
+    #   call <tt>establish_connection!</tt> on the aws/s3 gem form your app's initilization to authenticate with your
+    #   S3 account.
     # * +use_creation_date_based_directories+: (Boolean, default +true+) If true, master images will be stored in
     #   directories based on creation date.  For example: <tt>"#{image_directory}/2007/11/24/123.png"</tt> for an
     #   image with an id of 123 and a creation date of November 24, 2007.  Turing this off would cause the path
@@ -56,7 +57,7 @@ module Fleximage
     #       image_storage_format      :png
     #       require_image             true
     #       missing_image_message     'is required'
-    #       invalid_image_message     'was not a readable image'\
+    #       invalid_image_message     'was not a readable image'
     #       default_image_path        'public/images/no_photo_yet.png'
     #       default_image             nil
     #       output_image_jpg_quality  85
