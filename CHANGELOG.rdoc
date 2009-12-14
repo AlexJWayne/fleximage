@@ -1,7 +1,9 @@
 == fleximage 1.0.2 12-14-2009
 
 * Don't prepend RAILS_ROOT to absolute image directory path
-* Added support for an "image_format" database column.
+* Added support for an "image_format" magic database column
+* Fixed an issue with saving temp images in Windows
+* Fixed a temp image vulnerability with directory traversal
 
 == fleximage 1.0.1 12-13-2009
 

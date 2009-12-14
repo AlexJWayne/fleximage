@@ -425,7 +425,7 @@ module Fleximage
       # uploaded.  Use as a hidden field in your forms to keep an uploaded image when
       # validation fails and the form needs to be redisplayed
       def image_file_temp=(file_name)
-        if !@uploaded_image && file_name && file_name.present?
+        if !@uploaded_image && file_name && file_name.present? && file_name !~ %r{\.\./}
           @image_file_temp = file_name
           file_path = "#{RAILS_ROOT}/tmp/fleximage/#{file_name}"
           
