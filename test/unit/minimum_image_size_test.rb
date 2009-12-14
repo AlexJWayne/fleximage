@@ -38,7 +38,6 @@ class MinimumImageSizeTest < Test::Unit::TestCase
     p = WidePhoto.new(:image_file => files(:i1x100))
     assert !p.save
     p = WidePhoto.new(:image_file => files(:i100x1))
-    p.save
     assert p.save
   end
   

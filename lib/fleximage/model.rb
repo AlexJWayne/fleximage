@@ -337,7 +337,8 @@ module Fleximage
         error_strings = [
           'Improper image header',
           'no decode delegate for this image format',
-          'UnableToOpenBlob'
+          'UnableToOpenBlob',
+          'Must specify image size'
         ]
         if e.to_s =~ /#{error_strings.join('|')}/
           @invalid_image = true
@@ -522,7 +523,6 @@ module Fleximage
           @output_image.to_blob
         end
       ensure
-        @output_image.dispose!
         GC.start
       end
       
@@ -606,7 +606,6 @@ module Fleximage
 
           # Start GC to close up memory leaks
           if @uploaded_image
-            @uploaded_image.dispose!
             GC.start
           end
         end
@@ -683,7 +682,6 @@ module Fleximage
             raise MasterImageNotFound, message
           end
         ensure
-          @output_image.dispose! if @output_image
           GC.start
         end
     end

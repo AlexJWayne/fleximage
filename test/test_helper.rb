@@ -34,7 +34,7 @@ class Test::Unit::TestCase #:nodoc:
       MockFile.new("#{RAILS_ROOT}/../fixtures/photo.jpg")
       
     when :not_a_photo
-      MockFile.new("#{RAILS_ROOT}/../fixtures/not_a_photo.txt")
+      MockFile.new("#{RAILS_ROOT}/../fixtures/not_a_photo.xml")
     
     when :web_photo
       'http://www.google.com/intl/en_ALL/images/logo.gif'
