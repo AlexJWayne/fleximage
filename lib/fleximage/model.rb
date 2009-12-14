@@ -273,9 +273,7 @@ module Fleximage
         raise 'No image directory was defined, cannot generate path' unless directory
         
         # base directory
-        if /\A\// !~ directory
-          directory = "#{RAILS_ROOT}/#{directory}"
-        end
+        directory = "#{RAILS_ROOT}/#{directory}" unless /^\// =~ directory
         
         # specific creation date based directory suffix.
         creation = self[:created_at] || self[:created_on]
