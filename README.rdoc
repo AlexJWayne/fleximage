@@ -1,11 +1,14 @@
 == Installation
 
-Using git:
+Gem: (Recommended)
+  
+  gem install fleximage
+  
+  # in config/environment.rb
+  config.gem 'fleximage'
 
-  git submodule add git://github.com/Squeegy/fleximage.git vendor/plugins/fleximage
-
-or using:
-
+Plugin:
+  
   ./script/plugin install git://github.com/Squeegy/fleximage.git
 
 
@@ -43,17 +46,18 @@ Fleximage uses a simple templating engine that allows you to re-render images ex
 
 = Getting Started
 
-== 1. Installing the plugin
+== 1. Installation
 
-If running on rails edge:
+Gem: (Recommended)
+  
+  gem install fleximage
+  
+  # in config/environment.rb
+  config.gem 'fleximage'
 
+Plugin:
+  
   ./script/plugin install git://github.com/Squeegy/fleximage.git
-
-Otherwise, you have to do a manual install since Rails does not yet support git.  Download this file:
-
-http://github.com/Squeegy/fleximage/tarball/master
-
-Unzip, and place the root +fleximage+ folder in your <tt>railsapproot/vendor/plugins</tt> directory.
 
 
 == 2. Activating your model
