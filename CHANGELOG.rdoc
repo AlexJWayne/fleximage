@@ -1,0 +1,5 @@
+
+
+== Fleximage 1.0.0 12-13-09
+
+* Initial gem release.
