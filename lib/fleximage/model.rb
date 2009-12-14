@@ -499,7 +499,6 @@ module Fleximage
           @output_image
         else
           master_image_not_found
-          nil
         end
         
       rescue Magick::ImageMagickError => e
@@ -669,7 +668,7 @@ module Fleximage
             @output_image = Magick::Image.new(x, y) do
               self.background_color = color if color && color != :transparent
             end
-          
+            
           # No default, not master image, so raise exception
           else
             message = "Master image was not found for this record"

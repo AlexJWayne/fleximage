@@ -16,6 +16,12 @@ $LOAD_PATH.unshift(Test::Unit::TestCase.fixture_path)
 require File.dirname(__FILE__) + '/mock_file'
 require 'open-uri'
 
+unless Magick::QuantumDepth == 16
+  puts "**** WARNING ****"
+  puts "* Tests expect a ImageMagick bit depth of 16, you have Magick::QuantumDepth == #{Magick::QuantumDepth}"
+  puts "* Color checking tests will likely fail"
+end
+
 class Test::Unit::TestCase #:nodoc:
   def create_fixtures(*table_names)
     if block_given?
