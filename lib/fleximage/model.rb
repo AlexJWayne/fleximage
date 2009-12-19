@@ -535,7 +535,7 @@ module Fleximage
         format = (options[:format] || :jpg).to_s.upcase
         @output_image.format = format
         @output_image.strip!
-        if format = 'JPG'
+        if format == 'JPG'
           quality = @jpg_compression_quality || self.class.output_image_jpg_quality
           @output_image.to_blob { self.quality = quality }
         else
