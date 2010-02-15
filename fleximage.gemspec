@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = %q{fleximage}
-  s.version = "1.0.2"
+  s.version = "1.0.3"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Alex Wayne", "Andrew White", "JJ Buckley", "Jason Lee", "Joshua Abbott", "Koji Ando", "Kouhei Sutou", "Lasse Jansen", "Lo\303\257c Guitaut", "Martin Vielsmaier", "Squeegy", "Vannoy"]
-  s.date = %q{2009-12-14}
+  s.date = %q{2009-12-19}
   s.description = %q{Fleximage is a Rails plugin that tries to make image uploading and rendering
 super easy.
 }

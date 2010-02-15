@@ -11,9 +11,6 @@ rescue MissingSourceFile => e
   raise e
 end
 
-# Patch String class for ruby < 1.9
-require 'fleximage/string_patch'
-
 # Apply a few RMagick patches
 require 'fleximage/rmagick_image_patch'
 
