@@ -14,6 +14,7 @@ Test::Unit::TestCase.fixture_path = File.dirname(__FILE__) + "/fixtures/"
 $LOAD_PATH.unshift(Test::Unit::TestCase.fixture_path)
  
 require File.dirname(__FILE__) + '/mock_file'
+require File.dirname(__FILE__) + '/s3_stubs'
 require 'open-uri'
 
 unless Magick::QuantumDepth == 16

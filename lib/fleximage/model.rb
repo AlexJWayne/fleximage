@@ -108,7 +108,7 @@ module Fleximage
         end
         
         def self.has_store?
-          respond_to?(:columns) && (db_store? || image_directory)
+          respond_to?(:columns) && (db_store? || s3_store? || image_directory)
         end
         
         # validation callback

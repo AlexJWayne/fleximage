@@ -33,4 +33,8 @@ class FleximageBasicModelTest < Test::Unit::TestCase
     p = PhotoBare.create(:image_file => files(:photo))
     assert_equal '/tmp', p.directory_path
   end
+
+  def test_should_confirm_presence_of_a_store_when_using_s3
+    assert PhotoS3.has_store?
+  end
 end
