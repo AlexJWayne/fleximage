@@ -1,14 +1,14 @@
 == Installation
 
 Gem: (Recommended)
-  
+
   gem install fleximage
-  
+
   # in config/environment.rb
   config.gem 'fleximage'
 
 Plugin:
-  
+
   ./script/plugin install git://github.com/Squeegy/fleximage.git
 
 
@@ -49,21 +49,21 @@ Fleximage uses a simple templating engine that allows you to re-render images ex
 == 1. Installation
 
 Gem: (Recommended)
-  
+
   gem install fleximage
-  
+
   # in config/environment.rb
   config.gem 'fleximage'
 
 Plugin:
-  
+
   ./script/plugin install git://github.com/Squeegy/fleximage.git
 
 
 == 2. Activating your model
 
 You need to let your model know it should be Fleximage-friendly.  Lets say you have a model for photos.
-  
+
   # app/models/photo.rb
   class Photo < ActiveRecord::Base
     acts_as_fleximage :image_directory => 'public/images/uploaded_photos'
@@ -77,9 +77,9 @@ There are many other options for your model.  Refer to the <tt>Fleximage::Model:
 == 3. The upload form
 
 Your users need a way to upload their images into your site.  Here is how we might render a form to create a photo record.
-  
+
   # app/views/photos/new.html.erb
-  
+
   <% form_for @photo, :html => { :multipart => true } do |f| %>
     <p>
       <b>Name</b><br />
@@ -101,7 +101,7 @@ Your users need a way to upload their images into your site.  Here is how we mig
       <%= f.submit "Create" %>
     </p>
   <% end %>
-  
+
 *NOTE*: The ":html => { :multipart => true }" is *VERY* *IMPORTANT*.  Without this snippet your browser will not send binary data to the server.  If things aren't working, check to make sure you have this in your form declaration.
 
 The relevant bit of our form code is:
@@ -119,7 +119,7 @@ Right along side the upload field is a simple text field, which maps to the "ima
 You can have just one of these fields, or both.  The model will know how to do the right thing either way.
 
 When the user submits the form, all you have to do is assign the form contents to your object in standard Rails fashion, and the image is uploaded and saved for you.  Creating a new photo may look like this in your controller:
-  
+
   # app/controllers/photos_controller.rb
   def create
     @photo = Photo.new(params[:photo])
@@ -137,10 +137,10 @@ When the user submits the form, all you have to do is assign the form contents t
 Rails 2 has amazing support for format driven responses.  Given a photo object, by default it would have an HTML view that describes information about that photo.  With Fleximage, the JPG or (GIF or PNG) view can be the image data itself.
 
 A photo HTML view may look like this:
-  
+
   # app/views/photos/show.html.erb
   # http://mysite.com/photos/123
-  
+
   <p>
     <%= image_tag formatted_photo_path(@photo, :jpg) %>
   </p>
@@ -169,7 +169,7 @@ The filename of the template should look like this: <tt>action_name.jpg.flexi</t
 The syntax of the view is pure ruby, but to process the image the view needs to call +operate+ on the instance of your model.
 
 Here is the view to render a photo record at 320x240:
-  
+
   # app/views/photos/show.jpg.flexi
   # http://mysite.com/photos/123.jpg
   @photo.operate do |image|
@@ -188,7 +188,7 @@ Here is a .+flexi+ template that will do much more:
       :offset => '20x20'
     image.border :size => 10, :color => 'green'
     image.text 'I like Cheese'
-    image.unsharp_mask  
+    image.unsharp_mask
     image.shadow
   end
 
@@ -221,7 +221,7 @@ You don't want to render JPGs?  That's fine.  Just link to the format you want (
 
   # app/views/photos/show.html.erb
   <%= image_tag photo_path(@photo, :gif) %>
-  
+
   # app/views/photos/show.gif.flexi
   @photo.operate do |image|
     @photo.resize '150x150', :crop => true
@@ -232,7 +232,7 @@ The Fleximage template engine will automatically detect the format that is being
 == Converting/Upgrading your master image store
 
 Are you upgrading your live app to the new file store creation date based format?  Did you start out with PNG image storage, and later realize you need to store with the more space economic JPG instead?  Not problem, Fleximage provides some rake tasks to help you out.
-  
+
 Each conversion rake task requires that you tell it the class for which that you are changing the file store.  For example, if you want to change to the new creation date based storage structure, for the class +Photo+, you can run a rake task like this:
 
   rake fleximage:convert:to_nested FLEXIMAGE_CLASS=Photo
