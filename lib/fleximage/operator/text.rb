@@ -1,12 +1,12 @@
 module Fleximage
   module Operator
-    
+
     # Draw text on the image.  Customize size, position, color, dropshadow, and font.
-    # 
+    #
     #   image.text(string_to_write, options = {})
     #
     # Use the following keys in the +options+ hash:
-    # 
+    #
     # * alignment: symbol like in <tt>ImageOverlay</tt>
     # * offset: size string
     # * antialias: true or false
@@ -66,7 +66,7 @@ module Fleximage
         text.pointsize      = options[:font_size].to_i
         text.rotation       = options[:rotate]
         text.font_weight    = options[:font_weight] if options[:font_weight]
-        
+
         if options[:stroke][:width] > 0
           text.stroke_width   = options[:stroke][:width]
           text.stroke         = options[:stroke][:color]
@@ -99,6 +99,6 @@ module Fleximage
         @image.composite!(temp_image, 0, 0, symbol_to_blending_mode(:over))
       end
     end
-    
+
   end
 end

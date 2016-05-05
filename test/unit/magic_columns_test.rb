@@ -9,7 +9,7 @@ class FleximageMagicColumnsTest < Test::Unit::TestCase
     assert_equal 'JPEG', p.image_format
     assert_equal 'jpg', p.extension
   end
-  
+
   def test_should_save_data_in_magic_columns_from_url
     p = PhotoFile.create(:image_file_url => files(:web_photo))
     assert_equal files(:web_photo), p.image_filename
@@ -20,14 +20,14 @@ class FleximageMagicColumnsTest < Test::Unit::TestCase
   rescue SocketError
     print '!'
   end
-  
+
   def test_should_delete_magic_columns_when_image_is_deleted
     p = PhotoFile.new(:image_file => files(:photo))
     p.save
-    
+
     p = PhotoFile.find(p.id)
     p.delete_image_file.save
-    
+
     assert_nil p.image_width
     assert_nil p.image_height
   end

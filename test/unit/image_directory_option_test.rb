@@ -7,7 +7,7 @@ class FleximageImageDirectoryOptionTest < Test::Unit::TestCase
     assert_match %r{public/uploads/\d+/\d+/\d+/\d+}, p.file_path
     assert File.exists?(p.file_path)
   end
-  
+
   def test_should_set_image_directory
     PhotoBare.use_creation_date_based_directories = true
     PhotoBare.image_directory = 'public/uploads/foo'

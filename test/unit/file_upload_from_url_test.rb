@@ -7,7 +7,7 @@ class FleximageFileUploadFromUrlTest < Test::Unit::TestCase
   rescue SocketError
     print '!'
   end
-  
+
   def test_should_be_invalid_with_nonimage_from_url
     p = PhotoBare.new(:image_file_url => 'http://www.google.com/')
     assert !p.save, 'Record expected to be invalid after upload via URL'
@@ -16,7 +16,7 @@ class FleximageFileUploadFromUrlTest < Test::Unit::TestCase
   rescue SocketError
     print '!'
   end
-  
+
   def test_should_be_invalid_with_invalid_url
     p = PhotoBare.new(:image_file_url => 'foo')
     assert !p.save, 'Record expected to be invalid after upload via URL'
@@ -25,7 +25,7 @@ class FleximageFileUploadFromUrlTest < Test::Unit::TestCase
   rescue SocketError
     print '!'
   end
-  
+
   def test_should_have_an_original_filename
     p = PhotoFile.new(:image_file_url => files(:web_photo))
     assert_equal p.image_filename, files(:web_photo)
