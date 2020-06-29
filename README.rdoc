@@ -1,3 +1,7 @@
+== DEPRECATED
+
+This code is being preserved for historical reasons. It's unmaintained and if it still works at all it'd be a miracle.
+
 == Installation
 
 Gem: (Recommended)
