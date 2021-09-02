@@ -7,7 +7,7 @@ class FleximageImageProxyTest < Test::Unit::TestCase
       assert_equal 768, image.width
     end
   end
-  
+
   def test_should_have_a_height
     p = PhotoBare.create(:image_file => files(:photo))
     p.operate do |image|

@@ -1,30 +1,30 @@
 module Fleximage
   module Operator
-        
+
     # Add a drop shadow to the image.
     #
     #   image.shadow(options = {})
-    # 
+    #
     # Use the following keys in the +options+ hash:
     #
     # * +offset+: distance of the dropsahdow form the image, in FlexImage *size* format.  Positive
     #   number move it down and right, negative numbers move it up and left.
-    #   
+    #
     # * +blur+: how blurry the shadow is.  Roughly corresponds to distance in pixels of the blur.
-    # 
-    # * +background+: a color for the background of the image.  What the shadow fades into.  
+    #
+    # * +background+: a color for the background of the image.  What the shadow fades into.
     #   Use an RMagick named color or use the +color+ method in FlexImage::Controller, or a
     #   Magick::Pixel object.
-    #   
+    #
     # * +color+: color of the shadow itself.
     #   Use an RMagick named color or use the +color+ method in FlexImage::Controller, or a
     #   Magick::Pixel object.
-    #   
+    #
     # * +opacity+: opacity of the shadow.  A value between 0.0 and 1.0, where 1 is opaque and 0 is
     #   transparent.
-    # 
+    #
     # Example:
-    # 
+    #
     #   @photo.operate do |image|
     #     # Default settings
     #     image.shadow(
@@ -32,9 +32,9 @@ module Fleximage
     #       :background => 'white',    # or color(255, 255, 255)
     #       :blur       => 8,
     #       :offset     => '2x2',
-    #       :opacity    => 0.75 
+    #       :opacity    => 0.75
     #     )
-    #     
+    #
     #     # Huge, red shadow
     #     image.shadow(
     #       :color      => color(255, 0, 0),
@@ -73,15 +73,15 @@ module Fleximage
 
         # apply shadow
         @image = shadow.composite(
-          @image, 
-          symbol_to_gravity(:top_left), 
-          (shadow.columns - @image.columns) / 2 - options[:offset][0], 
-          (shadow.rows    - @image.rows)    / 2 - options[:offset][1], 
+          @image,
+          symbol_to_gravity(:top_left),
+          (shadow.columns - @image.columns) / 2 - options[:offset][0],
+          (shadow.rows    - @image.rows)    / 2 - options[:offset][1],
           symbol_to_blending_mode(:over)
         )
         @image.trim!
       end
     end
-    
+
   end
 end

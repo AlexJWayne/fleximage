@@ -5,7 +5,7 @@ class FleximageUseCreationDateBasedDirectoriesOptionTest < Test::Unit::TestCase
     p = PhotoBare.create(:image_file => files(:photo))
     assert_match %r{public/uploads/\d+/\d+/\d+/\d+}, p.file_path
   end
-  
+
   def test_should_store_images_without_creation_date_based_directories
     PhotoBare.use_creation_date_based_directories = false
     p = PhotoBare.create(:image_file => files(:photo))

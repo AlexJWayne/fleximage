@@ -4,7 +4,7 @@ class FleximageDefaultImagePathOptionTest < Test::Unit::TestCase
   def test_should_use_a_default_image
     PhotoBare.require_image = false
     PhotoBare.default_image_path = "../fixtures/photo.jpg"
-    
+
     p = PhotoBare.new
     assert p.save
     assert_equal 1024, p.load_image.rows

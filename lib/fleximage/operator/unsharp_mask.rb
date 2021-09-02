@@ -1,8 +1,8 @@
 module Fleximage
   module Operator
-    
+
     # Sharpen an image using an unsharp mask filter.
-    # 
+    #
     #   image.unsharp_mask(options = {})
     #
     # Use the following keys in the +options+ hash:
@@ -31,6 +31,6 @@ module Fleximage
         @image = @image.unsharp_mask(options[:radius], options[:sigma], options[:amount], options[:threshold])
       end
     end
-    
+
   end
 end
